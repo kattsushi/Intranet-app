@@ -1,11 +1,13 @@
+'use strict'
 var watchify = require('watchify'),
     path = require('path'),
     gulp = require('gulp'),
     gutil = require('gulp-util'),
     sourcemaps = require('gulp-sourcemaps'),
     cssmin = require('gulp-cssmin'),
-    gls = require('gulp-live-server')
-    sass = require('gulp-sass');
+    gls = require('gulp-live-server'),
+    sass = require('gulp-sass'),
+    coffee = require('gulp-coffee');
 
 
 
@@ -45,7 +47,14 @@ gulp.task('styles', function() {
     .pipe(cssmin());
 });
 
-gulp.task('dev', ['styles', 'server'], function() {
+gulp.task('coffeescript', function(){
+    gulp.src('client/coffee/app.coffee')
+        .pipe(coffee({bare: true}).on('error', gutil.log))
+        .pipe(gulp.dest('client/assets/js'));
+});
+
+
+gulp.task('dev', ['styles','coffeescript', 'server'], function() {
     gulp.watch('client/sass/**/*.scss', ['styles']);
 });
 
