@@ -7,7 +7,8 @@ var watchify = require('watchify'),
     cssmin = require('gulp-cssmin'),
     gls = require('gulp-live-server'),
     sass = require('gulp-sass'),
-    coffee = require('gulp-coffee');
+    coffee = require('gulp-coffee'),
+    concat = require('gulp-concat');
 
 
 
@@ -48,13 +49,23 @@ gulp.task('styles', function() {
 });
 
 gulp.task('coffeescript', function(){
-    gulp.src('client/coffee/app.coffee')
+    gulp.src('client/coffee/**/*.coffee')
         .pipe(coffee({bare: true}).on('error', gutil.log))
-        .pipe(gulp.dest('client/assets/js'));
+        .pipe(gulp.dest('client/assets/js/app'));
 });
 
 
-gulp.task('dev', ['styles','coffeescript', 'server'], function() {
+gulp.task('concat-main', function() {
+  return gulp.src('client/assets/js/app/**/*.js')
+    .pipe(sourcemaps.init())
+    .pipe(concat('main.js'))
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest('client/assets/js'));
+});
+
+
+
+gulp.task('dev', ['styles','coffeescript','concat-main', 'server'], function() {
     gulp.watch('client/sass/**/*.scss', ['styles']);
 });
 
