@@ -1,11 +1,11 @@
 {
-  "name": "Express-seed",
+  "name": "Intranet",
   "version": "0.1.0",
-  "homepage": "https://github.com/JimLiu/express-seed",
+  "homepage": "https://github.com/kattsushi/Intranet-app",
   "authors": [
-    "Jim Liu <junminliu@gmail.com>"
+    "Andres Jimenez <andresdavid@outlook.com>"
   ],
-  "description": "An empty website using nodejs + express + handlerbars + sass + bower + grunt + mysql. ",
+  "description": "Una Aplicacion usando Nodejs + express + handlerbars + sass + bower + gulp + Posgresql. ",
   "keywords": [
     "forum"
   ],

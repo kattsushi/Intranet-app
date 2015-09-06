@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server/bin/www"
   },
-  "homepage": "https://github.com/JimLiu/express-seed",
+  "homepage": "https://github.com/kattsushi/Intranet-app/",
   "licenses": [
     {
       "type": "MIT",
@@ -15,9 +15,9 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/JimLiu/express-seed"
+    "url": "https://github.com/kattsushi/Intranet-app/"
   },
-  "bugs": "https://github.com/JimLiu/express-seed/issues",
+  "bugs": "https://github.com/kattsushi/Intranet-app/issues",
   "config": {
     "blanket": {
       "pattern": "server"
@@ -57,9 +57,9 @@
     "blanket": "^1.1.7",
     "gulp": "^3.9.0",
     "gulp-cssmin": "^0.1.7",
-    "gulp-less": "^3.0.3",
     "gulp-live-server": "0.0.25",
     "gulp-livereload": "^3.8.0",
+    "gulp-sass": "^2.0.4",
     "gulp-sourcemaps": "^1.5.2",
     "gulp-util": "^3.0.6",
     "lodash.assign": "^3.2.0",

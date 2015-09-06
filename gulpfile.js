@@ -4,8 +4,9 @@ var watchify = require('watchify'),
     gutil = require('gulp-util'),
     sourcemaps = require('gulp-sourcemaps'),
     cssmin = require('gulp-cssmin'),
-    less = require('gulp-less'),
-    gls = require('gulp-live-server');
+    gls = require('gulp-live-server')
+    sass = require('gulp-sass');
+
 
 
 gulp.task('server', function() {
@@ -38,14 +39,14 @@ gulp.task('server', function() {
 gulp.task('styles', function() {
   return gulp.src('client/sass/main.scss')
     .pipe(sourcemaps.init())
-    .pipe(sass())
+    .pipe(sass().on('error', sass.logError))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest('client/assets/css'))
     .pipe(cssmin());
 });
 
 gulp.task('dev', ['styles', 'server'], function() {
-    gulp.watch('client/less/**/*.less', ['styles']);
+    gulp.watch('client/sass/**/*.scss', ['styles']);
 });
 
 gulp.task('default', ['dev'], function() {
