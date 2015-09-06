@@ -18,7 +18,7 @@
         }
     }
 
-    .hidden-mobile  {
+    .hidden-mobile {
         display: none;
         @media (min-width: $screen-xs) {
             display: inline;
@@ -27,41 +27,37 @@
 
     //
     .logo {
-    position: absolute;
-    width: 100%;
-    height: $header_height;
-    background-color: darken($dark, 5%);
-    color: $bright;
-    line-height: $header_height;
-    text-align: center;
-    @media (min-width: $screen-sm) {
-        display: inline-block;
-        width: 220px;
-        background-color: $reverse;
-        color: $text-color;
-        border-right: 1px solid $state-default-border;
-
-
-    > a {
-        font-size: 24px;
-        vertical-align: middle;
+        position: absolute;
+        width: 100%;
+        height: $header_height;
+        background-color: darken($dark, 5%);
         color: $bright;
-        #logo {
-         display: inline-block;
-       }
+        line-height: $header_height;
+        text-align: center;
         @media (min-width: $screen-sm) {
+            display: inline-block;
+            width: 220px;
+            background-color: $reverse;
             color: $text-color;
-            display: none;
+            border-right: 1px solid $state-default-border;
         }
 
-        .logo-icon {
-            color: lighten($brand-primary, 20%);
-            margin-right: 12px;
+        > a {
+            font-size: 24px;
+            vertical-align: middle;
+            color: $bright;
+            @media (min-width: $screen-sm) {
+                color: $text-color;
+            }
+
+            .logo-icon {
+                color: lighten($brand-primary, 20%);
+                margin-right: 12px;
+            }
         }
     }
-}
 
-    //
+    // 
 
     .menu-button {
         display: block;
@@ -92,11 +88,11 @@
         }
     }
 
-    //
+    // 
     .dropdown-menu.panel {
         padding: 0;
         white-space: nowrap;
-
+        
         .panel-heading,
         .panel-footer {
             padding: 10px 15px;
@@ -117,7 +113,7 @@
     }
 
 
-    //
+    // 
     .top-nav {
         width: 100%;
         padding: 50px 0 0;
@@ -125,14 +121,14 @@
             padding: 0 0 0 220px;
         }
 
-        //
+        // 
         .nav-left,
         .nav-right {
             font-size: 18px;
             line-height: 22px;
 
             > li {
-                float: right;
+                float: left;
                 &.nav-profile {
                     > a {
                         padding: 10px 15px;
@@ -144,7 +140,7 @@
                         width: 18px;
                         font-size: 16px;
                         margin-right: 5px;
-                    }
+                    } 
                 }
 
                 > .toggle-min {
@@ -212,7 +208,7 @@
             // }
         }
 
-        //
+        // 
         .nav-left {
             float: left;
             padding: 0;
@@ -221,7 +217,7 @@
             }
         }
 
-        //
+        // 
         .nav-right {
             padding: 0;
             > li {
@@ -237,7 +233,7 @@
         }
     }
 
-    //
+    // 
     .langs {
         .active-flag {
             .flag {
@@ -261,3 +257,4 @@
 
 
 }
+
