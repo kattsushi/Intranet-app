@@ -43,13 +43,16 @@ var ui = ['bower_components/jquery/dist/jquery.min.js',
           'bower_components/ng-tags-input/ng-tags-input.min.js'];
 
 // directorios de librerias vendor.js
-var vendor =['bower_components/jquery/dist/jquery.min.js',
+var vendor = ['bower_components/jquery/dist/jquery.min.js',
              'bower_components/angular/angular.min.js',
              'bower_components/angular-route/angular-route.min.js',
              'bower_components/angular-animate/angular-animate.min.js',
              'bower_components/underscore/underscore-min.js',
              'client/assets/js/app/vendors/jquery.sparkline.min.js',
              'client/assets/js/app/vendors/skycons.js'];
+//directorios de librerias css
+var LibCss =  ['bower_components/font-awesome/css/font-awesome.min.css',
+               'bower_components/weather-icons/css/weather-icons.min.css'];
 
 
 gulp.task('server', function() {
@@ -118,7 +121,10 @@ gulp.task('concat-vendor', function() {
     .pipe(gulp.dest('client/assets/js'));
 });
 
-
+gulp.task('copiar-css', function() {
+  return gulp.src(LibCss)
+    .pipe(gulp.dest('client/assets/css'));
+});
 
 gulp.task('dev', ['styles','coffeescript','concat-main','concat-ui','concat-vendor', 'server'], function() {
     gulp.watch('client/sass/**/*.scss', ['styles']);
