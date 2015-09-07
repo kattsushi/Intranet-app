@@ -1,57 +1,67 @@
-var express = require('express'),
-    path = require('path'),
-    morgan = require('morgan'),
-    cookieParser = require('cookie-parser'),
-    bodyParser = require('body-parser'),
-    session = require('express-session'),
-    hbs = require('express-hbs'),
-    validator = require('express-validator'),
-    passport = require('passport'),
-    multer = require('multer'),
-    middleware = require('./middleware'),
-    helpers = require('./helpers'),
-    config = require('./config'),
-    logger = require('./logger'),
-    routes = require('./routes'),
+'use strict'
+//Cargando Dependencias
+var express = require('express');
+var path = require('path');
+var middleware = require('./middleware');
+var config = require('./config');
+var logger = require('./logger');
+var routes = require('./routes');
+var pkg = require('../package.json');
+var multer = require('multer');
 
-    app = express();
+//Inicializando Express JS
+  var app = express();
 
-var secret = config.session && config.session.secret ? config.session.secret : "1234567890QWERTY";
-app.set('session.secret', secret);
+// Configuracion de Sesiones de usuario
+  var secret = config.session && config.session.secret ? config.session.secret : "1234567890QWERTY";
+  app.set('session.secret', secret);
 
+//Configuracion passport
+  middleware.passport(passport);
 
+// Configuracion de motor de Vistas HandleBars
+  var hbs = require('express-hbs');
+  var helpers = require('./helpers');
+  app.engine('hbs', hbs.express3({
+      partialsDir: path.join(__dirname, 'views/partials')
+  }));
+  app.set('view engine', 'hbs');
+  app.set('views', path.join(__dirname, 'views'));
+  helpers.registerSiteHelpers(hbs);
 
-middleware.passport(passport);
+//Configuracion de morgan
+  var morgan = require('morgan');
+  app.use(morgan('dev'));
 
-
-// view engine setup
-app.engine('hbs', hbs.express3({
-    partialsDir: path.join(__dirname, 'views/partials')
-}));
-app.set('view engine', 'hbs');
-app.set('views', path.join(__dirname, 'views'));
-helpers.registerSiteHelpers(hbs);
-
-app.use(morgan('dev'));
-app.use(bodyParser.urlencoded({
+//Configuracion del bodyParser
+  var bodyParser = require('body-parser');
+  var cookieParser = require('cookie-parser');
+  app.use(bodyParser.urlencoded({
     extended: true
-}));
-app.use(bodyParser.json());
-app.use(cookieParser(config.cookie.secret));
+  }));
+  app.use(bodyParser.json());
+  app.use(cookieParser(config.cookie.secret));
 
-app.use(validator());
+// Inicializador del Validador de Codigo
+  var validator = require('express-validator');
+  app.use(validator());
 
-app.use(session({
-    secret: secret,
-    key: 'app.sid',
-    resave: false,
-    saveUninitialized: false
-}));
+// Inicializador de Sesiones
+  var session = require('express-session');
+  app.use(session({
+      secret: secret,
+      key: 'app.sid',
+      resave: false,
+      saveUninitialized: false
+  }));
 
-app.use(passport.initialize());
-app.use(passport.session());
-app.use(routes.autoLogin); // auto login from token
+//Configuracion e Inicializador de Passport
+  var passport = require('passport');
+  app.use(passport.initialize());
+  app.use(passport.session());
+  app.use(routes.autoLogin); // auto login from token
 
+//Enviar informacion al front.
 app.use(function(req, res, next) {
     // Make sure we have a locals value.
     res.locals = res.locals || {};
