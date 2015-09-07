@@ -68,5 +68,24 @@
     "mocha": "~1.17.1",
     "should": "^7.0.4",
     "watchify": "^3.3.1"
+  },
+  "paths":{
+    "sass":"client/sass/main.scss",
+    "coffee":"client/coffee/**/*.coffee",
+    "JsCon":"client/assets/js/app/**/*.js",
+    "app":"main.js",
+    "ui":"ui.js",
+    "vendors":"vendor.js",
+    "Watch":{
+            "sass":"client/sass/**/*.scss",
+            "js":"client/assets/**/*.js",
+            "css":"client/assets/**/*.css",
+            "hbs":"server/views/**/*.hbs"
+            }
+          },
+  "dest": {
+    "Js":"client/assets/js/",
+    "css":"client/assets/css",
+    "JsDev":"client/assets/js/app"
   }
 }

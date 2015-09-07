@@ -1,5 +1,6 @@
 'use strict'
-var watchify = require('watchify'),
+var pkg = require('./package.json'),
+    watchify = require('watchify'),
     path = require('path'),
     gulp = require('gulp'),
     gutil = require('gulp-util'),
@@ -72,66 +73,65 @@ gulp.task('server', function() {
         ], function () {
         server.start();
     });
-    gulp.watch([
-            'client/assets/**/*.css',
-            'client/assets/**/*.js',
-            'server/views/**/*.hbs'
-        ], function () {
-        server.notify.apply(server, arguments);
+    gulp.watch([pkg.paths.Watch.css,
+                pkg.paths.Watch.js,
+                pkg.paths.Watch.hbs],
+                function () {
+                  server.notify.apply(server, arguments);
+                  });
     });
-});
 
 
 gulp.task('styles', function() {
-  return gulp.src('client/sass/main.scss')
+  return gulp.src(pkg.paths.sass)
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest('client/assets/css'))
+    .pipe(gulp.dest(pkg.dest.css))
     .pipe(cssmin());
 });
 
 gulp.task('coffeescript', function(){
-    gulp.src('client/coffee/**/*.coffee')
+    gulp.src(pkg.paths.coffee)
         .pipe(coffee({bare: true}).on('error', gutil.log))
-        .pipe(gulp.dest('client/assets/js/app'));
+        .pipe(gulp.dest(pkg.dest.JsDev));
 });
 
 
 gulp.task('concat-main', function() {
-  return gulp.src('client/assets/js/app/**/*.js')
+  return gulp.src(pkg.paths.JsCon)
     .pipe(sourcemaps.init())
-    .pipe(concat('main.js'))
+    .pipe(concat(pkg.paths.app))
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest('client/assets/js'));
+    .pipe(gulp.dest(pkg.dest.Js));
 });
 
 gulp.task('concat-ui', function() {
   return gulp.src(ui)
     .pipe(sourcemaps.init())
-    .pipe(concat('ui.js'))
+    .pipe(concat(pkg.paths.ui))
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest('client/assets/js'));
+    .pipe(gulp.dest(pkg.dest.Js));
 });
 gulp.task('concat-vendor', function() {
   return gulp.src(vendor)
     .pipe(sourcemaps.init())
-    .pipe(concat('vendor.js'))
+    .pipe(concat(pkg.paths.vendors))
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest('client/assets/js'));
+    .pipe(gulp.dest(pkg.dest.Js));
 });
 
 gulp.task('copiar-css', function() {
   return gulp.src(LibCss)
-    .pipe(gulp.dest('client/assets/css'));
+    .pipe(gulp.dest(pkg.dest.css));
 });
 
 gulp.task('dev', ['styles','coffeescript','concat-main','concat-ui','concat-vendor', 'server'], function() {
-    gulp.watch('client/sass/**/*.scss', ['styles']);
+    gulp.watch(pkg.paths.WatchSass, ['styles']);
 });
 
 gulp.task('pro', ['styles','coffeescript','concat-main','concat-ui', 'server'], function() {
-    gulp.watch('client/sass/**/*.scss', ['styles']);
+    gulp.watch(pkg.paths.WatchSass, ['styles']);
 });
 
 gulp.task('default', ['dev'], function() {
