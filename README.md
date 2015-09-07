@@ -1,72 +1,67 @@
-express-seed
+Intranet-app Seguros Catatumbo
+Trabajo de Grado para optar por el titulo de Ing. Sistemas 
 ============
 
-An empty website using nodejs + express + handlerbars + sass + bower + grunt + mysql.
+Aplicacion desarrollada en el Stack de desarrollo de Nodejs + ExpressJs + Handlerbars + Sass + Bower + Gulp + PostgreSql.
 
-
-## Development environment setup
-#### Prerequisites
+## Configuracion del entorno de desarrollo
+#### Requisitos
 
 * [Nodejs](http://www.nodejs.org/)
 * [Node Package Manager](https://npmjs.org/) (NPM)
 * [Git](http://git-scm.com/)
 
-#### Dependencies
+#### Dependencias
 
-* [Gulp](http://gulpjs.com/) (task automation)
-* [Bower](http://bower.io/) (package management)
-* [Less](http://sass-lang.com/) (css tool)
+* [Gulp](http://gulpjs.com/) (Automatizador de tareas)
+* [Bower](http://bower.io/) (Administrador de paquetes para el Fron-end)
+* [Less](http://sass-lang.com/) (Preprosesador de Hojas de Estilos)
 
-#### Installation
-Run the commands below in the project root directory.
-
-#####1. Install Gulp and Bower
+#### Instalacion
+Corre estos comandos para la instalacion.
+#####1. Instalar Gulp y Bower
 
     $ sudo npm install -g gulp bower
 
-#####2. Install project dependencies
+#####2. Instalar dependencias
 
     $ npm install
     $ bower install
 
-## Useful commands
 
-####Running web site
-
-To start the web server, run:
+Para inicializar el servidor corre este comando
 
     $ gulp dev
 
-To access the local server, enter the following URL into your web browser:
+Accede al sericio local , entra en tu navegador en el siguiente enlace:
 
     http://localhost:3000/
 
 
-## Directory Layout
+## Estructura de directorios
 
-    client/                 --> all of the client files
-      app/                  --> javascript files
-      assets/               --> public asset files
-        css/                --> css files
-        img/                --> image files
-        font/               --> font files
-      less/                 --> sass files, build css files
-    schema/                 --> db schema
-    server/                 --> all of the server files
-      config/               --> server config
-      controllers/          --> application controllers
-      helpers/              --> helpers for views
-      middleware/           --> middleware for express
-      models/               --> data models
-      routes/               --> routes
-      views/                --> view files
-      app.js                --> application
-      logger.js             --> help to log
-      utils.js              --> util library
-    shared/                 --> client and server common files
-    bower.json              --> config file for bower
-    config.development.js   --> config file for development
-    config.js               --> default config file. merge `config.*environment*.js` file
-    gulpfile.js             --> gulp file
-
+    client/                 --> Todos los archivos del cliente
+      app/                  --> Archivos Javascript
+      assets/               --> Archivos publicos estativos
+        css/                --> Archivos Css
+        img/                --> Archivos de imagenes 
+        font/               --> Archivos de fuentes
+      sass/                 --> Archivos Sass 
+    schema/                 --> Esquemas de db 
+    server/                 --> Todos los archivos del servidor
+      config/               --> Archivo de configuracion
+      controllers/          --> Controladores
+      helpers/              --> funciones para las vistas
+      middleware/           --> Middlewares para express
+      models/               --> Modelos de datos
+      routes/               --> rutas
+      views/                --> Vistas
+      app.js                --> Aplicacion
+      logger.js             --> Ayuda para log
+      utils.js              --> Libreria de utilidades
+    shared/                 --> Archivos de subida
+    bower.json              --> Archivo de configuracion de bower
+    config.development.js   --> Archivo de configuracion para el desarrollo
+    config.js               --> Archivo de configuracion por defecto. 
+    gulpfile.js             --> Archivo de configuracion de gulp 
     
