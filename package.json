@@ -63,6 +63,7 @@
     "gulp-coffee":"latest",
     "gulp-concat":"latest",
     "gulp-sourcemaps": "^1.5.2",
+    "gulp-notify":"latest",
     "gulp-util": "^3.0.6",
     "lodash.assign": "^3.2.0",
     "mocha": "~1.17.1",

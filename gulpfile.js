@@ -9,7 +9,8 @@ var pkg = require('./package.json'),
     gls = require('gulp-live-server'),
     sass = require('gulp-sass'),
     coffee = require('gulp-coffee'),
-    concat = require('gulp-concat');
+    concat = require('gulp-concat'),
+    notify = require('gulp-notify');
 
 //definir directorios
 
@@ -85,7 +86,7 @@ gulp.task('server', function() {
 gulp.task('styles', function() {
   return gulp.src(pkg.paths.sass)
     .pipe(sourcemaps.init())
-    .pipe(sass().on('error', sass.logError))
+    .pipe(sass().on('error', notify.onError("<%= error.message %>")))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(pkg.dest.css))
     .pipe(cssmin());
