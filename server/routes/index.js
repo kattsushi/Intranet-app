@@ -11,10 +11,10 @@ var _ = require('lodash'),
 
 router.get('/error/500', function(req, res, next) {
     res.render('error', {
-        title: 'Error 500',
-        message: 'Unknown Error',
+        title: 'Error 500 - Falla del servidor',
+        message: 'Error Desconocido',
         error: {
-            status: 'An unknown error occured.',
+            status: 'ha ocurrido algun error fatal',
             stack: ''
         }
     });
@@ -22,7 +22,7 @@ router.get('/error/500', function(req, res, next) {
 
 router.get('/', function(req, res, next) {
     res.render('index', {
-        title: "My App"
+        title: "Intranet Seguros Catatumbo C.A."
     });
 });
 
