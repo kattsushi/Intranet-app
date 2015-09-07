@@ -12,7 +12,7 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "angular": "latest",
+    "angular": "1.4.5",
     "jquery": "latest",
     "moment": "latest",
     "angular-route": "latest",
@@ -42,7 +42,8 @@
     "textAngular": "latest",
     "flot.tooltip": "latest",
     "angular-ui-tree": "latest",
-    "ng-tags-input": "~2.1.1"
+    "ng-tags-input": "~2.1.1",
+    "holderjs":"latest"
   },
   "ignore": [
     "**/.*",
