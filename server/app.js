@@ -1,5 +1,5 @@
 'use strict'
-//Cargando Dependencias
+//  Cargando Dependencias
 var express = require('express');
 var path = require('path');
 var middleware = require('./middleware');
@@ -9,17 +9,17 @@ var routes = require('./routes');
 var pkg = require('../package.json');
 var multer = require('multer');
 
-//Inicializando Express JS
+//  Inicializando Express JS
   var app = express();
 
-// Configuracion de Sesiones de usuario
+//  Configuracion de Sesiones de usuario
   var secret = config.session && config.session.secret ? config.session.secret : "1234567890QWERTY";
   app.set('session.secret', secret);
 
-//Configuracion passport
+//  Configuracion passport
   middleware.passport(passport);
 
-// Configuracion de motor de Vistas HandleBars
+//  Configuracion de motor de Vistas HandleBars
   var hbs = require('express-hbs');
   var helpers = require('./helpers');
   app.engine('hbs', hbs.express3({
@@ -29,11 +29,11 @@ var multer = require('multer');
   app.set('views', path.join(__dirname, 'views'));
   helpers.registerSiteHelpers(hbs);
 
-//Configuracion de morgan
+//  Configuracion de morgan
   var morgan = require('morgan');
   app.use(morgan('dev'));
 
-//Configuracion del bodyParser
+//  Configuracion del bodyParser
   var bodyParser = require('body-parser');
   var cookieParser = require('cookie-parser');
   app.use(bodyParser.urlencoded({
@@ -42,11 +42,11 @@ var multer = require('multer');
   app.use(bodyParser.json());
   app.use(cookieParser(config.cookie.secret));
 
-// Inicializador del Validador de Codigo
+//  Inicializador del Validador de Codigo
   var validator = require('express-validator');
   app.use(validator());
 
-// Inicializador de Sesiones
+//  Inicializador de Sesiones
   var session = require('express-session');
   app.use(session({
       secret: secret,
@@ -55,13 +55,13 @@ var multer = require('multer');
       saveUninitialized: false
   }));
 
-//Configuracion e Inicializador de Passport
+//  Configuracion e Inicializador de Passport
   var passport = require('passport');
   app.use(passport.initialize());
   app.use(passport.session());
   app.use(routes.autoLogin); // auto login from token
 
-//Enviar informacion al front.
+//  Enviar informacion al front.
 app.use(function(req, res, next) {
     // Make sure we have a locals value.
     res.locals = res.locals || {};
@@ -71,49 +71,46 @@ app.use(function(req, res, next) {
     next();
 });
 
-
+//  Servir archivos estaticos
 app.use(express.static(path.join(__dirname, '../client/assets')));
-// Static assets
+//  Static assets
 app.use('/shared', express.static(path.join(__dirname, '../shared')));
 app.use('/vendors', express.static(path.join(__dirname, '../bower_components')));
 app.use('/js', express.static(path.join(__dirname, '/../built/scripts')));
 app.use('/css', express.static(path.join(__dirname, '/../built/css')));
 
+
 app.use('/', routes);
 
-/// catch 404 and forward to error handler
-app.use(function(req, res, next) {
+//  Manejar Codigo de Error 404
+  app.use(function(req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
     next(err);
-});
+  });
 
-/// error handlers
+//  Manejar otros codigos de Error en entorno de Desarrollo
+  if (app.get('env') === 'development') {
+      app.use(function(err, req, res, next) {
+          if (err.status != 404) {
+              console.log('request error dev', err ? err.message : err, err ? err.stack : '');
+          }
+          res.status(err.status || 500);
+          res.render('error', {
+              message: err.message,
+              error: err
+          });
+      });
+  }
 
-// development error handler
-// will print stacktrace
-if (app.get('env') === 'development') {
-    app.use(function(err, req, res, next) {
-        if (err.status != 404) {
-            console.log('request error dev', err ? err.message : err, err ? err.stack : '');
-        }
-        res.status(err.status || 500);
-        res.render('error', {
-            message: err.message,
-            error: err
-        });
-    });
-}
-
-// production error handler
-// no stacktraces leaked to user
-app.use(function(err, req, res, next) {
-    console.log('request error dev', err ? err.message : err, err ? err.stack : '');
-    res.status(err.status || 500);
-    res.render('error', {
-        message: err.message,
-        error: {}
-    });
-});
+//  Manejar codigos de Error en entorno de Produccion
+  app.use(function(err, req, res, next) {
+      console.log('request error dev', err ? err.message : err, err ? err.stack : '');
+      res.status(err.status || 500);
+      res.render('error', {
+          message: err.message,
+          error: {}
+      });
+  });
 
 module.exports = app;
