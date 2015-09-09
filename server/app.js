@@ -43,7 +43,6 @@
 
 // Compilar Sass al vuelo
   var sass= require('node-sass-middleware');
-
   if (!config().html.css.sassPrecompile) {
     var pathSrc = __dirname + '/../' + config().paths.srcsass;
     var pathDes = __dirname + '/../' + config().paths.dest.css;
@@ -58,17 +57,43 @@
       }));
   }
 
+  // Configuracion Handlebars
+  app.engine(config().views.engine, exphbs({
+    extname: config().views.extension,
+    defaultLayout: config().views.layout,
+    layoutsDir: __dirname + '/views/',
+    partialsDir: __dirname + '/views/partials'
+  }));
+
+  // Configuracion del motor de Vistas
+  app.set('views', path.join(__dirname, 'views'));
+  app.set('view engine', config().views.engine);
+  //  Servir archivos estaticos
+  app.use(express.static(path.join(__dirname, '../client/assets')));
+  //  Static assets
+  app.use('/shared', express.static(path.join(__dirname, '../shared')));
+  app.use('/vendors', express.static(path.join(__dirname, '../bower_components')));
+  app.use('/js', express.static(path.join(__dirname, '/../built/scripts')));
+  app.use('/css', express.static(path.join(__dirname, '/../built/css')));
+
+  // Enviar datos de Configuracion a la Vistas
+  app.use(function(req, res, next) {
+    res.locals.config = config();
+    next();
+  });
+
+/*
+  var helpers = require('./helpers');
+  exphbs.registerSiteHelpers(helpers);
+
 
   var hbs = require('express-hbs');
-  var helpers = require('./helpers');
-
   app.engine('hbs', hbs.express3({
       partialsDir: path.join(__dirname, 'views/partials')
   }));
   app.set('view engine', 'hbs');
   app.set('views', path.join(__dirname, 'views'));
-
-  helpers.registerSiteHelpers(hbs);
+*/
 
 
 
@@ -101,13 +126,6 @@
     next();
   });
 
-//  Servir archivos estaticos
-  app.use(express.static(path.join(__dirname, '../client/assets')));
-//  Static assets
-  app.use('/shared', express.static(path.join(__dirname, '../shared')));
-  app.use('/vendors', express.static(path.join(__dirname, '../bower_components')));
-  app.use('/js', express.static(path.join(__dirname, '/../built/scripts')));
-  app.use('/css', express.static(path.join(__dirname, '/../built/css')));
 
 
   app.use('/', routes);

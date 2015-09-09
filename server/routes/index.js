@@ -24,6 +24,7 @@ router.get('/', function(req, res, next) {
     res.render('index', {
         title: "Intranet Seguros Catatumbo C.A."
     });
+    
 });
 
 router.get('/signout', controllers.auth.signout);
