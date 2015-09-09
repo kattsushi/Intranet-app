@@ -53,7 +53,9 @@
     "string": "^3.3.1",
     "validator": "^4.0.5",
     "winston": "^1.0.1",
-    "js-yaml": "latest"
+    "js-yaml": "latest",
+    "node-sass":"latest",
+    "node-sass-middleware":"latest"
   },
   "devDependencies": {
     "blanket": "^1.1.7",

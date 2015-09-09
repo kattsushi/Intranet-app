@@ -1,12 +1,16 @@
 #!/usr/bin/env node
-var debug = require('debug')('server');
-var app = require('../app');
-var config = require('../lib/config')
+'use strict'
 
-app.set('port', process.env.PORT || 3000);
+// Cargar archivos de Configuracion, Aplicacion y Debug
+  var debug = require('debug')('server');
+  var app = require('../app');
+  var config = require('../lib/config')
 
-var server = app.listen(app.get('port'), function() {
-  console.log('Express server listening on port ' + server.address().port);
-  console.log(config().paths.dest.jsdev);
-  debug('Express server listening on port ' + server.address().port);
-});
+// Set y Configuracion del puerto de la Aplicacion
+  app.set('port', process.env.PORT || config().serverPort);
+
+  var server = app.listen(config().serverPort, function() {
+    console.log('El servidor Express Js esta corriendo en el puerto : ' + server.address().port);
+    console.log(__dirname);
+    debug('El servidor Express Js esta corriendo en el puerto : ' + server.address().port);
+  });

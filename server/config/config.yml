@@ -16,6 +16,8 @@ production: &default
     default: home
   paths:
     sass: client/sass/main.scss
+    srcsass: client/sass/
+    srccoffee: client/coffee/
     coffee: client/coffee/**/*.coffee
     jscon: client/assets/js/app/**/*.js
     app: main.js

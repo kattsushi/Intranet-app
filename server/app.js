@@ -1,18 +1,33 @@
 'use strict'
 //  Cargando Dependencias
-var express = require('express');
-var path = require('path');
-var middleware = require('./middleware');
-var sessionconfig = require('./config');
-var logger = require('./logger');
-var routes = require('./routes');
-var multer = require('multer');
-
-// Cargar Configuracion
-var config = require('./lib/config');
+  var express = require('express');
+  var path = require('path');
+  var middleware = require('./middleware');
+  var sessionconfig = require('./config');
+  var logger = require('./logger');
+  var routes = require('./routes');
+  var multer = require('multer');
 
 //  Inicializando Express JS
   var app = express();
+
+// Cargar Configuracion
+  var config = require('./lib/config');
+
+//  Configuracion del bodyParser
+  var bodyParser = require('body-parser');
+  app.use(bodyParser.urlencoded({
+    extended: true
+  }));
+  app.use(bodyParser.json());
+
+//  Configuracion de Morgan : gestor de logeo
+  var logger = require('morgan');
+  app.use(logger('dev'));
+
+//  Configuracion de Cookies y Sesion
+  var cookieParser = require('cookie-parser');
+  app.use(cookieParser(sessionconfig.cookie.secret));
 
 //  Configuracion de Sesiones de usuario
   var secret = sessionconfig.session && sessionconfig.session.secret ? sessionconfig.session.secret : "1234567890QWERTY";
@@ -23,27 +38,39 @@ var config = require('./lib/config');
   middleware.passport(passport);
 
 //  Configuracion de motor de Vistas HandleBars
+
+  var exphbs = require('express-handlebars');
+
+// Compilar Sass al vuelo
+  var sass= require('node-sass-middleware');
+
+  if (!config().html.css.sassPrecompile) {
+    var pathSrc = __dirname + '/../' + config().paths.srcsass;
+    var pathDes = __dirname + '/../' + config().paths.dest.css;
+    console.log(pathDes);
+    console.log(pathSrc);
+    app.use(
+      sass({
+        src: pathSrc,
+        dest: pathDes,
+        debug: true,
+        outputStyle: 'compressed'
+      }));
+  }
+
+
   var hbs = require('express-hbs');
   var helpers = require('./helpers');
+
   app.engine('hbs', hbs.express3({
       partialsDir: path.join(__dirname, 'views/partials')
   }));
   app.set('view engine', 'hbs');
   app.set('views', path.join(__dirname, 'views'));
+
   helpers.registerSiteHelpers(hbs);
 
-//  Configuracion de morgan
-  var morgan = require('morgan');
-  app.use(morgan('dev'));
 
-//  Configuracion del bodyParser
-  var bodyParser = require('body-parser');
-  var cookieParser = require('cookie-parser');
-  app.use(bodyParser.urlencoded({
-    extended: true
-  }));
-  app.use(bodyParser.json());
-  app.use(cookieParser(sessionconfig.cookie.secret));
 
 //  Inicializador del Validador de Codigo
   var validator = require('express-validator');
