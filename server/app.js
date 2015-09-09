@@ -17,6 +17,7 @@ var multer = require('multer');
   app.set('session.secret', secret);
 
 //  Configuracion passport
+  var passport = require('passport');
   middleware.passport(passport);
 
 //  Configuracion de motor de Vistas HandleBars
@@ -62,25 +63,25 @@ var multer = require('multer');
   app.use(routes.autoLogin); // auto login from token
 
 //  Enviar informacion al front.
-app.use(function(req, res, next) {
+  app.use(function(req, res, next) {
     // Make sure we have a locals value.
     res.locals = res.locals || {};
     res.locals.session = {
         user: req.user
     };
     next();
-});
+  });
 
 //  Servir archivos estaticos
-app.use(express.static(path.join(__dirname, '../client/assets')));
+  app.use(express.static(path.join(__dirname, '../client/assets')));
 //  Static assets
-app.use('/shared', express.static(path.join(__dirname, '../shared')));
-app.use('/vendors', express.static(path.join(__dirname, '../bower_components')));
-app.use('/js', express.static(path.join(__dirname, '/../built/scripts')));
-app.use('/css', express.static(path.join(__dirname, '/../built/css')));
+  app.use('/shared', express.static(path.join(__dirname, '../shared')));
+  app.use('/vendors', express.static(path.join(__dirname, '../bower_components')));
+  app.use('/js', express.static(path.join(__dirname, '/../built/scripts')));
+  app.use('/css', express.static(path.join(__dirname, '/../built/css')));
 
 
-app.use('/', routes);
+  app.use('/', routes);
 
 //  Manejar Codigo de Error 404
   app.use(function(req, res, next) {
