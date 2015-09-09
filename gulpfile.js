@@ -1,5 +1,6 @@
 'use strict'
 var pkg = require('./package.json'),
+    config = require('./server/lib/config'),
     watchify = require('watchify'),
     path = require('path'),
     gulp = require('gulp'),
@@ -74,9 +75,9 @@ gulp.task('server', function() {
         ], function () {
         server.start();
     });
-    gulp.watch([pkg.paths.Watch.css,
-                pkg.paths.Watch.js,
-                pkg.paths.Watch.hbs],
+    gulp.watch([config().paths.watch.css,
+                config().paths.watch.js,
+                config().paths.watch.hbs],
                 function () {
                   server.notify.apply(server, arguments);
                   });
@@ -84,28 +85,28 @@ gulp.task('server', function() {
 
 //Preprocesar hoja de estilos sass
 gulp.task('styles', function() {
-  return gulp.src(pkg.paths.sass)
+  return gulp.src(config().paths.sass)
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', notify.onError("<%= error.message %>")))
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest(pkg.dest.css))
+    .pipe(gulp.dest(config().paths.dest.css))
     .pipe(cssmin());
 });
 
 //Preprocesar archivos coffeescript
 gulp.task('coffeescript', function(){
-    gulp.src(pkg.paths.coffee)
+    gulp.src(config().paths.coffee)
         .pipe(coffee({bare: true}).on('error', gutil.log))
-        .pipe(gulp.dest(pkg.dest.JsDev));
+        .pipe(gulp.dest(config().paths.dest.jsdev));
 });
 
 //Concatenar archivos Javascript del Main
 gulp.task('concat-main', function() {
-  return gulp.src(pkg.paths.JsCon)
+  return gulp.src(config().paths.jscon)
     .pipe(sourcemaps.init())
-    .pipe(concat(pkg.paths.app))
+    .pipe(concat(config().paths.app))
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest(pkg.dest.Js));
+    .pipe(gulp.dest(config().paths.dest.js));
 });
 
 //Concatenar archivos Javascript del Ui
@@ -113,33 +114,33 @@ gulp.task('concat-main', function() {
 gulp.task('concat-ui', function() {
   return gulp.src(ui)
     .pipe(sourcemaps.init())
-    .pipe(concat(pkg.paths.ui))
+    .pipe(concat(config().paths.ui))
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest(pkg.dest.Js));
+    .pipe(gulp.dest(config().paths.dest.js));
 });
 
 //Concatenar Librerias Javascript vendor
 gulp.task('concat-vendor', function() {
   return gulp.src(vendor)
     .pipe(sourcemaps.init())
-    .pipe(concat(pkg.paths.vendors))
+    .pipe(concat(config().paths.vendors))
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest(pkg.dest.Js));
+    .pipe(gulp.dest(config().paths.dest.js));
 });
 
 //Copiar archivos
 gulp.task('copiar-css', function() {
   return gulp.src(LibCss)
-    .pipe(gulp.dest(pkg.dest.css));
+    .pipe(gulp.dest(config().paths.dest.css));
 });
 
 //Gestor de tareas de Gulp.
 gulp.task('dev', ['styles','coffeescript','concat-main','concat-ui','concat-vendor', 'server'], function() {
-    gulp.watch(pkg.paths.WatchSass, ['styles']);
+    gulp.watch(config().paths.watch.sass, ['styles']);
 });
 
 gulp.task('pro', ['styles','coffeescript','concat-main','concat-ui', 'server'], function() {
-    gulp.watch(pkg.paths.WatchSass, ['styles']);
+    gulp.watch(config().paths.watch.sass, ['styles']);
 });
 
 gulp.task('default', ['dev'], function() {

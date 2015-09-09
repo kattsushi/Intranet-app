@@ -34,6 +34,7 @@
     "debug": "^2.2.0",
     "express": "^4.13.3",
     "express-hbs": "^0.8.4",
+    "express-handlebars": "latest",
     "express-session": "^1.11.3",
     "express-validator": "^2.16.0",
     "gravatar": "^1.3.0",
@@ -51,7 +52,8 @@
     "semver": "^5.0.1",
     "string": "^3.3.1",
     "validator": "^4.0.5",
-    "winston": "^1.0.1"
+    "winston": "^1.0.1",
+    "js-yaml": "latest"
   },
   "devDependencies": {
     "blanket": "^1.1.7",
@@ -69,24 +71,5 @@
     "mocha": "~1.17.1",
     "should": "^7.0.4",
     "watchify": "^3.3.1"
-  },
-  "paths":{
-    "sass":"client/sass/main.scss",
-    "coffee":"client/coffee/**/*.coffee",
-    "JsCon":"client/assets/js/app/**/*.js",
-    "app":"main.js",
-    "ui":"ui.js",
-    "vendors":"vendor.js",
-    "Watch":{
-            "sass":"client/sass/**/*.scss",
-            "js":"client/assets/**/*.js",
-            "css":"client/assets/**/*.css",
-            "hbs":"server/views/**/*.hbs"
-            }
-          },
-  "dest": {
-    "Js":"client/assets/js/",
-    "css":"client/assets/css",
-    "JsDev":"client/assets/js/app"
   }
 }

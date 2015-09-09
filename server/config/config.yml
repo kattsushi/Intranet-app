@@ -1,0 +1,54 @@
+---
+production: &default
+  serverPort: 3000
+  baseUrl: http://www.intranet.com
+  baseApi: /api/
+  views:
+    engine: .hbs
+    extension: .hbs
+    layout: main
+  html:
+    minify: true
+    css:
+      compress: true
+      sassPrecompile: true
+  controllers:
+    default: home
+  paths:
+    sass: client/sass/main.scss
+    coffee: client/coffee/**/*.coffee
+    jscon: client/assets/js/app/**/*.js
+    app: main.js
+    ui: ui.js
+    vendors: vendor.js
+    watch:
+      sass: client/sass/**/*.scss
+      js: client/assets/**/*.js
+      css: client/assets/**/*.css
+      hbs: server/views/**/*.hbs
+    dest:
+      js: client/assets/js/
+      css: client/assets/css
+      jsdev: client/assets/js/app
+  languages:
+    default: es
+    list: [es]
+  security:
+    secret: Intranet
+
+stage: &stage
+  <<: *default
+  baseUrl: http://stage.intranet.com
+
+latest: &latest
+  <<: *stage
+  baseUrl: http://latest.intranet.com
+
+development:
+  <<: *latest
+  baseUrl: http://local.intranet.com
+  html:
+    minify: false
+    css:
+      compress: false
+      stylusPrecompile: false

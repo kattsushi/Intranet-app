@@ -3,17 +3,19 @@
 var express = require('express');
 var path = require('path');
 var middleware = require('./middleware');
-var config = require('./config');
+var sessionconfig = require('./config');
 var logger = require('./logger');
 var routes = require('./routes');
-var pkg = require('../package.json');
 var multer = require('multer');
+
+// Cargar Configuracion
+var config = require('./lib/config');
 
 //  Inicializando Express JS
   var app = express();
 
 //  Configuracion de Sesiones de usuario
-  var secret = config.session && config.session.secret ? config.session.secret : "1234567890QWERTY";
+  var secret = sessionconfig.session && sessionconfig.session.secret ? sessionconfig.session.secret : "1234567890QWERTY";
   app.set('session.secret', secret);
 
 //  Configuracion passport
@@ -41,7 +43,7 @@ var multer = require('multer');
     extended: true
   }));
   app.use(bodyParser.json());
-  app.use(cookieParser(config.cookie.secret));
+  app.use(cookieParser(sessionconfig.cookie.secret));
 
 //  Inicializador del Validador de Codigo
   var validator = require('express-validator');
