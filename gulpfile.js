@@ -48,7 +48,7 @@ var ui = ['bower_components/jquery/dist/jquery.min.js',
 // Directorios de librerias vendor.js
 var vendor = ['bower_components/jquery/dist/jquery.min.js',
              'bower_components/angular/angular.min.js',
-             'bower_components/angular-route/angular-route.min.js',
+             'bower_components/angular-route/angular-route.min.js' ,
              'bower_components/angular-animate/angular-animate.min.js',
              'bower_components/underscore/underscore-min.js',
              'client/assets/js/app/vendors/jquery.sparkline.min.js',
@@ -129,13 +129,17 @@ gulp.task('concat-vendor', function() {
 });
 
 //Copiar archivos
+
 gulp.task('copiar-css', function() {
   return gulp.src(LibCss)
     .pipe(gulp.dest(config().paths.dest.css));
 });
-
+gulp.task('copiar-vendors', function() {
+  return gulp.src(vendor)
+    .pipe(gulp.dest(config().paths.dest.jsdev));
+});
 //Gestor de tareas de Gulp.
-gulp.task('dev', ['styles','coffeescript','concat-main','concat-ui','concat-vendor', 'server'], function() {
+gulp.task('dev', ['styles','coffeescript', 'server'], function() {
     gulp.watch(config().paths.watch.sass, ['styles']);
 });
 

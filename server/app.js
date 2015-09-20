@@ -40,6 +40,7 @@
 //  Configuracion de motor de Vistas HandleBars
 
   var exphbs = require('express-handlebars');
+  var hbsHelpers = require('./lib/helpers/handlebars');
 
 // Compilar Sass al vuelo
   var sass= require('node-sass-middleware');
@@ -62,7 +63,8 @@
     extname: config().views.extension,
     defaultLayout: config().views.layout,
     layoutsDir: __dirname + '/views/',
-    partialsDir: __dirname + '/views/partials'
+    partialsDir: __dirname + '/views/partials',
+    helpers: hbsHelpers
   }));
 
   // Configuracion del motor de Vistas
@@ -70,6 +72,7 @@
   app.set('view engine', config().views.engine);
   //  Servir archivos estaticos
   app.use(express.static(path.join(__dirname, '../client/assets')));
+  app.use(express.static(path.join(__dirname, 'views/patrials')));
   //  Static assets
   app.use('/shared', express.static(path.join(__dirname, '../shared')));
   app.use('/vendors', express.static(path.join(__dirname, '../bower_components')));
