@@ -139,7 +139,7 @@ gulp.task('copiar-vendors', function() {
     .pipe(gulp.dest(config().paths.dest.jsdev));
 });
 //Gestor de tareas de Gulp.
-gulp.task('dev', ['styles','coffeescript','concat-main','concat-ui','concat-vendor', 'server'], function() {
+gulp.task('dev', ['styles','coffeescript', 'server'], function() {
     gulp.watch(config().paths.watch.sass, ['styles']);
 });
 
