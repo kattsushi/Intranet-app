@@ -14,5 +14,8 @@ angular.module('app', ['ngRoute', 'ngAnimate', 'ui.bootstrap', 'textAngular', 'a
     }).otherwise({
       redirectTo: '/404'
     });
+  }, function($interpolateProvider) {
+    $interpolateProvider.startSymbol("{[{");
+    return $interpolateProvider.endSymbol("}]}");
   }
 ]);
