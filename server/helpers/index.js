@@ -21,7 +21,7 @@ var string    = require('string'),
     ],
     development: [
       '/js/vendor.js',
-      '/js/app.js'
+      '/js/main.js'
     ]
   };
 
@@ -126,4 +126,3 @@ module.exports = coreHelpers;
 module.exports.loadCoreHelpers = registerHelpers;
 module.exports.registerSiteHelpers = registerSiteHelpers;
 module.exports.scriptFiles = scriptFiles;
-
