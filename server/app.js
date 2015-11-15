@@ -17,7 +17,7 @@ var multer = require('multer');
   app.set('session.secret', secret);
 
 //Configuracion passport
-  middleware.passport(passport);
+//  middleware.passport(passport);
 
 // Configuracion de motor de Vistas HandleBars
   var hbs = require('express-hbs');
