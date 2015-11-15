@@ -1,46 +1,39 @@
-// -------------------------
-@import "global/var";
-@import "bootstrap-sass/bootstrap";
+@charset "UTF-8";
 
-//@import "compass/css3";
-@import
-    // UI, uses Bootstrap's variables
-    "ui/ui"
+// Mixins
+@import "components/prefixer";
+@import "components/mixins";
+@import "components/color";
 
-    // Plugins, overrides plugins' style
-,   "plugins/bootstrap-slider"
-,   "plugins/responsive-tables"
-,   "plugins/easypiecharts"
-,   "plugins/toastr"
-,   "plugins/sparkline"
-,   "plugins/jquery-steps"
-//,   "plugins/angular-ui-tree"
-,   "plugins/morris"
-,   "plugins/jqvmap"
-,   "plugins/ng-tags-input"
+// Variables;
+@import "components/variables";
 
-    // Pages
-,   "global/var-pages"
-,   "pages/dashboard"
-,   "pages/pages"
-,   "pages/err"
-,   "pages/lock-screen"
-//,   "pages/tasks"
-,   "pages/signin-signup"
-,   "pages/profile"
-//,   "pages/ui"
-,   "pages/services"
-,   "pages/contact"
-,   "pages/about"
-,   "pages/invoice"
-,   "pages/demo"
+// Reset
+@import "components/normalize";
 
-    // sections
-,   "sections/shared"
-,   "sections/nav"
-,   "sections/nav-off-canvas"
-,   "sections/nav-min"
-,   "sections/header"
-,   "sections/content"
-,   "sections/form"
-;
+// components
+@import "components/global";
+@import "components/icons-material-design";
+@import "components/grid";
+@import "components/navbar";
+@import "components/roboto";
+@import "components/typography";
+@import "components/cards";
+@import "components/toast";
+@import "components/tabs";
+@import "components/tooltip";
+@import "components/buttons";
+@import "components/dropdown";
+@import "components/waves";
+@import "components/modal";
+@import "components/collapsible";
+@import "components/chips";
+@import "components/materialbox";
+@import "components/form";
+@import "components/table_of_contents";
+@import "components/sideNav";
+@import "components/preloader";
+@import "components/slider";
+@import "components/date_picker/default.scss";
+@import "components/date_picker/default.date.scss";
+@import "components/date_picker/default.time.scss";

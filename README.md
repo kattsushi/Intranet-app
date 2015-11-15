@@ -1,8 +1,8 @@
 Intranet-app Seguros Catatumbo
-Trabajo de Grado para optar por el titulo de Ing. Sistemas 
+Trabajo de Grado para optar por el titulo de Ing. Sistemas
 ============
 
-Aplicacion desarrollada en el Stack de desarrollo de Nodejs + ExpressJs + Handlerbars + Sass + Bower + Gulp + PostgreSql.
+Aplicacion desarrollada en el Stack de desarrollo de Nodejs + ExpressJs + Handlerbars + Sass + Bower + Gulp + MySql.
 
 ## Configuracion del entorno de desarrollo
 #### Requisitos
@@ -44,10 +44,10 @@ Accede al sericio local , entra en tu navegador en el siguiente enlace:
       app/                  --> Archivos Javascript
       assets/               --> Archivos publicos estativos
         css/                --> Archivos Css
-        img/                --> Archivos de imagenes 
+        img/                --> Archivos de imagenes
         font/               --> Archivos de fuentes
-      sass/                 --> Archivos Sass 
-    schema/                 --> Esquemas de db 
+      sass/                 --> Archivos Sass
+    schema/                 --> Esquemas de db
     server/                 --> Todos los archivos del servidor
       config/               --> Archivo de configuracion
       controllers/          --> Controladores
@@ -62,6 +62,5 @@ Accede al sericio local , entra en tu navegador en el siguiente enlace:
     shared/                 --> Archivos de subida
     bower.json              --> Archivo de configuracion de bower
     config.development.js   --> Archivo de configuracion para el desarrollo
-    config.js               --> Archivo de configuracion por defecto. 
-    gulpfile.js             --> Archivo de configuracion de gulp 
-    
+    config.js               --> Archivo de configuracion por defecto.
+    gulpfile.js             --> Archivo de configuracion de gulp

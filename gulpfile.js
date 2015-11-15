@@ -15,37 +15,46 @@ var pkg = require('./package.json'),
 // Definir directorios
 
 // Directorios de librerias js
-var ui = ['bower_components/jquery/dist/jquery.min.js',
-          'bower_components/angular/angular.min.js',
-          'bower_components/angular-route/angular-route.min.js',
-          'bower_components/angular-animate/angular-animate.min.js',
-          'bower_components/underscore/underscore-min.js',
-          'bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js',
-          'bower_components/jquery-spinner/dist/jquery.spinner.min.js',
-          'bower_components/seiyria-bootstrap-slider/dist/bootstrap-slider.min.js',
-          'bower_components/jquery-steps/build/jquery.steps.min.js',
-          'bower_components/toastr/toastr.min.js',
-          'bower_components/bootstrap-file-input/bootstrap.file-input.js',
-          'bower_components/jquery.slimscroll/jquery.slimscroll.min.js',
-          'bower_components/holderjs/holder.js',
-          'bower_components/morris.js/morris.js',
-          'bower_components/flot/jquery.flot.js',
-          'bower_components/flot/jquery.flot.resize.js',
-          'bower_components/flot/jquery.flot.pie.js',
-          'bower_components/flot/jquery.flot.stack.js',
-          'bower_components/flot.tooltip/js/jquery.flot.tooltip.min.js',
-          'bower_components/flot/jquery.flot.time.js',
-          'bower_components/gauge.js/dist/gauge.min.js',
-          'bower_components/jquery.easy-pie-chart/dist/angular.easypiechart.min.js',
-          'bower_components/angular-wizard/dist/angular-wizard.min.js',
-          'bower_components/textAngular/dist/textAngular-rangy.min.js',
-          'bower_components/textAngular/dist/textAngular-sanitize.min.js',
-          'bower_components/textAngular/dist/textAngular.min.js',
-          'bower_components/angular-ui-tree/dist/angular-ui-tree.min.js',
-          'bower_components/ng-tags-input/ng-tags-input.min.js'];
+var Angular = [
+               'bower_components/angular/angular.min.js',
+               'bower_components/angular-route/angular-route.min.js',
+               'bower_components/angular-animate/angular-animate.min.js',
+               'bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js',
+               'bower_components/seiyria-bootstrap-slider/dist/bootstrap-slider.min.js',
+               'bower_components/bootstrap-file-input/bootstrap.file-input.js',
+               'bower_components/angular-wizard/dist/angular-wizard.min.js',
+               'bower_components/textAngular/dist/textAngular-rangy.min.js',
+               'bower_components/textAngular/dist/textAngular-sanitize.min.js',
+               'bower_components/textAngular/dist/textAngular.min.js',
+               'bower_components/angular-ui-tree/dist/angular-ui-tree.min.js'],
 
-// Directorios de librerias vendor.js
+
+JQuery = [
+               'bower_components/jquery/dist/jquery.min.js',
+               'bower_components/jquery-spinner/dist/jquery.spinner.min.js',
+               'bower_components/jquery.slimscroll/jquery.slimscroll.min.js',
+               'bower_components/flot/jquery.flot.js',
+               'bower_components/flot/jquery.flot.resize.js',
+               'bower_components/flot/jquery.flot.pie.js',
+               'bower_components/flot/jquery.flot.stack.js',
+               'bower_components/flot.tooltip/js/jquery.flot.tooltip.min.js',
+               'bower_components/flot/jquery.flot.time.js'] ,
+Plugs =  [
+               'bower_components/gauge.js/dist/gauge.min.js',
+               'bower_components/holderjs/holder.js',
+               'bower_components/morris.js/morris.js',
+               'bower_components/toastr/toastr.min.js',
+               'bower_components/underscore/underscore-min.js',
+               'bower_components/ng-tags-input/ng-tags-input.min.js',
+               'bower_components/jquery.easy-pie-chart/dist/angular.easypiechart.min.js'],
+Material = [
+               'bower_components/Materilize/dist/js/materilize.js'];
+var ui = Angular.concat(JQuery,Plugs,Material);
+
+
+
 var vendor = ['bower_components/jquery/dist/jquery.min.js',
+// Directorios de librerias vendor.js
              'bower_components/angular/angular.min.js',
              'bower_components/angular-route/angular-route.min.js',
              'bower_components/angular-animate/angular-animate.min.js',
