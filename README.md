@@ -15,7 +15,7 @@ Aplicacion desarrollada en el Stack de desarrollo de Nodejs + ExpressJs + Handle
 
 * [Gulp](http://gulpjs.com/) (Automatizador de tareas)
 * [Bower](http://bower.io/) (Administrador de paquetes para el Fron-end)
-* [Less](http://sass-lang.com/) (Preprosesador de Hojas de Estilos)
+* [Sass](http://sass-lang.com/) (Preprosesador de Hojas de Estilos)
 
 #### Instalacion
 Corre estos comandos para la instalacion.
