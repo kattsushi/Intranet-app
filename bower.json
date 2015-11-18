@@ -1,16 +1,16 @@
 {
-  "name": "Intranet",
-  "version": "0.1.0",
+  "name": "Intranet-SegCat",
+  "version": "0.2.0",
   "homepage": "https://github.com/kattsushi/Intranet-app",
   "authors": [
     "Andres Jimenez <andresdavid@outlook.com>"
   ],
-  "description": "Una Aplicacion usando Nodejs + express + handlerbars + sass + bower + gulp + Posgresql. ",
+  "description": "Una Aplicacion usando Node Js + Express Js + Handlerbars + Sass + Bower + Gulp + Mysql. ",
   "keywords": [
     "forum"
   ],
   "license": "MIT",
-  "private": true,
+  "private": false,
   "dependencies": {
     "angular": "1.4.5",
     "jquery": "latest",

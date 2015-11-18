@@ -49,6 +49,7 @@
     "passport": "^0.3.0",
     "passport-local": "^1.0.0",
     "semver": "^5.0.1",
+    "sequelize": "^3.13.0",
     "string": "^3.3.1",
     "validator": "^4.0.5",
     "winston": "^1.0.1"
@@ -60,33 +61,33 @@
     "gulp-live-server": "0.0.25",
     "gulp-livereload": "^3.8.0",
     "gulp-sass": "^2.0.4",
-    "gulp-coffee":"latest",
-    "gulp-concat":"latest",
+    "gulp-coffee": "latest",
+    "gulp-concat": "latest",
     "gulp-sourcemaps": "^1.5.2",
-    "gulp-notify":"latest",
+    "gulp-notify": "latest",
     "gulp-util": "^3.0.6",
     "lodash.assign": "^3.2.0",
     "mocha": "~1.17.1",
     "should": "^7.0.4",
     "watchify": "^3.3.1"
   },
-  "paths":{
-    "sass":"client/sass/main.scss",
-    "coffee":"client/coffee/**/*.coffee",
-    "JsCon":"client/assets/js/app/**/*.js",
-    "app":"main.js",
-    "ui":"ui.js",
-    "vendors":"vendor.js",
-    "Watch":{
-            "sass":"client/sass/**/*.scss",
-            "js":"client/assets/**/*.js",
-            "css":"client/assets/**/*.css",
-            "hbs":"server/views/**/*.hbs"
-            }
-          },
+  "paths": {
+    "sass": "client/sass/main.scss",
+    "coffee": "client/coffee/**/*.coffee",
+    "JsCon": "client/assets/js/app/**/*.js",
+    "app": "main.js",
+    "ui": "ui.js",
+    "vendors": "vendor.js",
+    "Watch": {
+      "sass": "client/sass/**/*.scss",
+      "js": "client/assets/**/*.js",
+      "css": "client/assets/**/*.css",
+      "hbs": "server/views/**/*.hbs"
+    }
+  },
   "dest": {
-    "Js":"client/assets/js/",
-    "css":"client/assets/css",
-    "JsDev":"client/assets/js/app"
+    "Js": "client/assets/js/",
+    "css": "client/assets/css",
+    "JsDev": "client/assets/js/app"
   }
 }

@@ -3,8 +3,10 @@ angular
   .module('myApp',['ngRoute'])
   .config(appConfig)
   .service('MyService', MyService)
+  .service('menuService', menuService)
   .directive('miItem', miItem)
-  .directive('miDirectiva', miDirectiva);
+  .directive('miDirectiva', miDirectiva)
+  .controller('menuCtrl', menuCtrl);
 
 function appConfig ($routeProvider , $interpolateProvider) {
   $routeProvider
@@ -54,11 +56,34 @@ function MyService () {
 
   function getData () {
       var datos = [
-        { titulo: "Producto 1", precio: 2 },
-        { titulo: "Producto 2", precio: 1.5 },
-        { titulo: "Producto 3", precio: 4.2 },
-        { titulo: "Producto 4", precio: 3 },
-        { titulo: "Producto 5", precio: 2.5 }
+        { titulo: "Inicio", ruta: "Inicio"},
+        { titulo: "Quienes Somos", ruta: "compañia" },
+        { titulo: "Informacion General", ruta: "info" },
+        { titulo: "Productos", ruta: "productos"},
+        { titulo: "Area Administrativa", ruta: "administracion",
+          titulo: "Configuracion" , ruta : "Config"}
+      ];
+      return datos;
+  }
+}
+
+function menuCtrl(menuService) {
+  this.titulos = menuService.getData();
+}
+
+function menuService () {
+  return {
+    getData: getData
+  }
+
+  function getData () {
+      var datos = [
+        { titulo: "Inicio", ruta: "Inicio"},
+        { titulo: "Quienes Somos", ruta: "compañia" },
+        { titulo: "Informacion General", ruta: "info" },
+        { titulo: "Productos", ruta: "productos"},
+        { titulo: "Area Administrativa", ruta: "administracion",
+          titulo: "Configuracion" , ruta : "Config"}
       ];
       return datos;
   }

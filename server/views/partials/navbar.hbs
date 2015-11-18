@@ -1,10 +1,10 @@
 <nav>
-  <div class="nav-wrapper">
+  <div class="nav-wrapper" ng-controller="menuCtrl as vm">
     <a href="#" class="brand-logo">{{title}}</a>
     <ul id="nav-mobile" class="right hide-on-med-and-down">
-      <li><a href="sass.html">RRHH</a></li>
-      <li><a href="badges.html">Automovil</a></li>
-      <li><a href="collapsible.html">Agenda</a></li>
+      <li ng-repeat="menu in vm.titulos">
+        <a href="{[{ menu.ruta }]}"> {[{ menu.titulo }]}</a>
+      </li>
     </ul>
   </div>
 </nav>
