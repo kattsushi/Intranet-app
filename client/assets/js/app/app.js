@@ -1,21 +1,62 @@
 'use strict';
-angular.module('app', ['ngRoute', 'ngAnimate', 'ui.bootstrap', 'textAngular', 'app.ui.ctrls', 'app.ui.directives', 'app.ui.services', 'app.controllers', 'app.page.ctrls']).config([
-  '$routeProvider', function($routeProvider) {
-    return $routeProvider.when('/', {
-      redirectTo: '/inicio'
-    }).when('/inicio', {
-      templateUrl: 'views/inicio.html'
-    }).when('/dashboard1', {
-      templateUrl: 'views/dashboard1.html'
-    }).when('/404', {
-      templateUrl: 'views/pages/404.html'
-    }).when('/pages/500', {
-      templateUrl: 'views/pages/500.html'
-    }).otherwise({
-      redirectTo: '/404'
+angular
+  .module('myApp',['ngRoute'])
+  .config(appConfig)
+  .service('MyService', MyService)
+  .directive('miItem', miItem)
+  .directive('miDirectiva', miDirectiva);
+
+function appConfig ($routeProvider) {
+  $routeProvider
+    .when('/', {
+      template: '<mi-directiva></mi-directiva>'
     });
-  }, function($interpolateProvider) {
-    $interpolateProvider.startSymbol("{[{");
-    return $interpolateProvider.endSymbol("}]}");
+}
+
+function miDirectiva () {
+  return {
+    scope: {},
+    controller: function(MyService) {
+      this.productos = MyService.getData();
+    },
+    controllerAs: 'vm',
+    template: [
+      '<h1>Listado de Productos</h1>',
+      '<ul>',
+        '<mi-item ng-repeat="producto in vm.productos" data="producto">',
+        '</mi-item>',
+      '</ul>'
+    ].join('')
   }
-]);
+}
+
+function miItem () {
+  return {
+    scope: {
+      data: '='
+    },
+    template: [
+      '<li>',
+        '<strong>{{ data.titulo }}</strong>: ',
+        '{{ data.precio | currency }}',
+      '</li>'
+    ].join('')
+  }
+}
+
+function MyService () {
+  return {
+    getData: getData
+  }
+
+  function getData () {
+      var datos = [
+        { titulo: "Producto 1", precio: 2 },
+        { titulo: "Producto 2", precio: 1.5 },
+        { titulo: "Producto 3", precio: 4.2 },
+        { titulo: "Producto 4", precio: 3 },
+        { titulo: "Producto 5", precio: 2.5 }
+      ];
+      return datos;
+  }
+}
