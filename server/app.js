@@ -8,6 +8,7 @@ var logger = require('./logger');
 var routes = require('./routes');
 var pkg = require('../package.json');
 var multer = require('multer');
+var modelos = require('./models/db.js');
 
 //Inicializando Express JS
   var app = express();

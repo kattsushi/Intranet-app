@@ -4,10 +4,20 @@ var _ = require('lodash'),
     router = express.Router(),
     uuid = require('node-uuid'),
     moment = require('moment'),
-
     logger = require('../logger'),
     base = require('./base'),
-    controllers = require('../controllers');
+    controllers = require('../controllers'),
+    modelos = require('../models/db.js');
+
+
+
+/*
+router.get('/paginas', function (req, res, next){
+  modelos.Paginas.findOne().then(function(pagina){
+    console.log(pagina.titulo);
+  });
+});*/
+
 
 router.get('/error/500', function(req, res, next) {
     res.render('error', {

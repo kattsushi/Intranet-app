@@ -19,8 +19,33 @@
   },
   "bugs": "https://github.com/kattsushi/Intranet-app/issues",
   "config": {
-    "blanket": {
-      "pattern": "server"
+    "url": "http://localhost:3000",
+    "mysql": {
+      "host": "localhost",
+      "port": "3306",
+      "user": "root",
+      "password": "",
+      "database": "express-seed",
+      "multipleStatements": "true"
+    },
+    "sqlite": {
+      "storage": "/../../schema/database.db"
+    },
+    "cookie": {
+      "secret": "3095cd1975c64b9f8ee24b5346a4e593"
+    },
+    "session": {
+      "secret": "1234567890QWERTY"
+    },
+    "mail": {
+      "transport": "SMTP",
+      "options": {
+        "service": "Mailgun",
+        "auth": {
+          "user": "",
+          "pass": ""
+        }
+      }
     }
   },
   "dependencies": {
@@ -50,6 +75,7 @@
     "passport-local": "^1.0.0",
     "semver": "^5.0.1",
     "sequelize": "^3.13.0",
+    "sqlite3": "^3.1.1",
     "string": "^3.3.1",
     "validator": "^4.0.5",
     "winston": "^1.0.1"

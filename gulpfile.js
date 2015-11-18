@@ -92,6 +92,7 @@ gulp.task('styles', function() {
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(pkg.dest.css))
     .pipe(cssmin());
+
 });
 
 //Preprocesar archivos coffeescript bLoqueado.
