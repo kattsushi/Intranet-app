@@ -32,14 +32,12 @@ var vendor = [
               'bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js',
               'bower_components/textAngular/dist/textAngular-rangy.min.js',
               'bower_components/textAngular/dist/textAngular-sanitize.min.js',
-              'bower_components/textAngular/dist/textAngular.min.js',
-              'bower_components/underscore/underscore-min.js'
+              'bower_components/textAngular/dist/textAngular.min.js'
                 ];
 
 //Directorios de librerias css
 var LibCss =  [
                'bower_components/font-awesome/css/font-awesome.min.css',
-               'bower_components/weather-icons/css/weather-icons.min.css'
                 ];
 
 // Inicializador del Servidor
