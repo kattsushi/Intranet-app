@@ -1,26 +1,4 @@
 {{!< layout}}
-<div ng-app="App">
-<div class="row" ng-controller="PaginaCrtl">
-
-      <div class="col s3" >
-        <!-- Grey navigation panel -->
-        <ul>
-          <li ng-repeat= "menu in menus">
-              <div class="link">
-                {[{ menu.name | uppercase }]}</i>
-              </div>
-    					<ul class="submenu" data-ng-show="menu.submenu">
-    						<li ng-repeat="submenu in menu.submenu">
-                  <a href="#/{[{submenu.ruta}]}">{[{submenu.name}]}</a></li>
-    					</ul>
-          </li>
-        </ul>
-      </div>
-      <div class="col s9">
-        <!-- Teal page content  -->
-        <div class="container" >
-          <div ng-view ></div>
-        </div>
-      </div>
-    </div>
-</div>
+<div ng-app="myApp">
+  <div ng-view></div>
+</div>  

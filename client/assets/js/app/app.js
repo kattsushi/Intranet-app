@@ -6,11 +6,14 @@ angular
   .directive('miItem', miItem)
   .directive('miDirectiva', miDirectiva);
 
-function appConfig ($routeProvider) {
+function appConfig ($routeProvider , $interpolateProvider) {
   $routeProvider
     .when('/', {
       template: '<mi-directiva></mi-directiva>'
     });
+  $interpolateProvider
+    .startSymbol('{[{')
+    .endSymbol('}]}');
 }
 
 function miDirectiva () {
@@ -37,8 +40,8 @@ function miItem () {
     },
     template: [
       '<li>',
-        '<strong>{{ data.titulo }}</strong>: ',
-        '{{ data.precio | currency }}',
+        '<strong>{[{ data.titulo }]}</strong>: ',
+        '{[{ data.precio | currency }]}',
       '</li>'
     ].join('')
   }

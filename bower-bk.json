@@ -5,7 +5,7 @@
   "authors": [
     "Andres Jimenez <andresdavid@outlook.com>"
   ],
-  "description": "Una Aplicacion usando Nodejs + express + handlerbars + sass + bower + gulp + Posgresql. ",
+  "description": "Una Aplicacion usando Nodejs + Express + Handlerbars + Sass + Bower + Gulp + Mysql. ",
   "keywords": [
     "forum"
   ],
@@ -20,30 +20,22 @@
     "bootstrap": "latest",
     "angular-cookies": "latest",
     "angular-sanitize": "latest",
-    "angular-route": "latest",
     "angular-animate": "latest",
     "font-awesome": "latest",
-    "toastr": "latest",
-    "underscore": "latest",
     "seiyria-bootstrap-slider": "latest",
-    "bootstrap": "latest",
     "angular-bootstrap": "latest",
     "bootstrap-file-input": "latest",
     "jquery.easy-pie-chart": "latest",
-    "morris.js": "latest",
     "jquery.slimscroll": "latest",
     "jquery.easing": "latest",
-    "gauge.js": "latest",
-    "flot": "latest",
     "jquery-spinner": "latest",
     "jquery-steps": "latest",
     "angular-wizard": "latest",
     "weather-icons": "latest",
     "textAngular": "latest",
-    "flot.tooltip": "latest",
     "angular-ui-tree": "latest",
     "ng-tags-input": "~2.1.1",
-    "holderjs":"latest"
+    "Materialize": "materialize#~0.97.2"
   },
   "ignore": [
     "**/.*",
