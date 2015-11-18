@@ -10,9 +10,13 @@ angular
 
 function appConfig ($routeProvider , $interpolateProvider) {
   $routeProvider
-    .when('/', {
+    .when('/inicio', {
       template: '<mi-directiva></mi-directiva>'
+    })
+    .otherwise({
+      redirectTo: '/'
     });
+
   $interpolateProvider
     .startSymbol('{[{')
     .endSymbol('}]}');
