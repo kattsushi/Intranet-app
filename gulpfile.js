@@ -15,9 +15,9 @@ var pkg = require('./package.json'),
 // Definir directorios
 
 // Directorios de librerias js
-var ui = [ 'bower_components/Materilize/dist/js/materilize.js'
+/*var ui = [ 'bower_components/Materilize/dist/js/materilize.js'
                ];
-
+*/
 
 
 
@@ -136,8 +136,16 @@ gulp.task('copiar-css', function() {
     .pipe(gulp.dest(pkg.dest.css));
 });
 
+gulp.task('copiar-Mcss', function() {
+  gulp.src('bower_components/Materilize/dist/js/materilize.js')
+    .pipe(gulp.dest(pkg.dest.Js));
+});
+
+
+
+
 //Gestor de tareas de Gulp.
-gulp.task('dev', ['styles','concat-main','concat-ui','concat-vendor', 'server'], function() {
+gulp.task('dev', ['copiar-Mcss','styles','concat-main','concat-vendor', 'server'], function() {
     gulp.watch(pkg.paths.WatchSass, ['styles']);
 });
 

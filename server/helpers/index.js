@@ -21,7 +21,8 @@ var string    = require('string'),
     ],
     development: [
       '/js/vendor.js',
-      '/js/main.js'
+      '/js/main.js',
+      '/js/materialize.js'
     ]
   };
 

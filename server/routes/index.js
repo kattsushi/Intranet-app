@@ -32,7 +32,7 @@ router.get('/error/500', function(req, res, next) {
 
 router.get('/', function(req, res, next) {
     res.render('index', {
-        title: "Intranet Seguros Catatumbo C.A."
+        title: "Intranet"
     });
 });
 
