@@ -11,7 +11,7 @@ angular
 function appConfig ($routeProvider , $interpolateProvider) {
   $routeProvider
     .when('/inicio', {
-      template: '<mi-directiva></mi-directiva>'
+      template: '<mi-directiva> hola mundo </mi-directiva>'
     })
     .otherwise({
       redirectTo: '/'
@@ -62,10 +62,7 @@ function MyService () {
       var datos = [
         { titulo: "Inicio", ruta: "Inicio"},
         { titulo: "Quienes Somos", ruta: "compañia" },
-        { titulo: "Informacion General", ruta: "info" },
-        { titulo: "Productos", ruta: "productos"},
-        { titulo: "Area Administrativa", ruta: "administracion",
-          titulo: "Configuracion" , ruta : "Config"}
+        { titulo: "Configuracion" , ruta : "Config"}
       ];
       return datos;
   }
@@ -82,12 +79,9 @@ function menuService () {
 
   function getData () {
       var datos = [
-        { titulo: "Inicio", ruta: "Inicio"},
+        { titulo: "Inicio", ruta: "inicio"},
         { titulo: "Quienes Somos", ruta: "compañia" },
-        { titulo: "Informacion General", ruta: "info" },
-        { titulo: "Productos", ruta: "productos"},
-        { titulo: "Area Administrativa", ruta: "administracion",
-          titulo: "Configuracion" , ruta : "Config"}
+        { titulo: "Configuracion" , ruta : "Config"}
       ];
       return datos;
   }
