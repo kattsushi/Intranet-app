@@ -1,44 +1,45 @@
-var string    = require('string'),
-  hbs         = require('express-hbs'),
-  moment      = require('moment'),
-  path        = require('path'),
-  polyglot    = require('node-polyglot').instance,
-  _           = require('lodash'),
+var  string    = require('string');
+var  hbs       = require('express-hbs');
+var  moment    = require('moment');
+var  path      = require('path');
+var  polyglot  = require('node-polyglot').instance;
+var  _         = require('lodash');
+var  config    = require('../config');
 
-  config = require('../config'),
+  //definir los templates para los scripts y assets
+var  assetTemplate = _.template('<%= source %>?v=<%= version %>');
+var  scriptTemplate = _.template('<script type="text/javascript" src="<%= source %>?v=<%= version %>"></script>');
+var  isProduction = process.env.NODE_ENV === 'production';
+// definir rutas de los archivos
+var   coreHelpers = {},
+      registerHelpers,
+      scriptFiles = {
+        production: [
+          '/js/vendor.min.js',
+          '/js/app.min.js'
+        ],
+        development: [
+          '/js/vendor.js',
+          '/js/materialize.js',
+          '/js/app/app.js',
+          '/js/app/ui.js'
+        ]
+      };
 
-  assetTemplate = _.template('<%= source %>?v=<%= version %>'),
-  scriptTemplate = _.template('<script type="text/javascript" src="<%= source %>?v=<%= version %>"></script>'),
-  isProduction = process.env.NODE_ENV === 'production',
-
-  coreHelpers = {},
-  registerHelpers,
-
-  scriptFiles = {
-    production: [
-      '/js/vendor.min.js',
-      '/js/app.min.js'
-    ],
-    development: [
-      '/js/vendor.js',
-      '/js/main.js',
-      '/js/materialize.js'
-    ]
-  };
-
+  // definir fechas
 coreHelpers.date = function(context, options) {
   if (!options && context.hasOwnProperty('hash')) {
     options = context;
     context = undefined;
 
-    // set to published_at by default, if it's available
-    // otherwise, this will print the current date
+    //
+    //
     if (this.published_at) {
       context = this.published_at;
     }
   }
 
-  // ensure that context is undefined, not null, as that can cause errors
+  // asegurarse que context es indefinido, no es null, por causa del algun error
   context = context === null ? undefined : context;
 
   var f = options.hash.format || 'MMM Do, YYYY',
@@ -55,12 +56,12 @@ coreHelpers.date = function(context, options) {
 };
 
 //
-// ### URI Encoding helper
+// ### URI Modificando un helper
 //
-// *Usage example:*
+// *Ejemplo*
 // `{{encode uri}}`
 //
-// Returns URI encoded string
+// Retorna URI en un string
 //
 coreHelpers.encode = function(context, str) {
   var uri = context || str;
@@ -71,15 +72,15 @@ coreHelpers.encode = function(context, str) {
 
 // ### Asset helper
 //
-// *Usage example:*
+// *Ejemplo:*
 // `{{asset "css/screen.css"}}`
 // `{{asset "css/screen.css" ghost="true"}}`
-// Returns the path to the specified asset. The ghost
-// flag outputs the asset path for the Ghost admin
+// retorna la ruta especifica del asset. The ghost
+//
 coreHelpers.asset = function(context, options) {
   var output = '/';
 
-  // Get rid of any leading slash on the context
+  // Deshacerte de cualquier slash que est en fuera de contexto
   context = context.replace(/^\//, '');
   output += context;
 
@@ -107,12 +108,12 @@ coreHelpers.forumScriptTags = function() {
 
 
 registerHelpers = function(assetHash) {
-  // Store hash for assets
+  // assets
   coreHelpers.assetHash = assetHash;
 };
 
 var registerSiteHelpers = function(sitehbs) {
-  // Register helpers
+  // Registrar helpers
   sitehbs.registerHelper('asset', coreHelpers.asset);
 
   sitehbs.registerHelper('date', coreHelpers.date);
