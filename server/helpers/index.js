@@ -60,7 +60,17 @@ coreHelpers.date = function(context, options) {
 //
 // *Ejemplo*
 // `{{encode uri}}`
-//
+/*    production: [
+          '/js/vendor.min.js',
+          '/js/app.min.js'
+        ],
+        development: [
+          '/js/vendor.js',
+          '/js/materialize.js',
+          '/js/app/app.js',
+          '/js/app/ui.js'
+        ]
+      };*/
 // Retorna URI en un string
 //
 coreHelpers.encode = function(context, str) {
