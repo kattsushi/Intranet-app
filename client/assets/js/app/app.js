@@ -10,8 +10,13 @@ angular
 
 function appConfig ($routeProvider , $interpolateProvider) {
   $routeProvider
+
+    .when('/', {
+      controller : menuCtrl ,
+      controllerAs : 'vm',
+      template: '<p> pagina </p>'
+    })
     .when('/inicio', {
-      template: '<mi-directiva> hola mundo </mi-directiva>'
     })
     .otherwise({
       redirectTo: '/'

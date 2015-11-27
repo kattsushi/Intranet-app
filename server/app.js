@@ -2,7 +2,7 @@
 //Cargando Dependencias
 var express = require('express');
 var path = require('path');
-var middleware = require('./middleware');
+//var middleware = require('./middleware');
 var config = require('./config');
 var logger = require('./logger');
 var routes = require('./routes');
@@ -11,19 +11,16 @@ var multer = require('multer');
 var modelos = require('./models/db.js');
 
 //Inicializando Express JS
-  var app = express();
+var app = express();
 
 // Configuracion de Sesiones de usuario
-  var secret = config.session && config.session.secret ? config.session.secret : "1234567890QWERTY";
+var secret = config.session && config.session.secret ? config.session.secret : "1234567890QWERTY";
   app.set('session.secret', secret);
 
-//Configuracion passport
-//  middleware.passport(passport);
-
 // Configuracion de motor de Vistas HandleBars
-  var hbs = require('express-hbs');
-  var helpers = require('./helpers');
-  app.engine('hbs', hbs.express3({
+var hbs = require('express-hbs');
+var helpers = require('./helpers');
+app.engine('hbs', hbs.express3({
       partialsDir: path.join(__dirname, 'views/partials')
   }));
   app.set('view engine', 'hbs');
@@ -31,36 +28,36 @@ var modelos = require('./models/db.js');
   helpers.registerSiteHelpers(hbs);
 
 //Configuracion de morgan
-  var morgan = require('morgan');
-  app.use(morgan('dev'));
+var morgan = require('morgan');
+app.use(morgan('dev'));
 
 //Configuracion del bodyParser
-  var bodyParser = require('body-parser');
-  var cookieParser = require('cookie-parser');
-  app.use(bodyParser.urlencoded({
+var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
+app.use(bodyParser.urlencoded({
     extended: true
   }));
-  app.use(bodyParser.json());
-  app.use(cookieParser(config.cookie.secret));
+app.use(bodyParser.json());
+app.use(cookieParser(config.cookie.secret));
 
 // Inicializador del Validador de Codigo
-  var validator = require('express-validator');
-  app.use(validator());
+var validator = require('express-validator');
+app.use(validator());
 
 // Inicializador de Sesiones
-  var session = require('express-session');
-  app.use(session({
+var session = require('express-session');
+app.use(session({
       secret: secret,
       key: 'app.sid',
       resave: false,
       saveUninitialized: false
-  }));
+}));
 
 //Configuracion e Inicializador de Passport
-  var passport = require('passport');
-  app.use(passport.initialize());
-  app.use(passport.session());
-  app.use(routes.autoLogin); // auto login from token
+var passport = require('passport');
+app.use(passport.initialize());
+app.use(passport.session());
+//app.use(routes.autoLogin); // auto login from token
 
 //Enviar informacion al front.
 app.use(function(req, res, next) {
@@ -74,7 +71,7 @@ app.use(function(req, res, next) {
 
 
 app.use(express.static(path.join(__dirname, '../client/assets')));
-// Static assets
+//  Assets estaticos
 app.use('/shared', express.static(path.join(__dirname, '../shared')));
 app.use('/vendors', express.static(path.join(__dirname, '../bower_components')));
 app.use('/js', express.static(path.join(__dirname, '/../built/scripts')));
@@ -82,17 +79,15 @@ app.use('/css', express.static(path.join(__dirname, '/../built/css')));
 
 app.use('/', routes);
 
-/// catch 404 and forward to error handler
+/*/// manejar errores 404
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
     next(err);
 });
 
-/// error handlers
 
-// development error handler
-// will print stacktrace
+// manejador de error en entorno de desarrolllo
 if (app.get('env') === 'development') {
     app.use(function(err, req, res, next) {
         if (err.status != 404) {
@@ -106,8 +101,8 @@ if (app.get('env') === 'development') {
     });
 }
 
-// production error handler
-// no stacktraces leaked to user
+// manejador de errores en entorno de produccion
+
 app.use(function(err, req, res, next) {
     console.log('request error dev', err ? err.message : err, err ? err.stack : '');
     res.status(err.status || 500);
@@ -116,5 +111,5 @@ app.use(function(err, req, res, next) {
         error: {}
     });
 });
-
+*/
 module.exports = app;

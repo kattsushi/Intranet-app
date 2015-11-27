@@ -1,22 +1,30 @@
-var _ = require('lodash'),
-    express = require('express'),
-    passport = require('passport'),
-    router = express.Router(),
-    uuid = require('node-uuid'),
-    moment = require('moment'),
-    logger = require('../logger'),
-    base = require('./base'),
-    controllers = require('../controllers'),
-    modelos = require('../models/db.js');
+var _ = require('lodash');
+var    express = require('express');
+var    router = express.Router();
+var    uuid = require('node-uuid');
+var    moment = require('moment');
+var    logger = require('../logger');
+// var    controllers = require('../controllers');
+var    modelos = require('../models');
+var    sequelize = require('sequelize');
 
+router.get('/', function(req, res, next) {
+    res.render('index', {
+        title: "Intranet"
+    });
+});
 
+router.get('/inicio', function(req, res, next) {
+    modelos.Pagina.findOne().then(function(pagina){
 
-/*
-router.get('/paginas', function (req, res, next){
-  modelos.Paginas.findOne().then(function(pagina){
-    console.log(pagina.titulo);
-  });
-});*/
+    res.render('inicio', {
+        titles: "inicio",
+        data : pagina
+       })
+    });
+
+});
+
 
 
 router.get('/error/500', function(req, res, next) {
@@ -29,54 +37,5 @@ router.get('/error/500', function(req, res, next) {
         }
     });
 });
-
-router.get('/', function(req, res, next) {
-    res.render('index', {
-        title: "Intranet"
-    });
-});
-
-router.get('/signout', controllers.auth.signout);
-
-router.get('/signin', controllers.auth.signin);
-
-
-router.post('/signin', controllers.auth.doSignin);
-
-router.get('/signup', controllers.auth.signup);
-
-router.post('/signup', controllers.auth.doSignup);
-
-
-router.autoLogin = function(req, res, next) {
-    if (!req.isAuthenticated || !req.isAuthenticated()) {
-        // check if the user is presenting a remember me cookie
-        var token = req.signedCookies.token;
-        if (token) {
-            models.user.findByToken(token, function(err, user) {
-                if (err) {
-                    // no token matched, woops! clear all tokens
-                    res.clearCookie('token', {});
-                    return next();
-                }
-                if (user) {
-                    // TODO: Generate a new sequence token
-                    req.login(user, next);
-                } else {
-                    // no user matched, woops! clear all tokens
-                    res.clearCookie('token', {});
-                    return next();
-                }
-            });
-
-        } else {
-            // leave unlogged in, do nothing
-            next();
-        }
-    } else {
-        next();
-    }
-};
-
 
 module.exports = router;
