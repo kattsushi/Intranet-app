@@ -1,5 +1,5 @@
 <div class="navbar-fixed">
-    <nav class="indigo darken-4">
+    <nav class="rigth indigo darken-4">
         <div class="nav-wrapper container">
           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
             <ul id="nav-mobile" class="rigth hide-on-med-and-down">
@@ -7,8 +7,6 @@
               <li ng-repeat="menu in vm.titulos">
                 <a href="{[{ menu.ruta }]}"> {[{ menu.titulo }]}</a>
               </li>
-              <li><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
               <li><a href="#">Link</a></li>
             </ul>
             <ul class="rigth hide-on-med-and-down">
@@ -22,58 +20,18 @@
                         <input id="search" type="search" placeholder="search">
                     </a>
                 </li>
-                <li><a href="#">Link</a></li>
-                <li><a href="#">Link</a></li>
-                <li><a href="#">Link</a></li>
-                <li><a href="#">Link</a></li>
             </ul>
         </div>
     </nav>
 </div>
-<nav class="indigo darken-1 flat hide-on-med-and-down">
+<nav class="indigo darken-1 right flat hide-on-med-and-down">
     <div class="nav-wrapper container">
         <form>
             <div class="input-field">
-                <input id="search" type="search" required="">
+                <input id="search" type="search" required="" class="search2">
                 <label for="search"><i class="mdi-action-search"></i></label>
                 <i class="mdi-navigation-close"></i>
             </div>
         </form>
     </div>
 </nav>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--    <div class="blog-masthead">
-      <div class="container">
-        <nav class="blog-nav pull-left">
-          <a class="blog-nav-item active" href="/">Home</a>
-          <a class="blog-nav-item" href="#">New features</a>
-          <a class="blog-nav-item" href="#">Press</a>
-          <a class="blog-nav-item" href="#">New hires</a>
-          <a class="blog-nav-item" href="#">About</a>
-        </nav>
-        {{#if session.user}}
-        <nav class="blog-nav pull-right">
-          <a href="#" class="blog-nav-item">{{session.user.screen_name}}({{session.user.email}})</a>
-          <a href="/signout" class="blog-nav-item">Sign Out</a>
-        </nav>
-        {{else}}
-        <nav class="blog-nav pull-right">
-          <a href="/signin" class="blog-nav-item">Sign In</a>
-          <a href="/signup" class="blog-nav-item">Sign Up</a>
-        </nav>
-        {{/if}}
-      </div>
-    </div> -->

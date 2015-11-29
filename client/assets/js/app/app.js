@@ -4,59 +4,31 @@ angular
   .config(appConfig)
   .service('MyService', MyService)
   .service('menuService', menuService)
-  .directive('miItem', miItem)
-  .directive('miDirectiva', miDirectiva)
   .controller('menuCtrl', menuCtrl);
 
-function appConfig ($routeProvider , $interpolateProvider) {
+function appConfig ($routeProvider, $locationProvider, $interpolateProvider) {
+  // configurar rutas
   $routeProvider
-
     .when('/', {
       controller : menuCtrl ,
       controllerAs : 'vm',
       template: '<p> pagina </p>'
     })
     .when('/inicio', {
+      template: '<p> pagina 2 </p>'
     })
     .otherwise({
       redirectTo: '/'
     });
-
+  // Configuracion de rutas del navegador
+  $locationProvider.hashPrefix('!');
+  // confifurar sintaxis de instancia
   $interpolateProvider
     .startSymbol('{[{')
     .endSymbol('}]}');
+
 }
 
-function miDirectiva () {
-  return {
-    scope: {},
-    controller: function(MyService) {
-      this.productos = MyService.getData();
-    },
-    controllerAs: 'vm',
-    template: [
-      '<h1>Listado de Productos</h1>',
-      '<ul>',
-        '<mi-item ng-repeat="producto in vm.productos" data="producto">',
-        '</mi-item>',
-      '</ul>'
-    ].join('')
-  }
-}
-
-function miItem () {
-  return {
-    scope: {
-      data: '='
-    },
-    template: [
-      '<li>',
-        '<strong>{[{ data.titulo }]}</strong>: ',
-        '{[{ data.precio | currency }]}',
-      '</li>'
-    ].join('')
-  }
-}
 
 function MyService () {
   return {

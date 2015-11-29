@@ -19,8 +19,14 @@ var   coreHelpers = {},
           '/js/app.min.js'
         ],
         development: [
-          '/js/vendor.js',
+          '/js/angular.min.js',
+          '/js/angular-route.min.js',
+          '/js/angular-animate.min.js',
+          '/js/jquery.min.js',
           '/js/materialize.js',
+          '/js/bootstrap.js',
+          '/js/ui-bootstrap-tpls.min.js',
+          '/js/moment.min.js',
           '/js/app/app.js',
           '/js/app/ui.js'
         ]

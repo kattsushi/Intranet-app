@@ -52,6 +52,15 @@ var vendor = [
               'bower_components/angular-wizard/dist/angular-wizard.min.js',
               'bower_components/angular-ui-tree/dist/angular-ui-tree.min.js',
               'bower_components/ng-tags-input/ng-tags-input.min.js'];
+  var vendor2 = [
+                'bower_components/angular/angular.min.js',
+                'bower_components/angular-route/angular-route.min.js',
+                'bower_components/angular-animate/angular-animate.min.js',
+                'bower_components/Materilize/dist/js/materilize.js',
+                'bower_components/bootstrap/dist/js/bootstrap.js',
+                'bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js',
+                'bower_components/jquery/dist/jquery.min.js',
+                'bower_components/moment/min/moment.min.js'];
 
 //Directorios de librerias css
 var LibCss =  [
@@ -72,7 +81,8 @@ gulp.task('server', function() {
     gulp.watch([
             'config*.js',
             'server/bin/*',
-            'server/**/*.js*'
+            'server/**/*.js*',
+            'client/sass/**/*.scss'
         ], function () {
         server.start();
     });
@@ -137,7 +147,7 @@ gulp.task('copiar-css', function() {
 });
 
 gulp.task('copiar-Mcss', function() {
-  gulp.src('bower_components/Materilize/dist/js/materilize.js')
+  gulp.src(vendor2)
     .pipe(gulp.dest(pkg.dest.Js));
 });
 

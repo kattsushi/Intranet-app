@@ -7,94 +7,57 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="shortcut icon" href="{{asset "favicon.ico"}}">
-
     <title>{{title}} - Intranet App</title>
-
     <!-- Custom styles for this template -->
     <link rel="stylesheet" href="{{asset "css/main.css"}}">
-
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-
   <body ng-app="myApp" ng-controller="menuCtrl as vm">
-    {{> navbar}}
-
-    <div class="container">
-      {{{body}}}
-    </div><!-- /.container -->
-
-
+    <div class="row">
+      {{> navbar}}
+      <div class="container">
+        {{{body}}}
+      </div>
+    </div>
+    <!-- /.container -->
     <!--login modal-->
     <div id="modalLogin" class="modal">
         <div class="modal-content">
-            <h2 class="center-align">Login</h2>
+            <h2 class="center-align">Iniciar Sesion</h2>
             <div class="center-align">
                 <div class="divider"></div>
                 <form class="col s12">
                     <div class="row center-align">
-                        <div class="input-field col m10 offset-m1 blue-text">
+                        <div class="input-field col m10 offset-m1 indigo-text">
                             <i class="mdi-action-account-circle prefix"></i>
                             <input id="icon_prefix" type="text" class="validate">
-                            <label for="icon_prefix">Username</label>
+                            <label for="icon_prefix">Nombre de Usuario</label>
                         </div>
-                        <div class="input-field col m10 offset-m1 blue-text ">
+                        <div class="input-field col m10 offset-m1 indigo-text ">
                             <i class="mdi-action-lock-open prefix"></i>
                             <input id="icon_password" type="password" class="validate">
-                            <label for="icon_password">Password</label>
+                            <label for="icon_password">Contraseña</label>
                         </div>
                         <div class="input-field col m10 offset-m1 blue-text">
                             <input type="checkbox" class="blue-text" id="filled-in-box" checked="checked">
-                            <label for="filled-in-box">Remember me next time</label>
+                            <label for="filled-in-box">Recuerdame la proxima vez</label>
                         </div>
                     </div>
                 </form>
                 <div class="divider"></div>
                 <p>
-                    <a href="#" class="btn btn-flat white modal-close">Cancel</a> &nbsp;
-                    <a href="#" class="waves-effect waves-blue blue btn btn-flat modal-action modal-close">Login</a>
+                    <a href="#" class="waves-effect waves-white indigo darken-4 btn btn-flat white modal-close white-text">Cancelar</a> &nbsp;
+                    <a href="#" class="waves-effect waves-white indigo darken-3 btn btn-flat modal-action modal-close white-text">Entrar</a>
                 </p>
             </div>
         </div>
     </div>
-
-
-
-
-
-    <footer class="page-footer">
-              <div class="container">
-                <div class="row">
-                  <div class="col l6 s12">
-                    <h5 class="white-text">Footer Content</h5>
-                    <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
-                  </div>
-                  <div class="col l4 offset-l2 s12">
-                    <h5 class="white-text">Links</h5>
-                    <ul>
-                      <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                      <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-                      <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-                      <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div class="footer-copyright">
-                <div class="container">
-                © 2015 Copyright Text
-                <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
-                </div>
-              </div>
-    </footer>
-
-
-
+    
     {{{forumScriptTags}}}
-
     {{{block "bodyScripts"}}}
   </body>
 </html>
