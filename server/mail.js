@@ -42,11 +42,11 @@ Mailer.prototype.send = function(message, callback) {
     to = message.to || false;
 
     if (!this.transport) {
-        return callback(new Error('Email Error: No e-mail transport configured.'));
+        return callback(new Error('Email Error: no esta configurado'));
     }
 
     if (!(message && message.subject && message.html && message.to)) {
-        return callback(new Error('Email Error: Incomplete message data.'));
+        return callback(new Error('Email Error: los datos estan incompletos'));
     }
 
     message = _.extend(message, {
@@ -58,10 +58,10 @@ Mailer.prototype.send = function(message, callback) {
         message.from = self.fromAddress();
     }
 
-    logger.info("[Mailer.send] Begin to send message(" + message.id + ") to " + message.to);
+    logger.info("[Mailer.send] empieza a enviar el mensaje (" + message.id + ") to " + message.to);
     this.transport.sendMail(message, function(err, response) {
 
-        logger.info("[Mailer.send] Message(" + message.id + ") has been sent.");
+        logger.info("[Mailer.send] Message(" + message.id + ") fue envieado");
         logger.info("[Mailer.send]", err, response);
         if (err) {
             return callback(err);
@@ -72,20 +72,20 @@ Mailer.prototype.send = function(message, callback) {
         }
 
         response.statusHandler.once("failed", function(data) {
-            var reason = 'Email Error: Failed sending email';
+            var reason = 'Email Error: fallo al enviar ';
             if (data.error.errno === "ENOTFOUND") {
-                reason += ': there is no mail server at this address: ' + data.domain;
+                reason += ': no es una direccion de correo: ' + data.domain;
             }
             reason += '.';
             return callback(new Error(reason));
         });
 
         response.statusHandler.once("requeue", function(data) {
-            return callback(new Error("Email Error: message was not sent, requeued. Probably will not be sent. :( \nMore info: " + data.error.message));
+            return callback(new Error("Email Error: probablemente no se envio el mensaje :( \nMore info: " + data.error.message));
         });
 
         response.statusHandler.once("sent", function() {
-            return callback(null, "Message was accepted by the mail server. Make sure to check inbox and spam folders. :)");
+            return callback(null, "el mensaje fue enviado , revisa tu carpeta de spam. :)");
         });
     });
 

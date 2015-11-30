@@ -1,5 +1,5 @@
 /**
- * logger settings
+ * configuracion del logger
  */
 var winston = require('winston'),
   fs = require('fs'),
@@ -96,7 +96,7 @@ var formatMsg = function(msg) {
 
 module.exports = {
   info: infoLogger.info,
-  infoObject: function(msg) {      
+  infoObject: function(msg) {
     infoLogger.info(formatMsg(msg));
   },
   warn: infoLogger.warn,
