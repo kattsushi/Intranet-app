@@ -6,7 +6,6 @@ var    moment = require('moment');
 var    logger = require('../logger');
 // var    controllers = require('../controllers');
 var    modelos = require('../models');
-var    sequelize = require('sequelize');
 
 router.get('/', function(req, res, next) {
     res.render('index', {
@@ -15,16 +14,10 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/inicio', function(req, res, next) {
-    modelos.Pagina.findOne().then(function(pagina){
-
-    res.render('inicio', {
-        titles: "inicio",
-        data : pagina
+        res.render('inicio', {
+        titles: "inicio"
        })
     });
-
-});
-
 
 
 router.get('/error/500', function(req, res, next) {

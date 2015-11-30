@@ -28,6 +28,8 @@ var   coreHelpers = {},
           '/js/ui-bootstrap-tpls.min.js',
           '/js/moment.min.js',
           '/js/app/app.js',
+          '/js/app/controllers/menuCtrl.js',
+          '/js/app/services/menuService.js',
           '/js/app/ui.js'
         ]
       };
