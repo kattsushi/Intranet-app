@@ -15,7 +15,8 @@ router.get('/', function(req, res, next) {
 
 router.get('/inicio', function(req, res, next) {
         res.render('inicio', {
-        titles: "inicio"
+        titles: "inicio",
+        title: "Intranet"
        })
     });
 

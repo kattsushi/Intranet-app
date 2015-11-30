@@ -2,14 +2,14 @@
     <nav class="rigth indigo darken-4">
         <div class="nav-wrapper container">
           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
-            <ul id="nav-mobile" class="rigth hide-on-med-and-down">
+            <ul id="nav-mobile" class="hide-on-med-and-down">
               <li><h4 href="#!">{{title}}</h4></li>
               <li ng-repeat="menu in vm.titulos">
                 <a href="{[{ menu.ruta }]}"> {[{ menu.titulo }]}</a>
               </li>
               <li><a href="#">Link</a></li>
             </ul>
-            <ul class="rigth hide-on-med-and-down">
+            <ul class="hide-on-med-and-down">
                 <li><a href="#modalLogin" class="modal-trigger"><i class="mdi-action-perm-identity"></i></a></li>
                 <li><a href="#"><i class="mdi-navigation-refresh"></i></a></li>
                 <li><a href="#"><i class="mdi-navigation-more-vert"></i></a></li>
@@ -24,7 +24,7 @@
         </div>
     </nav>
 </div>
-<nav class="indigo darken-1 right flat hide-on-med-and-down">
+<nav class="indigo darken-1 flat hide-on-med-and-down">
     <div class="nav-wrapper container">
         <form>
             <div class="input-field">
