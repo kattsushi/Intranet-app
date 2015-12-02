@@ -1,3 +1,4 @@
+//node.d.ts
 'use strict'
 //Cargando Dependencias
 var express = require('express');
