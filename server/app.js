@@ -11,7 +11,7 @@ var pkg = require('../package.json');
 var multer = require('multer');
 var modelos = require('./models/db.js');
 
-//Inicializando Express JS
+//Inicializando Express JS app
 var app = express();
 
 // Configuracion de Sesiones de usuario
