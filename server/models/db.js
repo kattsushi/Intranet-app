@@ -1,7 +1,8 @@
+'use strict'
 var Sequelize = require('sequelize');
-    config    = require('../config'),
-    logger    = require('../logger'),
-    pkg       = require('../../package.json');
+var config    = require('../config');
+var logger    = require('../logger');
+var pkg       = require('../../package.json');
 var Paginas = {};
 
 //----- CONFIGURAR LA BASE DE DATOS con sequelize
