@@ -5,7 +5,7 @@ var    uuid = require('node-uuid');
 var    moment = require('moment');
 var    logger = require('../logger');
 // var    controllers = require('../controllers');
-var    modelos = require('../models');
+var    modelos = require('../models/db');
 
 router.get('/', function(req, res, next) {
     res.render('index', {
@@ -14,10 +14,16 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/inicio', function(req, res, next) {
+        modelos.Paginas = function () {modelos.Paginas.findOne().then(function(pagina){
+            
         res.render('inicio', {
-        titles: "inicio",
-        title: "Intranet"
-       })
+        id: pagina.id,
+        tittle: pagina.titulo
+       });    
+        console.log(pagina.titulo +' '+ pagina.id);
+               
+                })};
+        
     });
 
 
