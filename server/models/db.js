@@ -36,11 +36,12 @@ var Paginas = sequelize.define("Paginas",{
 },{
   tableName:"paginas"
 });
-/*
-Paginas = function () {Paginas.findOne().then(function(pagina){
-  console.log(pagina.titulo +' '+ pagina.id);
-})};
-*/
 
+
+/*
+Paginas.findOne().then(function(pagina){
+  console.log(pagina.titulo +' '+ pagina.id);
+});
+*/
 module.exports.Paginas = Paginas;
 module.exports.sequelize = sequelize;

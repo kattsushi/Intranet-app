@@ -14,16 +14,15 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/inicio', function(req, res, next) {
-        modelos.Paginas = function () {modelos.Paginas.findOne().then(function(pagina){
-            
-        res.render('inicio', {
-        id: pagina.id,
-        tittle: pagina.titulo
-       });    
-        console.log(pagina.titulo +' '+ pagina.id);
-               
-                })};
-        
+    modelos.Paginas.findAll().then(function(a){
+      res.render('inicio', {
+          id : a.id,
+          tittles: a.titulo
+      })
+        .catch(function (error) {
+            console.log(error);
+        });
+    });
     });
 
 
