@@ -1,16 +1,16 @@
 'use strict'
-var pkg = require('./package.json'),
-    watchify = require('watchify'),
-    path = require('path'),
-    gulp = require('gulp'),
-    gutil = require('gulp-util'),
-    sourcemaps = require('gulp-sourcemaps'),
-    cssmin = require('gulp-cssmin'),
-    gls = require('gulp-live-server'),
-    sass = require('gulp-sass'),
-    coffee = require('gulp-coffee'),
-    concat = require('gulp-concat'),
-    notify = require('gulp-notify');
+var        pkg = require('./package.json');
+var   watchify = require('watchify');
+var       path = require('path');
+var       gulp = require('gulp');
+var      gutil = require('gulp-util');
+var sourcemaps = require('gulp-sourcemaps');
+var     cssmin = require('gulp-cssmin');
+var        gls = require('gulp-live-server');
+var       sass = require('gulp-sass');
+var    coffee = require('gulp-coffee');
+var    concat = require('gulp-concat');
+var    notify = require('gulp-notify');
 
 // Definir directorios
 
@@ -69,6 +69,8 @@ var LibCss =  [
                 ];
 
 // Inicializador del Servidor
+// esta fallando intentare implentar livereload y conect
+
 gulp.task('server', function() {
     var options = {
         cwd: undefined
@@ -81,7 +83,7 @@ gulp.task('server', function() {
 
     gulp.watch([
             'config*.js',
-            'server/bin/*',
+            'server/bin/*.*',
             'server/**/*.js*',
             'client/sass/**/*.scss'
         ], function () {
@@ -156,7 +158,7 @@ gulp.task('copiar-Mcss', function() {
 
 
 //Gestor de tareas de Gulp.
-gulp.task('dev', ['copiar-Mcss','styles','concat-main','concat-vendor', 'server'], function() {
+gulp.task('dev', ['copiar-Mcss','styles','concat-main','concat-vendor','server'], function() {
     gulp.watch(pkg.paths.WatchSass, ['styles']);
 });
 

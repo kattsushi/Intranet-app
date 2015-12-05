@@ -41,7 +41,8 @@
     "weather-icons": "latest",
     "flot.tooltip": "latest",
     "ng-tags-input": "~2.1.1",
-    "holderjs":"latest"
+    "holderjs": "latest",
+    "material-design-icons": "~2.1.1"
   },
   "ignore": [
     "**/.*",
