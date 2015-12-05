@@ -19,18 +19,22 @@ var   coreHelpers = {},
           '/js/app.min.js'
         ],
         development: [
-          '/js/angular.min.js',
-          '/js/angular-route.min.js',
-          '/js/angular-animate.min.js',
+          '/js/angular.js',
+          '/js/angular-route.js',
+          '/js/angular-animate.js',
+          '/js/angular-resource.js',
           '/js/jquery.min.js',
           '/js/materialize.js',
           '/js/bootstrap.js',
-          '/js/ui-bootstrap-tpls.min.js',
-          '/js/moment.min.js',
+          '/js/ui-bootstrap.js',
+          '/js/moment.js',
           '/js/app/app.js',
           '/js/app/controllers/menuCtrl.js',
-          '/js/app/services/menuService.js',
-          '/js/app/ui.js'
+          '/js/app/controllers/mainCtrl.js',
+          '/js/app/controllers/agendaCtrl.js',
+          '/js/app/services/menuServ.js',
+          '/js/app/services/agendaServ.js',
+          '/js/app/ui.js'          
         ]
       };
 

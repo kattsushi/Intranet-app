@@ -1,0 +1,39 @@
+<hr>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <div class="input-group">
+      <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+      <input type="text" class="form-control" placeholder="Buscare en la agenda" ng-model="buscar.materno">
+    </div>
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>
+          <a href="" ng-click="ordenarPor('nombre')">
+            Nombre/s
+          </a>
+          <span class="caret" style="cursor: pointer" ng-click="ordenarPor('-nombre')"></span>
+        </th>
+        <th>Apellido Paterno</th>
+        <th>Apellido Materno</th>
+        <th>Primer dia de trabajo</th>
+        <th>Telefono</th>
+        <th>Salario</th>
+        <th>Bono</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="agenda in ag.agenda | orderBy:ordenSeleccionado | filter:buscar">
+        <td>{[{agenda.nombre}]}</td>
+        <td>{[{agenda.paterno | uppercase}]}</td>
+        <td>{[{agenda.materno | lowercase}]}</td>
+        <td>{[{agenda.primerDia | date:'fullDate'}]} a las {[{agenda.primerDia | date:'h:mma'}]}</td>
+        <td>{[{agenda.telefono}]}</td>
+        <td>{[{agenda.salario | currency}]}</td>       <td>% {[{agenda.bono | number:2}]}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -3,7 +3,7 @@
 //Cargando Dependencias
 var express = require('express');
 var path = require('path');
-//var middleware = require('./middleware');
+//var middleware = require('./middleware'); se comenta por pruebas
 var config = require('./config');
 var logger = require('./logger');
 var routes = require('./routes');

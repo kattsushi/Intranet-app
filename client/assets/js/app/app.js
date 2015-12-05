@@ -1,6 +1,6 @@
 'use strict';
 var app = angular
-  .module('App',['ngRoute'])
+  .module('App',['ngRoute','ngAnimate','ngResource'])
   .config(appConfig)
   /*.service('menuService', menuService)
   .controller('menuCtrl', menuCtrl)*/;
@@ -9,10 +9,13 @@ function appConfig ($routeProvider, $locationProvider, $interpolateProvider) {
   // configurar rutas
   $routeProvider
     .when('/', {
-      template: '<p> pagina </p>'
+      templateUrl: 'js/app/views/main.html',
+      controller : 'mainCtrl'
     })
-    .when('/inicio', {
-      template: '<p> pagina 2 </p>'
+    .when('/agenda', {
+      templateUrl: 'js/app/views/agenda.html',
+      controller : 'agendaCtrl',
+      controllerAs: 'ag'
     })
     .otherwise({
       redirectTo: '/'

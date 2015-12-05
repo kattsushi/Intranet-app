@@ -53,14 +53,15 @@ var vendor = [
               'bower_components/angular-ui-tree/dist/angular-ui-tree.min.js',
               'bower_components/ng-tags-input/ng-tags-input.min.js'];
   var vendor2 = [
-                'bower_components/angular/angular.min.js',
-                'bower_components/angular-route/angular-route.min.js',
-                'bower_components/angular-animate/angular-animate.min.js',
-                'bower_components/Materilize/dist/js/materilize.js',
+                'bower_components/jquery/dist/jquery.js',
+                'bower_components/angular/angular.js',
+                'bower_components/angular-route/angular-route.js',
+                'bower_components/angular-animate/angular-animate.js',
+                'bower_components/angular-resource/angular-resource.js',
+                'bower_components/angular-bootstrap/ui-bootstrap.js',
                 'bower_components/bootstrap/dist/js/bootstrap.js',
-                'bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js',
-                'bower_components/jquery/dist/jquery.min.js',
-                'bower_components/moment/min/moment.min.js'];
+                'bower_components/Materilize/dist/js/materilize.js',
+                'bower_components/moment/moment.js'];
 
 //Directorios de librerias css
 var LibCss =  [

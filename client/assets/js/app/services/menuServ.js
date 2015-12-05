@@ -7,9 +7,10 @@
 
     function getData () {
         var datos = [
-          { titulo: "Inicios", ruta: "inicio"},
+          { titulo: "Inicio", ruta: "/"},
           { titulo: "Quienes Somos", ruta: "compañia" },
-          { titulo: "Configuracion" , ruta : "Config"}
+          { titulo: "Agenda", ruta: "agenda"},
+          { titulo: "Configuracion" , ruta : "config"}
         ];
         return datos;
     }
