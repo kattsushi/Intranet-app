@@ -7,10 +7,12 @@ var    logger = require('../logger');
 // var    controllers = require('../controllers');
 var    modelos = require('../models/db');
 
+
 router.get('/', function(req, res, next) {
     res.render('index', {
         title: "Intranet"
     });
+    console.log('entraron');
 });
 
 router.get('/inicio', function(req, res, next) {
