@@ -5,8 +5,9 @@ module.exports = {
     users: users,
     posts: posts,
 };*/
-var db = require('./db');
+var modelo = require('./maping');
 
 module.exports = {
-    db : db
+    usuario : modelo.Usuario,
+    pagina  : modelo.Pagina       
 };

@@ -30,7 +30,7 @@
       "multipleStatements": "true"
     },
     "sqlite": {
-      "storage": "/../../schema/database.db"
+      "storage": "/database.db"
     },
     "cookie": {
       "secret": "3095cd1975c64b9f8ee24b5346a4e593"

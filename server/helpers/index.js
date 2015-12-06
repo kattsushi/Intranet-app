@@ -35,6 +35,7 @@ var   coreHelpers = {},
           '/app/controllers/mainCtrl.js',
           '/app/controllers/agendaCtrl.js',
           '/app/services/menuServ.js',
+          '/app/services/mainServ.js',
           '/app/services/agendaServ.js',
           '/app/ui.js'          
         ]

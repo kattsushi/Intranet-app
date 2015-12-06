@@ -6,21 +6,10 @@
                     <ul id="slide-out" class="side-nav fixed leftside-navigation">
                         <li class="no-padding">
                             <ul class="collapsible collapsible-accordion">
-                                <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-invert-colors"></i> CSS</a>
-                                    <div class="collapsible-body">
-                                        <ul>
-                                            <li><a href="css-typography.html">Typography</a>
-                                            </li>
-                                            <li><a href="css-icons.html">Icons</a>
-                                            </li>
-                                            <li><a href="css-shadow.html">Shadow</a>
-                                            </li>
-                                            <li><a href="css-media.html">Media</a>
-                                            </li>
-                                            <li><a href="css-sass.html">Sass</a>
-                                            </li>
-                                        </ul>
-                                    </div>
+                                <li ng-repeat="x in vm.menu" class="bold">
+                                    <a class="collapsible-header waves-effect waves-cyan">
+                                    <i class="mdi-action-invert-colors">
+                                    </i> {[{ x.titulo }]} CSS</a>
                                 </li>
                                 <li class="bold"><a class="collapsible-header  waves-effect waves-cyan"><i class="mdi-image-palette"></i> UI Elements</a>
                                     <div class="collapsible-body">

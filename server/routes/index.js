@@ -4,28 +4,27 @@ var    router = express.Router();
 var    uuid = require('node-uuid');
 var    moment = require('moment');
 var    logger = require('../logger');
+var    modelo = require('../models/index');
 // var    controllers = require('../controllers');
-var    modelos = require('../models/db');
 
 
 router.get('/', function(req, res, next) {
     res.render('index', {
         title: "Intranet"
     });
-    console.log('entraron');
+    modelo.usuario.findById(69).then(function(users) {
+        console.log( users.nombre);
+        return null;
+    });
 });
 
-router.get('/inicio', function(req, res, next) {
-    modelos.Paginas.findAll().then(function(a){
-      res.render('inicio', {
-          id : a.id,
-          tittles: a.titulo
-      })
-        .catch(function (error) {
-            console.log(error);
-        });
+router.get('/menu', function(req, res, next) {
+    
+    modelo.pagina.findAll().then(function (paginas) {
+        res.jsonp(paginas);
     });
-    });
+    
+});
 
 
 router.get('/error/500', function(req, res, next) {
