@@ -28,13 +28,15 @@ var   coreHelpers = {},
           '/js/bootstrap.js',
           '/js/ui-bootstrap.js',
           '/js/moment.js',
-          '/js/app/app.js',
-          '/js/app/controllers/menuCtrl.js',
-          '/js/app/controllers/mainCtrl.js',
-          '/js/app/controllers/agendaCtrl.js',
-          '/js/app/services/menuServ.js',
-          '/js/app/services/agendaServ.js',
-          '/js/app/ui.js'          
+          '/js/spin.js',
+          '/js/angular-spinner.js',
+          '/app/app.js',
+          '/app/controllers/menuCtrl.js',
+          '/app/controllers/mainCtrl.js',
+          '/app/controllers/agendaCtrl.js',
+          '/app/services/menuServ.js',
+          '/app/services/agendaServ.js',
+          '/app/ui.js'          
         ]
       };
 

@@ -1,6 +1,7 @@
 'use strict'
 var        pkg = require('./package.json');
 var   watchify = require('watchify');
+var      watch = require('gulp-watch');
 var       path = require('path');
 var       gulp = require('gulp');
 var      gutil = require('gulp-util');
@@ -58,6 +59,8 @@ var vendor = [
                 'bower_components/angular-route/angular-route.js',
                 'bower_components/angular-animate/angular-animate.js',
                 'bower_components/angular-resource/angular-resource.js',
+                'bower_components/angular-spinner/angular-spinner.js',
+                'bower_components/spin.js/spin.js',
                 'bower_components/angular-bootstrap/ui-bootstrap.js',
                 'bower_components/bootstrap/dist/js/bootstrap.js',
                 'bower_components/Materilize/dist/js/materilize.js',
@@ -81,21 +84,21 @@ gulp.task('server', function() {
     var server = gls('server/bin/www', options, 35729);
     server.start();
 
-    gulp.watch([
-            'config*.js',
-            'server/bin/*.*',
-            'server/**/*.js*',
-            'client/sass/**/*.scss'
-        ], function () {
-        server.start();
-    });
+    /*
+    gulp.watch([ pkg.paths.Watch.config,
+            pkg.paths.Watch.server,
+            pkg.paths.Watch.serverf,
+            pkg.paths.Watch.sass],
+             function () {
+                  server.start();
+                         });
     gulp.watch([pkg.paths.Watch.css,
-                pkg.paths.Watch.js,
-                pkg.paths.Watch.hbs],
-                function () {
+           pkg.paths.Watch.js,
+           pkg.paths.Watch.hbs],
+             function () {
                   server.notify.apply(server, arguments);
+    }); */
                   });
-    });
 
 //Preprocesar hoja de estilos sass
 gulp.task('styles', function() {
