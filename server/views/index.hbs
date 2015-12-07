@@ -1,18 +1,22 @@
 {{!< layout}}
    <div class="row">
       <div class="col s3"> <!-- Note that "m4 l3" was added -->
-        <!-- START LEFT SIDEBAR NAV-->
-                <aside id="left-sidebar-nav">
+        <!-- Empieza la barra lateral-->
+               <aside id="left-sidebar-nav">
                     <ul id="slide-out" class="side-nav fixed leftside-navigation">
                         <li class="no-padding">
                             <ul class="collapsible collapsible-accordion">
-                                <li ng-repeat="x in vm.menu" class="bold">
+                                <li class="bold" ng-repeat="menu in vm.titulos">
                                     <a class="collapsible-header waves-effect waves-cyan">
-                                    <i class="mdi-action-invert-colors">
-                                    </i> {[{ x.titulo }]} CSS</a>
+                                            <i class="mdi-action-invert-colors"></i> 
+                                        {[{menu.titulo | uppercase }]}</a>
+                                    <ul class="submenu collapsible-body" data-ng-show="menu.submenu">
+                                        <li ng-repeat="submenu in menu.submenu"><a href="#/{[{submenu.ruta}]}">{[{submenu.titulo}]}</a></li>
+                                    </ul>
                                 </li>
-                                <li class="bold"><a class="collapsible-header  waves-effect waves-cyan"><i class="mdi-image-palette"></i> UI Elements</a>
-                                    <div class="collapsible-body">
+			               
+                                <li class="bold"><a class="collapsible-header  waves-effect waves-cyan"> UI Elements</a>
+                                     <div class="collapsible-body">
                                         <ul>
                                             <li><a href="ui-buttons.html">Buttons</a>
                                             </li>
@@ -41,19 +45,21 @@
                                             <li><a href="ui-tooltip.html">Tooltip</a>
                                             </li>
                                         </ul>
-                                    </div>
-                                </li>
-                                <li class="bold"><a class="collapsible-header  waves-effect waves-cyan"><i class="mdi-editor-border-all"></i> Tables</a>
-                                    <div class="collapsible-body">
-                                        <ul>
-                                            <li><a href="table-basic.html">Basic Tables</a>
-                                            </li>
-                                            <li><a href="table-data.html">Data Tables</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-
+                                </div>
+                             </li>
+                            <li class="bold"><a class="collapsible-header  waves-effect waves-cyan"><i class="mdi-editor-border-all"></i> Tables</a>
+                                <div class="collapsible-body">
+                                    <ul>
+                                        <li><a href="table-basic.html">Basic Tables</a>
+                                        </li>
+                                        <li><a href="table-data.html">Data Tables</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                         </ul>   
+                    </li>
+                   </ul> 
                     <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only cyan"><i class="mdi-navigation-menu"></i></a>
                 </aside>
                 <!-- fin de la barra de navegacion izquierda-->

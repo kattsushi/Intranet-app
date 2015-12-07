@@ -7,11 +7,20 @@
 
     function getData () {
         var datos = [
-          { titulo: "Inicio", ruta: "/"},
-          { titulo: "Quienes Somos", ruta: "compañia" },
-          { titulo: "Agenda", ruta: "agenda"},
-          { titulo: "Configuracion" , ruta : "config"}
-        ];
+                    { "titulo": "Inicio", "ruta": "/",
+                      "submenu" :[{
+                              "titulo" : "vision",
+                              "ruta" :"vision"
+                              },
+                              {
+                              "titulo" : "vision",
+                              "ruta" :"vision"
+                              }]
+                    },
+                    { "titulo": "Quienes Somos", "ruta": "compañia" },
+                    { "titulo": "Agenda", "ruta": "agenda"},
+                    { "titulo": "Configuracion" , "ruta" : "config"}
+                  ];
         return datos;
     }
   }
