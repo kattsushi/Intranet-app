@@ -9,5 +9,7 @@ var modelo = require('./maping');
 
 module.exports = {
     usuario : modelo.Usuario,
-    pagina  : modelo.Pagina       
+    pagina  : modelo.Pagina,
+    item    : modelo.Item,
+    Sequelize : modelo.sequelize       
 };

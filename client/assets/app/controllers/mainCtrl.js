@@ -1,7 +1,7 @@
 (function(){
     'use strict'
-    function mainCtrl(menuService) {
-      this.titulos = menuService.getData();
+    function mainCtrl(mainService) {
+      this.titulos = mainService;
             
     }
       angular.module('App')

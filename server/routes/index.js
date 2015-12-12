@@ -19,10 +19,13 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/menu', function(req, res, next) {
-    
+    var pag = {};  
     modelo.pagina.findAll().then(function (paginas) {
-        res.jsonp(paginas);
-    });
+          res.jsonp(paginas);
+    modelo.item.findAll().then(function (paginas,item) {
+          res.jsonp(item);
+             })      
+         });
     
 });
 

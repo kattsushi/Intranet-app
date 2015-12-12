@@ -34,23 +34,21 @@ var Usuario = sequelize.define("usuarios",{
       contraseña: Sequelize.TEXT,
       dominio: Sequelize.TEXT,
       nivel : Sequelize.INTEGER,
-      falsolog : Sequelize.INTEGER,
-      maxfalsolog : Sequelize.INTEGER,
       activo : Sequelize.TEXT,
       correo : Sequelize.TEXT,
-      nota : Sequelize.TEXT,
-      ordencorto : Sequelize.INTEGER
+      nota : Sequelize.TEXT
       },
       { freezeTableName: true,
         tableName:"usuarios"}
       );
+//--------------------------------------------------------------      
 var Pagina = sequelize.define("paginas", {
       id: {
           primaryKey: true,
           type: Sequelize.INTEGER,
           autoIncrement: true   
       },
-      item: Sequelize.INTEGER,
+      usuario: Sequelize.INTEGER,
       titulo: Sequelize.TEXT,
       link: Sequelize.TEXT,
       activo: Sequelize.TEXT,
@@ -59,12 +57,31 @@ var Pagina = sequelize.define("paginas", {
       creado: Sequelize.TEXT,
       actualizado: Sequelize.TEXT
       },{ freezeTableName :true,
-          tableName: "paginas"})
-
+          tableName: "paginas"});
+//--------------------------------------------------------------          
+var Item = sequelize.define("items", {
+      id: {
+        primaryKey: true,
+        type:Sequelize.INTEGER,
+        autoIncrement:true
+      },
+      nombre:Sequelize.TEXT,
+      pagina:Sequelize.INTEGER,
+      contenido:Sequelize.INTEGER,
+      usuario:Sequelize.INTEGER,
+      creado:Sequelize.TEXT,
+      actualizado:Sequelize.TEXT,
+      mostrar:Sequelize.TEXT,
+      logeado:Sequelize.TEXT
+      },{freezeTableName:true,
+         tableName: "items"});
+//--------------------------------------------------------------
+Pagina.hasMany(Item,{as:"Item"});
 //--------------------------------------------------------------
 // Exportar modelos a otros modulos
 //--------------------------------------------------------------
 module.exports.Usuario = Usuario;
 module.exports.Pagina  = Pagina;
+module.exports.Item  = Item;
 module.exports.sequelize = sequelize;
 module.exports.PRUEBA = "hola";
