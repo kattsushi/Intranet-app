@@ -2,8 +2,7 @@
 <div class="panel panel-primary">
   <div class="panel-heading">
     <div class="input-field col s12">
-      <i class="material-icons prefix">search</i>
-      <input id="icon_prefix" type="text" class="validate" ng-model="buscar.materno">
+      <input id="icon_prefix" type="text" class="validate" ng-model="buscar.nombre">
       <label for="icon_prefix">Buscar</label>   
     </div>
   </div>
@@ -17,22 +16,18 @@
           </a>
           <span class="caret" style="cursor: pointer" ng-click="ordenarPor('-nombre')"></span>
         </th>
-        <th>Apellido Paterno</th>
-        <th>Apellido Materno</th>
-        <th>Primer dia de trabajo</th>
-        <th>Telefono</th>
-        <th>Salario</th>
-        <th>Bono</th>
-      </tr>
+        <th>Usuario</th>
+        <th>Activo</th>
+        <th>Correo</th>
+       </tr>
       </thead>
       <tbody>
       <tr ng-repeat="agenda in ag.agenda | orderBy:ordenSeleccionado | filter:buscar">
         <td>{[{agenda.nombre}]}</td>
-        <td>{[{agenda.paterno | uppercase}]}</td>
-        <td>{[{agenda.materno | lowercase}]}</td>
-        <td>{[{agenda.primerDia | date:'fullDate'}]} a las {[{agenda.primerDia | date:'h:mma'}]}</td>
-        <td>{[{agenda.telefono}]}</td>
-        <td>{[{agenda.salario | currency}]}</td>       <td>% {[{agenda.bono | number:2}]}</td>
+        <td>{[{agenda.usuario | lowercase}]}</td>
+        <td>{[{agenda.activo}]}</td>
+        <td>{[{agenda.correo}]}</td>
+        
       </tr>
       </tbody>
     </table>

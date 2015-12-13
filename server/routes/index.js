@@ -28,6 +28,11 @@ router.get('/menu', function(req, res, next) {
          });
     
 });
+router.get('/usuario',function(req,res,next) {
+    modelo.usuario.findAll().then(function (usuarios) {
+        res.jsonp(usuarios);
+    })
+})
 
 
 router.get('/error/500', function(req, res, next) {
