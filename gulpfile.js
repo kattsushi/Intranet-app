@@ -63,8 +63,9 @@ var vendor = [
                 'bower_components/spin.js/spin.js',
                 'bower_components/angular-bootstrap/ui-bootstrap.js',
                 'bower_components/bootstrap/dist/js/bootstrap.js',
-                'bower_components/Materilize/dist/js/materilize.js',
-                'bower_components/moment/moment.js'];
+                'bower_components/angular-material/angular-material.js',
+                'bower_components/moment/moment.js',
+                'bower_components/angular-aria/angular-aria.js'];
 
 //Directorios de librerias css
 var LibCss =  [
@@ -110,6 +111,8 @@ gulp.task('styles', function() {
     .pipe(cssmin());
 
 });
+
+
 
 //Preprocesar archivos coffeescript bLoqueado.
 gulp.task('coffeescript', function(){
@@ -161,7 +164,7 @@ gulp.task('copiar-Mcss', function() {
 
 
 //Gestor de tareas de Gulp.
-gulp.task('dev', ['copiar-Mcss','styles','concat-main','concat-vendor','server'], function() {
+gulp.task('dev', ['copiar-Mcss','styles','server'], function() {
     gulp.watch(pkg.paths.WatchSass, ['styles']);
 });
 

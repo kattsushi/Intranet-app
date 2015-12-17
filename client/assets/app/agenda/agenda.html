@@ -1,0 +1,15 @@
+<md-content flex id="content">
+    <md-subheader>
+        Contact <span class="name">{[{ ag.user.name }]}</span>:
+    </md-subheader>
+
+    <md-list>
+      <md-item ng-repeat="item in ag.items">
+        <md-button ng-click="ag.performAction(item)">
+            <md-icon md-svg-icon="{[{ item.icon_url }]}"></md-icon>
+            {[{item.name}]}
+        </md-button>
+      </md-item>
+    </md-list>
+
+</md-content>

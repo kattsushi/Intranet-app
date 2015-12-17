@@ -43,7 +43,8 @@
     "ng-tags-input": "~2.1.1",
     "holderjs": "latest",
     "material-design-icons": "~2.1.1",
-    "angular-spinner": "~0.8.0"
+    "angular-spinner": "~0.8.0",
+    "angular-material-sass-files": "~0.8.3"
   },
   "ignore": [
     "**/.*",

@@ -10,53 +10,22 @@
     <title>{{title}} - Intranet App</title>
     <!-- Custom styles for this template -->
     <link rel="stylesheet" href="{{asset "css/main.css"}}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body ng-app="App" ng-controller="menuCtrl as vm">
+  <body ng-app="App" layout="column" ng-controller="mainCtrl as vm">
     <!--<span us-spinner></span> comentado por el momento carga de log-->  
-    <div class="row">
       {{> navbar}}
-      <div class="container">
+      <div flex layout="row">
         {{{body}}}
       </div>
-    </div>
     <!-- /.container -->
     <!--login modal-->
-    <div id="modalLogin" class="modal">
-        <div class="modal-content">
-            <h2 class="center-align">Iniciar Sesion</h2>
-            <div class="center-align">
-                <div class="divider"></div>
-                <form class="col s12">
-                    <div class="row center-align">
-                        <div class="input-field col m10 offset-m1 indigo-text">
-                            <i class="mdi-action-account-circle prefix"></i>
-                            <input id="icon_prefix" type="text" class="validate">
-                            <label for="icon_prefix">Nombre de Usuario</label>
-                        </div>
-                        <div class="input-field col m10 offset-m1 indigo-text ">
-                            <i class="mdi-action-lock-open prefix"></i>
-                            <input id="icon_password" type="password" class="validate">
-                            <label for="icon_password">Contraseña</label>
-                        </div>
-                        <div class="input-field col m10 offset-m1 blue-text">
-                            <input type="checkbox" class="blue-text" id="filled-in-box" checked="checked">
-                            <label for="filled-in-box">Recuerdame la proxima vez</label>
-                        </div>
-                    </div>
-                </form>
-                <div class="divider"></div>
-                <p>
-                    <a href="#" class="waves-effect waves-white indigo darken-4 btn btn-flat white modal-close white-text">Cancelar</a> &nbsp;
-                    <a href="#" class="waves-effect waves-white indigo darken-3 btn btn-flat modal-action modal-close white-text">Entrar</a>
-                </p>
-            </div>
-        </div>
-    </div>
+   
 
     {{{forumScriptTags}}}
     {{{block "bodyScripts"}}}

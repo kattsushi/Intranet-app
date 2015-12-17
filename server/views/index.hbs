@@ -1,55 +1,15 @@
 {{!< layout}}
-   <div class="row">
-      <div class="col s2"> 
-       <!-- Empieza la barra lateral------------------------------------------->
-               <aside id="left-sidebar-nav">
-                    <ul id="slide-out" class="side-nav fixed leftside-navigation">
-                        <li class="no-padding">
-                            <ul class="collapsible collapsible-accordion">
-                                <li class="bold" ng-repeat="x in vm.menu">
-                                    <a class="collapsible-header waves-effect waves-cyan">
-                                            <i class="mdi-action-invert-colors"></i> 
-                                        {[{x.titulo | uppercase }]}</a>
-                                    <ul class="submenu collapsible-body" data-ng-show="x.nombre">
-                                        <li ng-repeat="submenu in x.nombre"><a href="#/{[{submenu.ruta}]}">{[{submenu.nombre}]}</a></li>
-                                    </ul>
-                                </li>
-			                </ul>   
-                        </li>
-                   </ul> 
-                    <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only cyan"><i class="mdi-navigation-menu"></i></a>
-                </aside>
-                <!-- fin de la barra de navegacion izquierda-->
-      </div>
-      <div class="main col s12 offset-s2">
-            <!-- Empieza la seccion Principal------------------------------------------->
-            <div ng-view></div>
-      </div>
-      <div class="main col s12 l12">
-            <!-- Empieza el pie de pagina----------------------------------------------->
-            <footer class="page-footer">
-                <div class="container">
-                    <div class="row">
-                    <div class="col s12 l12">
-                        <h5 class="white-text">Contenido del footer</h5>
-                        <p class="grey-text text-lighten-4">lorem</p>
-                    </div>
-                    <div class="col l4 offset-l2 s12">
-                        <h5 class="white-text">Links</h5>
-                        <ul>
-                        <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                        <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-                        <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-                        <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
-                        </ul>
-                    </div>
-                    </div>
-                </div>
-                <div class="footer-copyright">
-                    <div class="container">
-                    © 2015-2016 Copyright Todos los derechos Reservados
-                    <a class="grey-text text-lighten-4 right" href="#!">mas Links</a>
-                    </div>
-                </div>
-            </footer>
-      </div>
+   <md-sidenav md-is-locked-open="$mdMedia('gt-sm')" class="md-whiteframe-z2" md-component-id="left">
+          <md-list>
+            <md-item ng-repeat="it in ul.users">
+                <md-button ng-click="ul.selectUser(it)" ng-class="{'selected' : it === ul.selected }">
+                  <md-icon md-svg-icon="{[{it.avatar}]}" class="avatar"></md-icon>
+                  {[{it.name}]}
+                </md-button>
+            </md-item>
+          </md-list>
+        </md-sidenav>
+ <!-- fin de la barra de navegacion izquierda-->
+ <!-- Empieza la seccion Principal------------------------------------------->
+      <div ng-view></div>
+      

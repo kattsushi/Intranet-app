@@ -1,34 +1,43 @@
 'use strict';
 var app = angular
-  .module('App',['ngRoute','ngAnimate','ngResource','angularSpinner'])
-  .config(appConfig)
-  /*.service('menuService', menuService)
-  .controller('menuCtrl', menuCtrl)*/;
+  .module('App',['ngMaterial','ngRoute','ngAnimate','ngResource','angularSpinner'])
+  .config(appConfig);
 
 function appConfig ($routeProvider,
                     $locationProvider,
                     $interpolateProvider,
-                    usSpinnerConfigProvider) {
+                    usSpinnerConfigProvider,
+                    $mdThemingProvider,
+                    $mdIconProvider) {
   // configurar rutas
+  
   $routeProvider
     .when('/', {
-      templateUrl: 'app/views/main.html',
-      controller : 'mainCtrl'
+      templateUrl: 'app/main/main.html',
+      controller : 'mainCtrl',
+      constrollerAs: 'vm'
     })
     .when('/agenda', {
-      templateUrl: 'app/views/agenda.html',
+      templateUrl: 'app/agenda/agenda.html',
       controller : 'agendaCtrl',
       controllerAs: 'ag'
     })
     .otherwise({
       redirectTo: '/'
     });
+    
   // Configuracion de rutas del navegador
+  
   $locationProvider.hashPrefix('!');
+  
   // confifurar sintaxis de instancia
+  
   $interpolateProvider
     .startSymbol('{[{')
     .endSymbol('}]}');
+    
+  // configurar spinner de carga
+    
   usSpinnerConfigProvider.setDefaults({
       lines: 7 // The number of lines to draw
     , length: 32 // The length of each line
@@ -51,4 +60,19 @@ function appConfig ($routeProvider,
     , hwaccel: true // Whether to use hardware acceleration
     , position: 'absolute' // Element positioning
   })
+  
+  //Configuracion de Angular-Material
+  
+  $mdIconProvider
+    .defaultIconSet("../svg/avatars.svg", 128)
+    .icon("menu"       , "../svg/menu.svg"        , 24)
+    .icon("share"      , "../svg/share.svg"       , 24)
+    .icon("google_plus", "../svg/google_plus.svg" , 512)
+    .icon("hangouts"   , "../svg/hangouts.svg"    , 512)
+    .icon("twitter"    , "../svg/twitter.svg"     , 512)
+    .icon("phone"      , "../svg/phone.svg"       , 512);
+    //-------------
+  $mdThemingProvider.theme('default')
+    .primaryPalette('brown')
+    .accentPalette('red');  
 }
