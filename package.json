@@ -123,6 +123,7 @@
   "dest": {
     "Js": "client/assets/js/",
     "css": "client/assets/css",
-    "JsDev": "client/assets/js/app"
+    "JsDev": "client/assets/js/app",
+    "fonts": "client/assets/fonts"
   }
 }

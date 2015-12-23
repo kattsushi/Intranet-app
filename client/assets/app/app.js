@@ -1,7 +1,20 @@
 'use strict';
 var app = angular
-  .module('App',['ngMaterial','ngRoute','ngAnimate','ngResource','angularSpinner'])
-  .config(appConfig);
+  .module('App', [
+      'ngAnimate',
+      'ngResource',
+      'ngAria',
+      'ngRoute',
+      'ngMaterial',
+      'angularSpinner'
+  ])
+  .config(['$routeProvider',
+           '$locationProvider',
+           '$interpolateProvider',
+           'usSpinnerConfigProvider',
+           '$mdThemingProvider',
+           '$mdIconProvider'
+    ,appConfig]);
 
 function appConfig ($routeProvider,
                     $locationProvider,
@@ -72,7 +85,12 @@ function appConfig ($routeProvider,
     .icon("twitter"    , "../svg/twitter.svg"     , 512)
     .icon("phone"      , "../svg/phone.svg"       , 512);
     //-------------
-  $mdThemingProvider.theme('default')
-    .primaryPalette('brown')
-    .accentPalette('red');  
+  $mdThemingProvider
+    .theme('default')
+    .primaryPalette('blue',{'default':'900'})
+    .accentPalette('red')
+    .warnPalette('yellow');
+      
 }
+
+

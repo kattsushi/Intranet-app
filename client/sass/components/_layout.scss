@@ -308,3 +308,33 @@
   @include layout-for-name(gt-lg);
   @include flex-properties-for-name(gt-lg);
 }
+
+
+/*
+opciones de vista principal
+*/
+body,
+body > div {
+    max-width: 100%;
+    max-height: 100%;
+    overflow: hidden;
+}
+
+body > div {
+    height: 100%;
+}
+
+.nav-header {
+    flex-shrink: 0;
+    z-index: 2;
+}
+
+.nav-header h1,
+.nav-header h4 {
+    color: white;
+    text-align: center;
+}
+
+.nav-header a.logo {
+    text-decoration: none;
+}

@@ -79,6 +79,9 @@ var LibCss =  [
                'bower_components/font-awesome/css/font-awesome.css.map',
                'bower_components/angular-material-sidenav/angular-material-sidenav.css'
                 ];
+var fonts = ['bower_components/font-awesome/fonts/fontawesome-webfont.woff',
+             'bower_components/font-awesome/fonts/fontawesome-webfont.woff2',
+             'bower_components/font-awesome/fonts/fontawesome-webfont.ttf']
 
 // Inicializador del Servidor
 // esta fallando intentare implentar livereload y conect
@@ -163,16 +166,20 @@ gulp.task('copiar-css', function() {
     .pipe(gulp.dest(pkg.dest.css));
 });
 
+gulp.task('copiar-fuentes', function() {
+  return gulp.src(fonts)
+    .pipe(gulp.dest(pkg.dest.fonts));
+});
+
+
 gulp.task('copiar-Mcss', function() {
   gulp.src(vendor2)
     .pipe(gulp.dest(pkg.dest.Js));
 });
 
 
-
-
 //Gestor de tareas de Gulp.
-gulp.task('dev', ['copiar-Mcss','styles','copiar-css','server'], function() {
+gulp.task('dev', ['copiar-Mcss','styles','copiar-css','copiar-fuentes','server'], function() {
     gulp.watch(pkg.paths.WatchSass, ['styles']);
 });
 

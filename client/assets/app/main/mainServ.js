@@ -1,7 +1,7 @@
 (function(){
   'use strict'
   function mainService ($resource) {
-       return $resource('http://192.168.1.16:3000/menu');
+       return $resource('http://192.168.1.2:3000/menu');
       }
    
   angular.module('App')
