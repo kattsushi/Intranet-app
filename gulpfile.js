@@ -54,22 +54,30 @@ var vendor = [
               'bower_components/angular-ui-tree/dist/angular-ui-tree.min.js',
               'bower_components/ng-tags-input/ng-tags-input.min.js'];
   var vendor2 = [
-                'bower_components/jquery/dist/jquery.js',
                 'bower_components/angular/angular.js',
-                'bower_components/angular-route/angular-route.js',
                 'bower_components/angular-animate/angular-animate.js',
+                'bower_components/angular-aria/angular-aria.js',
+                'bower_components/angular-cookies/angular-cookies.js',
+                'bower_components/angular-messages/angular-messages.js',
                 'bower_components/angular-resource/angular-resource.js',
+                'bower_components/angular-route/angular-route.js',
+                'bower_components/angular-sanitize/angular-sanitize.js',
+                'bower_components/angular-touch/angular-touch.js',
+                'bower_components/angular-material/angular-material.js',
+                'bower_components/angular-ui-router/release/angular-ui-router.js',
+                'bower_components/angular-material-sidenav/angular-material-sidenav.js',
+                'bower_components/jquery/dist/jquery.js',
                 'bower_components/angular-spinner/angular-spinner.js',
                 'bower_components/spin.js/spin.js',
                 'bower_components/angular-bootstrap/ui-bootstrap.js',
                 'bower_components/bootstrap/dist/js/bootstrap.js',
-                'bower_components/angular-material/angular-material.js',
-                'bower_components/moment/moment.js',
-                'bower_components/angular-aria/angular-aria.js'];
+                'bower_components/moment/moment.js'];
 
 //Directorios de librerias css
 var LibCss =  [
                'bower_components/font-awesome/css/font-awesome.min.css',
+               'bower_components/font-awesome/css/font-awesome.css.map',
+               'bower_components/angular-material-sidenav/angular-material-sidenav.css'
                 ];
 
 // Inicializador del Servidor
@@ -164,7 +172,7 @@ gulp.task('copiar-Mcss', function() {
 
 
 //Gestor de tareas de Gulp.
-gulp.task('dev', ['copiar-Mcss','styles','server'], function() {
+gulp.task('dev', ['copiar-Mcss','styles','copiar-css','server'], function() {
     gulp.watch(pkg.paths.WatchSass, ['styles']);
 });
 
