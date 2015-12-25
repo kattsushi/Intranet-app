@@ -2,10 +2,10 @@
 var app = angular
   .module('App', [
       'ngAnimate',
-      'ngResource',
       'ngAria',
-      'ngRoute',
+      'ngResource',
       'ngMaterial',
+      'ngRoute',
       'angularSpinner'
   ])
   .config(['$routeProvider',
@@ -23,7 +23,7 @@ function appConfig ($routeProvider,
                     $mdThemingProvider,
                     $mdIconProvider) {
   // configurar rutas
-  
+
   $routeProvider
     .when('/', {
       templateUrl: 'app/main/main.html',
@@ -38,19 +38,19 @@ function appConfig ($routeProvider,
     .otherwise({
       redirectTo: '/'
     });
-    
+
   // Configuracion de rutas del navegador
-  
+
   $locationProvider.hashPrefix('!');
-  
+
   // confifurar sintaxis de instancia
-  
+
   $interpolateProvider
     .startSymbol('{[{')
     .endSymbol('}]}');
-    
+
   // configurar spinner de carga
-    
+
   usSpinnerConfigProvider.setDefaults({
       lines: 7 // The number of lines to draw
     , length: 32 // The length of each line
@@ -73,9 +73,9 @@ function appConfig ($routeProvider,
     , hwaccel: true // Whether to use hardware acceleration
     , position: 'absolute' // Element positioning
   })
-  
+
   //Configuracion de Angular-Material
-  
+
   $mdIconProvider
     .defaultIconSet("../svg/avatars.svg", 128)
     .icon("menu"       , "../svg/menu.svg"        , 24)
@@ -90,7 +90,5 @@ function appConfig ($routeProvider,
     .primaryPalette('blue',{'default':'900'})
     .accentPalette('red')
     .warnPalette('yellow');
-      
+
 }
-
-

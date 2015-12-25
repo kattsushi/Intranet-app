@@ -24,7 +24,7 @@ var   coreHelpers = {},
           '/js/angular-aria.js',
           '/js/angular-resource.js',
           '/js/angular-material.js',
-          '/js/angular-ui-router.js',
+          '/js/angular-route.js',
           '/js/jquery.js',
           '/js/bootstrap.js',
           '/js/ui-bootstrap.js',
@@ -36,7 +36,7 @@ var   coreHelpers = {},
           '/app/main/mainServ.js',
           '/app/agenda/agendaCtrl.js',
           '/app/agenda/agendaServ.js',
-          '/app/ui.js'          
+          '/app/ui.js'
         ]
       };
 
