@@ -11,9 +11,9 @@
     function inicioCtrl ($q, usuarioServ, $log, $cookieStore, $location) {
 
     var ini = this;
-    var inisioSesion = $q.defer();
+    var inicioSesion = $q.defer();
 
-    inisioSesion.promise.then(usrASesion);
+    inicioSesion.promise.then(usrASesion);
 
     function usrASesion(usr) {
       ini.usrConectado.nombre = usr.nombre;
@@ -28,10 +28,10 @@
       $location.path('/');
     };
 
-    ini.inisiarSesion = function() {
+    ini.iniciarSesion = function() {
       var usr = usuarioServ.iniciar.sesion({nombreUsuario: ini.usuario.nombreUsuario, clave: ini.usuario.clave})
         .$promise.then(function(usr) {
-          inisioSesion.resolve(usr);
+          inicioSesion.resolve(usr);
         });
     };
 }

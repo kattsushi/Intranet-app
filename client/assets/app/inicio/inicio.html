@@ -2,7 +2,8 @@
 			<md-content >
 				<div layout="row" layout-align="center center" layout-fill style="min-height: 350px;min-width : 500px">
 					<md-whiteframe class="md-whiteframe-z4" flex="100" layout-padding>
-						<md-content md-theme="docs-dark">
+						<md-content >
+							<form class="form-signin" role="form" novalidate>
 							<md-input-container style="max-width: 350px;padding-left:2.5em" layout-align="center">
 								<label class="md-primary">Usuario</label>
 								<input ng-model="ini.usuario.nombreUsuario">
@@ -13,12 +14,16 @@
 							</md-input-container>
 							<md-input-container layout-align="center center">
 								<div layout="row" layout-sm="column" layout-margin>
-									<md-button class="md-raised" flex="50" flex-sm="100">Entrar</md-button>
+									<md-button class="md-raised" flex="50" flex-sm="100" type="submit" ng-click="iniciarSesion()">Entrar</md-button>
 									<md-button class="md-raised md-primary" flex="50" flex-sm="100">Registrar</md-button>
 								</div>
 							</md-input-container>
+							 </form>
 						</md-content>
 					</md-whiteframe>
 				</div>
 			</md-content>
+			<p>
+				{[{ini.usuario.nombreUsuario}]}
+			</p>
 </div>

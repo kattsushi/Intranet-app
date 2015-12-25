@@ -3,7 +3,7 @@
   function usuarioServ ($resource) {
 
     var factory = {
-        iniciar : $resource('http://192.168.1.2:3000/incio'	, {} , {
+        iniciar : $resource('http://localhost:3000/inicio'	, {} , {
           sesion:{method:'GET', params: {nombreUsuario: '@nombreUsuario', clave: '@clave'}}
           })
         }

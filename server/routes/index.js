@@ -19,18 +19,29 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/menu', function(req, res, next) {
-    var pag = {};  
+    var pag = {};
     modelo.pagina.findAll().then(function (paginas) {
           res.jsonp(paginas);
     modelo.item.findAll().then(function (paginas,item) {
           res.jsonp(item);
-             })      
+             })
          });
-    
+
 });
-router.get('/usuario',function(req,res,next) {
-    modelo.usuario.findAll().then(function (usuarios) {
-        res.jsonp(usuarios);
+
+router.get('/inicio',function(req,res,next) {
+
+    modelo.usuario.findAll({
+                            where : {
+                              usuario : req.nombreUsuario,
+                              contraseña : req.clave
+                            }
+                          }).then(function (usuarios) {
+          if (usuarios == null){
+            return null;
+          } else {
+            res.jsonp(usuarios);
+            }
     })
 })
 
