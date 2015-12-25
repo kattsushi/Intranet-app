@@ -64,7 +64,7 @@ var vendor = [
                 'bower_components/angular-sanitize/angular-sanitize.js',
                 'bower_components/angular-touch/angular-touch.js',
                 'bower_components/angular-material/angular-material.js',
-                'bower_components/angular-ui-router/release/angular-ui-router.js',
+                'bower_components/angular-material-icons/angular-material-icons.js',
                 'bower_components/angular-material-sidenav/angular-material-sidenav.js',
                 'bower_components/jquery/dist/jquery.js',
                 'bower_components/angular-spinner/angular-spinner.js',
@@ -77,7 +77,8 @@ var vendor = [
 var LibCss =  [
                'bower_components/font-awesome/css/font-awesome.min.css',
                'bower_components/font-awesome/css/font-awesome.css.map',
-               'bower_components/angular-material-sidenav/angular-material-sidenav.css'
+               'bower_components/angular-material-sidenav/angular-material-sidenav.css',
+               'bower_components/angular-material-icons/angular-material-icons.css'
                 ];
 var fonts = ['bower_components/font-awesome/fonts/fontawesome-webfont.woff',
              'bower_components/font-awesome/fonts/fontawesome-webfont.woff2',
@@ -96,11 +97,12 @@ gulp.task('server', function() {
     var server = gls('server/bin/www', options, 35729);
     server.start();
 
-    /*
+
     gulp.watch([ pkg.paths.Watch.config,
             pkg.paths.Watch.server,
             pkg.paths.Watch.serverf,
-            pkg.paths.Watch.sass],
+            pkg.paths.Watch.sass,
+            pkg.paths.Watch.hbs],
              function () {
                   server.start();
                          });
@@ -109,7 +111,7 @@ gulp.task('server', function() {
            pkg.paths.Watch.hbs],
              function () {
                   server.notify.apply(server, arguments);
-    }); */
+    });
                   });
 
 //Preprocesar hoja de estilos sass
@@ -180,11 +182,11 @@ gulp.task('copiar-Mcss', function() {
 
 //Gestor de tareas de Gulp.
 gulp.task('dev', ['copiar-Mcss','styles','copiar-css','copiar-fuentes','server'], function() {
-    gulp.watch(pkg.paths.WatchSass, ['styles']);
+    gulp.watch(pkg.paths.Watch.sass, ['styles']);
 });
 
 gulp.task('pro', ['styles','coffeescript','concat-main','concat-ui', 'server'], function() {
-    gulp.watch(pkg.paths.WatchSass, ['styles']);
+    gulp.watch(pkg.paths.Watch.sass, ['styles']);
 });
 
 gulp.task('default', ['dev'], function() {

@@ -112,7 +112,7 @@
     "vendors": "vendor.js",
     "Watch": {
       "config": "config*.js",
-      "server": "server/bin/**/",
+      "server": "server/bin/",
       "serverf": "server/**/*.js*",
       "sass": "client/sass/**/*.scss",
       "js": "client/assets/**/*.js",

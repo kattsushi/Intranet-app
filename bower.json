@@ -45,7 +45,8 @@
     "material-design-icons": "~2.1.1",
     "angular-spinner": "~0.8.0",
     "angular-material-sass-files": "~0.8.3",
-    "angular-material-sidenav": "~0.0.7"
+    "angular-material-sidenav": "~0.0.7",
+    "angular-material-icons": "~0.6.0"
   },
   "ignore": [
     "**/.*",

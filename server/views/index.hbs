@@ -2,20 +2,21 @@
 <md-sidenav class="md-sidenav-left md-whiteframe-z2"
     md-component-id="left"
     md-is-locked-open="$mdMedia('gt-md')">
-
     <md-content flex role="navigation" >
-             <ul id="accordion" class="accordion">
-				<li ng-repeat="menu in vm.titulos">
-					<div class="link">{[{menu.titulo | uppercase }]}<i data-ng-show="menu.submenu" class="fa fa-chevron-down"></i></div>
-					<ul class="submenu" data-ng-show="menu.submenu">
-						<li ng-repeat="submenu in menu.submenu"><a href="#/{[{submenu.ruta}]}">{[{submenu.titulo}]}</a></li>
-					</ul>
-				</li>
-			</ul>  
+
+        <md-list id="accordion" class="accordion">
+				<md-item ng-repeat="menu in vm.titulos">
+					<div class="link">{[{menu.titulo | uppercase }]}
+          <i data-ng-show="menu.submenu" class="fa fa-chevron-down"></i>
+          </div>
+					<md-list class="submenu" data-ng-show="menu.submenu">
+						<md-item ng-repeat="submenu in menu.submenu"><a href="#/{[{submenu.ruta}]}">{[{submenu.titulo}]}</a></li>
+					</md-list>
+				</md-item>
+			</md-list>
     </md-content>
 </md-sidenav>
  <!-- fin de la barra de navegacion izquierda-->
- 
+
  <!-- Empieza la seccion Principal------------------------------------------->
 <div ng-view></div>
-            

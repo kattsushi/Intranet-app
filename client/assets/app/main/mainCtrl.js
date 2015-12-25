@@ -1,13 +1,14 @@
 (function(){
     'use strict'
     function mainCtrl($timeout,
-                      $mdSidenav,  
+                      $mdSidenav,
                       $rootScope,
-                      mainService) {
-          
+                      mainService,
+                      $mdDialog) {
+
             var vm = this;
-           
-           
+
+
            var datos = [
                     { "titulo": "Inicio", "ruta": "/",
                       "submenu" :[{
@@ -23,27 +24,45 @@
                     { "titulo": "Agenda", "ruta": "agenda"},
                     { "titulo": "Configuracion" , "ruta" : "config"}
                   ];
-           
-           
+
+
             // vm.titulos = mainService.query();
             vm.titulos = datos;
-            console.log(vm.titulos);  
-             
-             
-             
-             
-             
-               
+            console.log(vm.titulos);
+
+
+
+
+
             vm.onClickMenu = function () {
                 $mdSidenav('left').toggle();
             }
-            
-                        
+
+            /*---------------------------------------------
+            Barra del menu
+            */
+            var originatorEv;
+            this.openMenu = function($mdOpenMenu, ev) {
+              originatorEv = ev;
+              $mdOpenMenu(ev);
+            };
+            this.announceClick = function(index) {
+              $mdDialog.show(
+                $mdDialog.alert()
+                  .title('You clicked!')
+                  .textContent('You clicked the menu item at index ' + index)
+                  .ok('Nice')
+                  .targetEvent(originatorEv)
+              );
+              originatorEv = null;
+            };
+
+
     }
       angular.module('App')
              .controller('mainCtrl',['$timeout',
-                      '$mdSidenav',  
+                      '$mdSidenav',
                       '$rootScope',
-                      'mainService',    
+                      'mainService',
              mainCtrl]);
 })();
