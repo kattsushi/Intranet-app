@@ -6,6 +6,7 @@ var app = angular
       'ngResource',
       'ngMaterial',
       'ngRoute',
+      'ngCookies',
       'angularSpinner'
   ])
   .config(['$routeProvider',
@@ -14,7 +15,37 @@ var app = angular
            'usSpinnerConfigProvider',
            '$mdThemingProvider',
            '$mdIconProvider'
-    ,appConfig]);
+    ,appConfig])
+
+    // Validacion de usuarios con cookies
+
+  .run(['$rootScope',
+        '$location',
+        '$cookieStore'
+    ,appRun]);
+
+
+
+function appRun ($rootScope,
+                 $location,
+                 $cookieStore) {
+ // Validacion de usuario en las rutas de la app
+ $rootScope.$on('$routeChangeStart', function(event, next, current) {
+   if ($cookieStore.get('estaConectado') == false || $cookieStore.get('estaConectado') == null) {
+     if(next.templateUrl == 'views/tareas.html' || next.templateUrl == 'views/empleados.html' ) {
+       $location.path('/inicio');
+     }
+   }
+   else {
+     var usuario = $cookieStore.get('usuario');
+
+     if(next.templateUrl == 'views/inicio.html' || usuario.puesto != 1) {
+       $location.path('/tareas');
+     }
+   }
+ })
+}
+
 
 function appConfig ($routeProvider,
                     $locationProvider,
@@ -23,7 +54,6 @@ function appConfig ($routeProvider,
                     $mdThemingProvider,
                     $mdIconProvider) {
   // configurar rutas
-
   $routeProvider
     .when('/', {
       templateUrl: 'app/main/main.html',
@@ -34,6 +64,11 @@ function appConfig ($routeProvider,
       templateUrl: 'app/agenda/agenda.html',
       controller : 'agendaCtrl',
       controllerAs: 'ag'
+    })
+    .when('/inicio',{
+      templateUrl: '/app/inicio/inicio.html',
+      controller : 'inicioCtrl',
+      controllerAs: 'ini'
     })
     .otherwise({
       redirectTo: '/'

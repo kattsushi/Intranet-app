@@ -117,7 +117,8 @@
       "sass": "client/sass/**/*.scss",
       "js": "client/assets/**/*.js",
       "css": "client/assets/**/*.css",
-      "hbs": "server/views/**/*.hbs"
+      "hbs": "server/views/**/*.hbs",
+      "html":"client/assets/**/*.html"
     }
   },
   "dest": {

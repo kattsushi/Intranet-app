@@ -25,6 +25,7 @@ var   coreHelpers = {},
           '/js/angular-resource.js',
           '/js/angular-material.js',
           '/js/angular-route.js',
+          '/js/angular-cookies.js',
           '/js/angular-material-icons.js',
           '/js/jquery.js',
           '/js/bootstrap.js',
@@ -37,6 +38,8 @@ var   coreHelpers = {},
           '/app/main/mainServ.js',
           '/app/agenda/agendaCtrl.js',
           '/app/agenda/agendaServ.js',
+          '/app/inicio/inicioCtrl.js',
+          '/app/usuario/usuarioServ.js',
           '/app/ui.js'
         ]
       };

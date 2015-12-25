@@ -4,7 +4,9 @@
                       $mdSidenav,
                       $rootScope,
                       mainService,
-                      $mdDialog) {
+                      $mdDialog,
+                      $cookieStore,
+                      $location) {
 
             var vm = this;
 
@@ -39,30 +41,36 @@
             }
 
             /*---------------------------------------------
-            Barra del menu
+            Control de cookies para autenticar usuario
             */
-            var originatorEv;
-            this.openMenu = function($mdOpenMenu, ev) {
-              originatorEv = ev;
-              $mdOpenMenu(ev);
+            vm.usrConectado = {nombre: "", puesto: '', estaConectado: ''};
+
+            var usr = $cookieStore.get('usuario');
+
+            if (usr != null) {
+              vm.usrConectado.nombre = usr.nombre;
+              vm.usrConectado.puesto = usr.puesto;
+              vm.usrConectado.estaConectado = true;
             };
-            this.announceClick = function(index) {
-              $mdDialog.show(
-                $mdDialog.alert()
-                  .title('You clicked!')
-                  .textContent('You clicked the menu item at index ' + index)
-                  .ok('Nice')
-                  .targetEvent(originatorEv)
-              );
-              originatorEv = null;
+
+            vm.salir = function() {
+              vm.usrConectado = {nombre: "", puesto: '', estaConectado: ''};
+
+              $cookieStore.remove('estaConectado');
+              $cookieStore.remove('usuario');
+
+              $location.path('/inicio');
             };
 
 
     }
       angular.module('App')
              .controller('mainCtrl',['$timeout',
-                      '$mdSidenav',
-                      '$rootScope',
-                      'mainService',
-             mainCtrl]);
+                                     '$mdSidenav',
+                                     '$rootScope',
+                                     'mainService',
+                                     '$mdDialog',
+                                     '$cookieStore',
+                                     '$location',
+                                     mainCtrl]);
 })();

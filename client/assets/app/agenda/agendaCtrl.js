@@ -7,7 +7,7 @@
    * @param avatarsService
    * @constructor
    */
-    
+
     function agendaCtrl(agendaServ,$mdSidenav, $mdBottomSheet, $log ) {
      var self = this;
 
@@ -57,8 +57,6 @@
           templateUrl: '/src/users/view/contactSheet.html',
           controller: [ '$mdBottomSheet', UserSheetController],
           controllerAs: "vm",
-          bindToController : true,
-          targetEvent: $event
         }).then(function(clickedItem) {
           $log.debug( clickedItem.name + ' clicked!');
         });
@@ -81,7 +79,7 @@
     }
 
   }
-    
+
       angular.module('App')
              .controller('agendaCtrl',[
           'agendaServ', '$mdSidenav', '$mdBottomSheet', '$log'
