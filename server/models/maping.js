@@ -14,7 +14,7 @@ var sequelize = new Sequelize("database","usuario","pass",{
       freezeTableName:true
 	           }
     });
-//--------------------------------------------------------------    
+//--------------------------------------------------------------
 //EL CODIGO EN ESTA FUNCION SE EJECTUA
 //SOLO HASTA QUE LA OPERCION ASINCRONA (AUTHENTICATE) TERMINA
 sequelize.authenticate().then(function(){
@@ -41,12 +41,12 @@ var Usuario = sequelize.define("usuarios",{
       { freezeTableName: true,
         tableName:"usuarios"}
       );
-//--------------------------------------------------------------      
+//--------------------------------------------------------------
 var Pagina = sequelize.define("paginas", {
       id: {
           primaryKey: true,
           type: Sequelize.INTEGER,
-          autoIncrement: true   
+          autoIncrement: true
       },
       usuario: Sequelize.INTEGER,
       titulo: Sequelize.TEXT,
@@ -58,7 +58,7 @@ var Pagina = sequelize.define("paginas", {
       actualizado: Sequelize.TEXT
       },{ freezeTableName :true,
           tableName: "paginas"});
-//--------------------------------------------------------------          
+//--------------------------------------------------------------
 var Item = sequelize.define("items", {
       id: {
         primaryKey: true,
@@ -76,12 +76,30 @@ var Item = sequelize.define("items", {
       },{freezeTableName:true,
          tableName: "items"});
 //--------------------------------------------------------------
-Pagina.hasMany(Item,{as:"Item"});
+var Submenu = sequelize.define("submenu",{
+      id: {
+          primaryKey: true,
+          type: Sequelize.INTEGER,
+          autoIncrement :true
+          },
+      nombre : Sequelize.TEXT,
+      ruta: Sequelize.TEXT,
+      paginaId: Sequelize.INTEGER
+      },
+      { freezeTableName: true,
+        tableName:"submenu"}
+      );
+//--------------------------------------------------------------
+Pagina.hasMany(Submenu,{
+                     foreignKey:"paginaId",
+                     as:"Submenu"
+                        });
 //--------------------------------------------------------------
 // Exportar modelos a otros modulos
 //--------------------------------------------------------------
 module.exports.Usuario = Usuario;
 module.exports.Pagina  = Pagina;
 module.exports.Item  = Item;
+module.exports.Submenu  = Submenu;
 module.exports.sequelize = sequelize;
 module.exports.PRUEBA = "hola";

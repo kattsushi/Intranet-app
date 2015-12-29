@@ -20,19 +20,18 @@ router.get('/', function(req, res, next) {
 
 router.get('/menu', function(req, res, next) {
     var pag = {};
-    modelo.pagina.findAll().then(function (paginas) {
+    modelo.pagina.findAll({ include : [{
+                            model : modelo.submenu,
+                            as: "Submenu" }] }).then(function (paginas) {
           res.jsonp(paginas);
-    modelo.item.findAll().then(function (paginas,item) {
-          res.jsonp(item);
-             })
-         });
 
+        });
 });
 
 router.get('/inicio',function(req,res,next) {
 
     console.log(req.nombreUsuario + req.clave);
-    
+
     modelo.usuario.findAll({
                             where : {
                               usuario : req.nombreUsuario,

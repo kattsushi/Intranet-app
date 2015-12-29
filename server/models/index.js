@@ -10,6 +10,7 @@ var modelo = require('./maping');
 module.exports = {
     usuario : modelo.Usuario,
     pagina  : modelo.Pagina,
+    submenu : modelo.Submenu,
     item    : modelo.Item,
-    Sequelize : modelo.sequelize       
+    Sequelize : modelo.sequelize
 };
