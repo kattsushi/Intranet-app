@@ -13,7 +13,7 @@
     var ini = this;
     var inicioSesion = $q.defer();
 
-    
+
 
     inicioSesion.promise.then(usrASesion);
 

@@ -28,12 +28,13 @@ router.get('/menu', function(req, res, next) {
         });
 });
 
-router.get('/inicio/:nombreUsuario/:clave',function(req,res,next) {
+router.get('/inicio',function(req,res,next) {
 
+    
     modelo.usuario.findAll({
                             where : {
-                              usuario : req.params.nombreUsuario,
-                              contraseña : req.params.clave
+                              usuario : req.query.nombreUsuario,
+                              contraseña : req.query.clave
                             }
                           }).then(function (usuarios) {
           if (usuarios == null){
