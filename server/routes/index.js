@@ -18,7 +18,18 @@ router.get('/', function(req, res, next) {
     });
 });
 
-router.get('/menu', function(req, res, next) {
+router.get('/menu/:id', function(req, res, next) {
+    var pag = {};
+    modelo.pagina.findAll({ where : {
+                            id : req.params.id },
+                            include : [{
+                            model : modelo.submenu,
+                            as: "Submenu" }] }).then(function (paginas) {
+          res.json(paginas);
+
+        });
+});
+router.get('/menu/', function(req, res, next) {
     var pag = {};
     modelo.pagina.findAll({ include : [{
                             model : modelo.submenu,
@@ -30,7 +41,7 @@ router.get('/menu', function(req, res, next) {
 
 router.get('/inicio',function(req,res,next) {
 
-    
+
     modelo.usuario.findAll({
                             attributes :['id','nombre','usuario','nivel']
                             ,where : {

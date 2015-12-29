@@ -95,7 +95,7 @@ var passport = require('passport');
     app.use('/', routes);
 
     var modelo = require('./models/index');
-//TODO : realizar el api restful
+//TODO: realizar el api restful
 
 
 /*/// manejar errores 404

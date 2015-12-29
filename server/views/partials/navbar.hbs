@@ -7,9 +7,11 @@
             <md-icon
                 md-svg-icon="svg/menu.svg"
                 aria-label="Menu Icon">
-            </md-icon>    
+            </md-icon>
         </md-button>
-        <h2>Seguros Catatumbo - <span hide show-gt-sm flex>Intranet</span> </h2>
+        <img src="img/logoblanco.gif" alt="logo" style="max-height:90px;padding-right:10px" />
+        <span hide show-gt-sm flex>Intranet</span> </h2>
+          <span flex></span>
         <md-button aria-label="Inicio" href="/#!" hide show-gt-sm flex  >
           Inicio
         </md-button>
@@ -20,9 +22,10 @@
             ng-show="usrConectado.estaConectado">
           Empleado
         </md-button>
-        <md-button aria-label="Administraciòn" hide show-gt-sm flex
+        <md-button class="md-raised"
+            aria-label="Administración" hide show-gt-sm flex
             ng-hide="usrConectado.nivel <= 50 ">
-          Administraciòn
+          Administración
         </md-button>
         <md-button href="/#!/inicio"
           class="md-raised md-primary"
@@ -36,7 +39,5 @@
           ng-click="vm.salir()" >
           Salir
         </md-button>
-
-        <span flex></span>
     </div>
 </md-toolbar>

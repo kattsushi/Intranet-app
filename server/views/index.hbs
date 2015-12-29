@@ -6,21 +6,23 @@
     <md-content flex role="navigation" >
 
         <md-list id="accordion" class="accordion">
-				<md-item ng-repeat="menu in vm.titulos">
+				<md-item ng-repeat="menu in vm.titulos ">
 					<md-button class="link" style="min-width:250px" >
              {[{menu.titulo | uppercase }]}
-          <i data-ng-show="menu.submenu" class="fa fa-chevron-down"></i>
+
+          <i data-ng-show="menu.Submenu != 0" class="fa fa-chevron-down"></i>
           </md-button>
 
-					<md-list class="submenu" data-ng-show="menu.submenu">
-						<md-item ng-repeat="submenu in menu.submenu">
+					<md-list class="submenu" data-ng-show="menu.Submenu  != 0">
+						<md-item ng-repeat="submenu in menu.Submenu ">
               <md-button href="#/{[{submenu.ruta}]}">
-                 {[{submenu.titulo}]}
+                 {[{submenu.nombre}]}
                </md-button>
             </md-item>
 					</md-list>
 				</md-item>
 			</md-list>
+
     </md-content>
 </md-sidenav>
 
