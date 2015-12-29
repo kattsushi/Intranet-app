@@ -123,7 +123,7 @@ function appConfig ($routeProvider,
   $mdThemingProvider
     .theme('default')
     .primaryPalette('blue',{'default':'900'})
-    .accentPalette('red')
-    .warnPalette('yellow');
+    .accentPalette('blue-grey')
+    .warnPalette('red');
 
 }

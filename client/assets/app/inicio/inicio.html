@@ -3,14 +3,14 @@
 				<div layout="row" layout-align="center center" layout-fill style="min-height: 350px;min-width : 500px">
 					<md-whiteframe class="md-whiteframe-z4" flex="100" layout-padding>
 						<md-content >
-							<form class="form-signin" role="form" novalidate>
+							<form class="form-signin" novalidate name="form">
 							<md-input-container style="max-width: 350px;padding-left:2.5em" layout-align="center">
 								<label class="md-primary">Usuario</label>
-								<input ng-model="ini.usuario.nombreUsuario">
+								<input ng-model="ini.usuario.nombreUsuario" required>
 							</md-input-container>
 							<md-input-container style="max-width: 350px;padding-left:2.5em" layout-align="center">
 								<label>Contraseña</label>
-								<input ng-model="ini.usuario.clave" type="password">
+								<input ng-model="ini.usuario.clave" type="password" required>
 							</md-input-container>
 							<md-input-container layout-align="center center">
 								<div layout="row" layout-sm="column" layout-margin>

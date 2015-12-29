@@ -39,10 +39,10 @@ var helpers = require('./helpers');
 //----------------------------------------------------------------
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
-    app.use(bodyParser.urlencoded({ extended: false })); 
+    app.use(bodyParser.urlencoded({ extended: true }));
     app.use(bodyParser.json());
     app.use(cookieParser(config.cookie.secret));
-//----------------------------------------------------------------    
+//----------------------------------------------------------------
 //Configuracion de morgan
 //----------------------------------------------------------------
 var morgan = require('morgan');
@@ -81,14 +81,21 @@ var passport = require('passport');
         next();
     });
     app.use(express.static(path.join(__dirname, '../client/assets')));
-//----------------------------------------------------------------    
+//----------------------------------------------------------------
 //Assets estaticos
 //----------------------------------------------------------------
     app.use('/shared', express.static(path.join(__dirname, '../shared')));
     app.use('/vendors', express.static(path.join(__dirname, '../bower_components')));
     app.use('/js', express.static(path.join(__dirname, '/../built/scripts')));
     app.use('/css', express.static(path.join(__dirname, '/../built/css')));
+
+//---------------------------------------------------------------
+// Rutas y REST Api FULL
+//---------------------------------------------------------------
     app.use('/', routes);
+
+    var modelo = require('./models/index');
+
 
 /*/// manejar errores 404
 app.use(function(req, res, next) {

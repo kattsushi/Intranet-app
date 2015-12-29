@@ -31,6 +31,8 @@ router.get('/menu', function(req, res, next) {
 
 router.get('/inicio',function(req,res,next) {
 
+    console.log(req.nombreUsuario + req.clave);
+    
     modelo.usuario.findAll({
                             where : {
                               usuario : req.nombreUsuario,

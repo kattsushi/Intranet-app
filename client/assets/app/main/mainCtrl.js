@@ -18,8 +18,8 @@
                               "ruta" :"vision"
                               },
                               {
-                              "titulo" : "vision",
-                              "ruta" :"vision"
+                              "titulo" : "Mision",
+                              "ruta" :"Vision"
                               }]
                     },
                     { "titulo": "Quienes Somos", "ruta": "compañia" },
@@ -27,14 +27,9 @@
                     { "titulo": "Configuracion" , "ruta" : "config"}
                   ];
 
-
             // vm.titulos = mainService.query();
             vm.titulos = datos;
             console.log(vm.titulos);
-
-
-
-
 
             vm.onClickMenu = function () {
                 $mdSidenav('left').toggle();
