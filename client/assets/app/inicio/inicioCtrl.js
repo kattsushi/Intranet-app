@@ -8,7 +8,7 @@
    * @constructor
    */
 
-    function inicioCtrl ($q, usuarioServ, $log, $cookieStore, $location) {
+    function inicioCtrl ($scope, $q, usuarioServ, $log, $cookieStore, $location, $resource) {
 
     var ini = this;
     var inicioSesion = $q.defer();
@@ -18,11 +18,13 @@
     inicioSesion.promise.then(usrASesion);
 
     function usrASesion(usr) {
-      ini.usrConectado.nombre = usr.nombre;
-      ini.usrConectado.puesto = usr.puesto;
-      ini.usrConectado.estaConectado = true;
+    
+      console.log(usr);  
+      $scope.usrConectado.nombre = usr[0].nombre;
+      $scope.usrConectado.nivel = usr[0].nivel;
+      $scope.usrConectado.estaConectado = true;
 
-      $log.info(ini.usrConectado);
+      $log.info($scope.usrConectado);
 
       $cookieStore.put('estaConectado', true);
       $cookieStore.put('usuario', usr);
@@ -34,14 +36,17 @@
       var usr = usuarioServ.iniciar.sesion({nombreUsuario: ini.usuario.nombreUsuario, clave: ini.usuario.clave})
         .$promise.then(function(usr) {
           inicioSesion.resolve(usr);
+       
         });
     };
 }
       angular.module('App')
-             .controller('inicioCtrl',['$q',
+             .controller('inicioCtrl',['$scope',
+                                       '$q',
                                        'usuarioServ',
                                        '$log',
                                        '$cookieStore',
                                        '$location',
+                                       '$resource',
                                         inicioCtrl]);
 })();

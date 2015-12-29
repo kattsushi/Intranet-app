@@ -23,7 +23,7 @@ router.get('/menu', function(req, res, next) {
     modelo.pagina.findAll({ include : [{
                             model : modelo.submenu,
                             as: "Submenu" }] }).then(function (paginas) {
-          res.jsonp(paginas);
+          res.json(paginas);
 
         });
 });
@@ -32,7 +32,8 @@ router.get('/inicio',function(req,res,next) {
 
     
     modelo.usuario.findAll({
-                            where : {
+                            attributes :['id','nombre','usuario','nivel']
+                            ,where : {
                               usuario : req.query.nombreUsuario,
                               contraseña : req.query.clave
                             }

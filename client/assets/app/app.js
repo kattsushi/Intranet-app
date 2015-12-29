@@ -40,7 +40,7 @@ function appRun ($rootScope,
      var usuario = $cookieStore.get('usuario');
 
      if(next.templateUrl == 'views/inicio.html' || usuario.puesto != 1) {
-       $location.path('/tareas');
+       $location.path('/');
      }
    }
  })

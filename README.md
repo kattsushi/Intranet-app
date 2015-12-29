@@ -33,7 +33,7 @@ Para inicializar el servidor corre este comando
 
     $ gulp dev
 
-Accede al sericio local , entra en tu navegador en el siguiente enlace:
+Accede al servicio local , entra en tu navegador en el siguiente enlace:
 
     http://localhost:3000/
 

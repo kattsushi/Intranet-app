@@ -4,7 +4,7 @@
 
     var factory = {
         iniciar : $resource('http://localhost:3000/inicio'	, {} , {
-          sesion:{method:'GET', params: {nombreUsuario: '@nombreUsuario', clave: '@clave'}}
+          sesion:{method:'GET', isArray : true, params: {nombreUsuario: '@nombreUsuario', clave: '@clave'}}
           })
         }
      return factory;

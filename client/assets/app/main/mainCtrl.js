@@ -1,6 +1,7 @@
 (function(){
     'use strict'
-    function mainCtrl($timeout,
+    function mainCtrl($scope,
+                      $timeout,
                       $mdSidenav,
                       $rootScope,
                       mainService,
@@ -38,18 +39,18 @@
             /*---------------------------------------------
             Control de cookies para autenticar usuario
             */
-            vm.usrConectado = {nombre: "", puesto: '', estaConectado: ''};
+            $scope.usrConectado = {nombre: "", nivel: '', estaConectado: ''};
 
             var usr = $cookieStore.get('usuario');
 
             if (usr != null) {
-              vm.usrConectado.nombre = usr.nombre;
-              vm.usrConectado.puesto = usr.puesto;
-              vm.usrConectado.estaConectado = true;
+              $scope.usrConectado.nombre = usr.nombre;
+              $scope.usrConectado.nivel = usr.nivel;
+              $scope.usrConectado.estaConectado = true;
             };
 
             vm.salir = function() {
-              vm.usrConectado = {nombre: "", puesto: '', estaConectado: ''};
+              $scope.usrConectado = {nombre: '', nivel: '', estaConectado: ''};
 
               $cookieStore.remove('estaConectado');
               $cookieStore.remove('usuario');
@@ -60,7 +61,8 @@
 
     }
       angular.module('App')
-             .controller('mainCtrl',['$timeout',
+             .controller('mainCtrl',['$scope',
+                                     '$timeout',
                                      '$mdSidenav',
                                      '$rootScope',
                                      'mainService',
