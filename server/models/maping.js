@@ -90,6 +90,37 @@ var Submenu = sequelize.define("submenu",{
         tableName:"submenu"}
       );
 //--------------------------------------------------------------
+var Directorio = sequelize.define("directorio",{
+      id: {
+          primaryKey: true,
+          type: Sequelize.INTEGER,
+          autoIncrement :true
+          },
+      nombre : Sequelize.TEXT,
+      apellido : Sequelize.TEXT,
+      ruta: Sequelize.TEXT,
+      ubicacion : Sequelize.TEXT,
+      cargo : Sequelize.TEXT,
+      departamento : Sequelize.TEXT,
+      extension: Sequelize.TEXT,
+      correo : Sequelize.TEXT,
+      perfil1 : Sequelize.TEXT,
+      perfil2 : Sequelize.TEXT,
+      },
+      { freezeTableName: true,
+        tableName:"directorio"}
+      );
+
+//--------------------------------------------------------------
+//------------Mapeo Paginas - Submenu 1 - N
+//--------------------------------------------------------------
+Usuario.hasOne(Directorio,{
+                     foreignKey:"id",
+                     as:"Directorio"
+                        });
+//--------------------------------------------------------------
+//------------Mapeo Paginas - Submenu 1 - N
+//--------------------------------------------------------------
 Pagina.hasMany(Submenu,{
                      foreignKey:"paginaId",
                      as:"Submenu"
@@ -98,6 +129,7 @@ Pagina.hasMany(Submenu,{
 // Exportar modelos a otros modulos
 //--------------------------------------------------------------
 module.exports.Usuario = Usuario;
+module.exports.Directorio = Directorio;
 module.exports.Pagina  = Pagina;
 module.exports.Item  = Item;
 module.exports.Submenu  = Submenu;

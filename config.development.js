@@ -14,5 +14,5 @@ config = {
   },
 };
 
-// Export config
+// Exportar configuracion
 module.exports = config;

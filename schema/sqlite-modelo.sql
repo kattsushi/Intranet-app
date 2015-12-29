@@ -1,5 +1,1 @@
-create table submenu (id integer ,
-						nombre TEXT ,
-						ruta	TEXT,
-						pagina INTEGER FOREIGN KEY REFERENCES paginas(id) ON UPDATE CASCADE)
-						 
+insert into submenu values (2, 'Vision', 'mision',1)

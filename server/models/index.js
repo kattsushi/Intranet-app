@@ -9,6 +9,7 @@ var modelo = require('./maping');
 
 module.exports = {
     usuario : modelo.Usuario,
+    directorio : modelo.Directorio,
     pagina  : modelo.Pagina,
     submenu : modelo.Submenu,
     item    : modelo.Item,
