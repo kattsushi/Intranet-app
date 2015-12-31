@@ -1,5 +1,5 @@
-<md-toolbar md-scroll-shrink style="max-witdh:30!important" flex="10">
-    <div class="md-toolbar-tools docs-toolbar-tools" tabIndex="-1" >
+<md-toolbar md-scroll-shrink style="max-witdh:30!important" flex="10" class="md-whiteframe-z2">
+    <div class="md-toolbar-tools docs-toolbar-tools " tabIndex="-1" >
         <md-button class="md-icon-button"
             aria-label="Menu Button"
             hide-gt-sm
@@ -12,34 +12,42 @@
         <img src="img/logoblanco.gif" alt="logo"
           hide show-sm
          style="max-height:90px;padding:0px 10px 0px 10px" />
-        <span hide show-gt-sm flex>Intranet</span> </h2>
+        </h1 hide show-gt-sm flex>Intranet </h1>
           <span flex></span>
-        <md-button aria-label="Inicio" href="/#!" hide show-gt-sm flex  >
-          Inicio
-        </md-button>
-        <md-button aria-label="Agenda" hide show-gt-sm flex>
-          Agenda
-        </md-button>
-        <md-button aria-label="Empleado" hide show-gt-sm flex
-            ng-show="usrConectado.estaConectado">
-          Empleado
-        </md-button>
-        <md-button class="md-raised"
-            aria-label="Administración" hide show-gt-sm flex
-            ng-hide="usrConectado.nivel <= 50 ">
-          Administración
-        </md-button>
-        <md-button href="/#!/inicio"
-          class="md-raised md-primary"
-          aria-label="Iniciar Sesion"
-          ng-hide="usrConectado.estaConectado"  >
-          Iniciar Sesion
-        </md-button>
-        <md-button class="md-raised md-warn"
-          aria-label="Salir"
-          ng-show="usrConectado.estaConectado"
-          ng-click="vm.salir()" >
-          Salir
-        </md-button>
+        <section layout="row" layout-align="center rigth">
+            <md-button  class="md-raised md-primary"
+              aria-label="Inicio"
+              href="/#!/" hide show-gt-sm flex  >
+            Inicio
+          </md-button>
+          <md-button class="md-raised md-primary" href="#"
+              aria-label="Agenda" hide show-gt-sm flex>
+            Agenda
+          </md-button>
+          <md-button class="md-raised md-primary" href="#"
+              aria-label="Empleado" hide show-gt-sm flex
+              ng-show="usrConectado.estaConectado">
+            Empleado
+          </md-button>
+          <md-button class="md-raised md-primary" href="#"
+              aria-label="Administración" hide show-gt-sm
+              ng-hide="usrConectado.nivel <= 50 ">
+            Administración
+          </md-button>
+          <md-button href="/#!/inicio"
+            class="md-raised md-primary"
+            aria-label="Iniciar Sesion"
+            ng-hide="usrConectado.estaConectado"  >
+            Iniciar Sesion
+          </md-button>
+        </section>
+        <span flex="10"></span>
+          <md-button class="md-raised md-warn"
+            aria-label="Salir"
+            href=""
+            ng-show="usrConectado.estaConectado"
+            ng-click="vm.salir()" >
+            Salir
+          </md-button>
     </div>
 </md-toolbar>

@@ -19,5 +19,6 @@ bower_components
 logs
 built
 typings
+.vscode
 
 coverage.html
