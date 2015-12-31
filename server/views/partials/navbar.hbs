@@ -1,15 +1,17 @@
-<md-toolbar>
-    <div class="rigth md-toolbar-tools" >
+<md-toolbar md-scroll-shrink style="max-witdh:30!important" flex="10">
+    <div class="md-toolbar-tools docs-toolbar-tools" tabIndex="-1" >
         <md-button class="md-icon-button"
             aria-label="Menu Button"
-
+            hide-gt-sm
             ng-click="vm.onClickMenu();">
             <md-icon
                 md-svg-icon="svg/menu.svg"
                 aria-label="Menu Icon">
             </md-icon>
         </md-button>
-        <img src="img/logoblanco.gif" alt="logo" style="max-height:90px;padding-right:10px" />
+        <img src="img/logoblanco.gif" alt="logo"
+          hide show-sm
+         style="max-height:90px;padding:0px 10px 0px 10px" />
         <span hide show-gt-sm flex>Intranet</span> </h2>
           <span flex></span>
         <md-button aria-label="Inicio" href="/#!" hide show-gt-sm flex  >

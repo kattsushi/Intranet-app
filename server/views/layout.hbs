@@ -20,15 +20,12 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body ng-app="App" layout="column" ng-controller="mainCtrl as vm">
+  <body ng-app="App" ng-controller="mainCtrl as vm" layout="row" ng-cloak>
     <!--<span us-spinner></span> comentado por el momento carga de log-->
-      {{> navbar}}
 
-      <div flex layout="row">
-        {{{body}}}
-      </div>
+    {{{body}}}
 
-    <!-- /.container -->
+
 
     {{{forumScriptTags}}}
     {{{block "bodyScripts"}}}

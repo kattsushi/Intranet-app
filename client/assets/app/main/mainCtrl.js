@@ -70,9 +70,9 @@
                           ];
 
 
-            vm.titulos = mainService.query();
+        //    vm.titulos = mainService.query();
             // vm.titulos = datos;
-      //     vm.titulos = datos2;
+           vm.titulos = datos2;
 
 
             //    console.log(JSON.parse(vm.titulos));
