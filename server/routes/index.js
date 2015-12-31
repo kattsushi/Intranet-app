@@ -55,7 +55,27 @@ router.get('/inicio',function(req,res,next) {
             res.jsonp(usuarios);
             }
     })
+});
+
+router.get('/agenda',function(req,res,next) {
+
+    modelo.usuario.findAll({include : [{
+                                  model: modelo.directorio,
+                                  as :"Directorio"
+                                }]
+                          }).then(function (usuarios) {
+          if (usuarios == null){
+            return null;
+          } else {
+            res.jsonp(usuarios);
+            }
+    })
 })
+
+
+
+
+
 
 
 router.get('/error/500', function(req, res, next) {

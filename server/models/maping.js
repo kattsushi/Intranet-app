@@ -98,10 +98,9 @@ var Directorio = sequelize.define("directorio",{
           },
       nombre : Sequelize.TEXT,
       apellido : Sequelize.TEXT,
-      ruta: Sequelize.TEXT,
       ubicacion : Sequelize.TEXT,
       cargo : Sequelize.TEXT,
-      departamento : Sequelize.TEXT,
+      departmento : Sequelize.TEXT,
       extension: Sequelize.TEXT,
       correo : Sequelize.TEXT,
       perfil1 : Sequelize.TEXT,
@@ -118,6 +117,10 @@ Usuario.hasOne(Directorio,{
                      foreignKey:"id",
                      as:"Directorio"
                         });
+Usuario.belongsTo(Directorio,{
+    foreignKey:"id",
+    as :"Directorio"
+});
 //--------------------------------------------------------------
 //------------Mapeo Paginas - Submenu 1 - N
 //--------------------------------------------------------------

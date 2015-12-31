@@ -38,6 +38,7 @@ var   coreHelpers = {},
           '/app/main/mainServ.js',
           '/app/agenda/agendaCtrl.js',
           '/app/agenda/agendaServ.js',
+          '/app/agenda/agendaFilt.js',
           '/app/inicio/inicioCtrl.js',
           '/app/usuario/usuarioServ.js',
           '/app/ui.js'

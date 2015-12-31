@@ -7,24 +7,32 @@
    * @param avatarsService
    * @constructor
    */
+    function agendaCtrl(agendaServ,$mdSidenav, $mdBottomSheet, $log, $resource ) {
 
-    function agendaCtrl(agendaServ,$mdSidenav, $mdBottomSheet, $log ) {
-     var self = this;
+     var ag = this;
 
-    self.selected     = null;
-    self.users        = [ ];
-    self.selectUser   = selectUser;
-    self.toggleList   = toggleUsersList;
-    self.share        = share;
+    ag.selected     = null;
+    ag.selectUser   = selectUser;
+    ag.toggleList   = toggleUsersList;
+    ag.share        = share;
 
-    // Load all registered users
 
-    agendaServ
-          .loadAllUsers()
-          .then( function( users ) {
-            self.users    = [].concat(users);
-            self.selected = users[0];
-          });
+
+     ag.users        = [ ];
+     ag.ubicacion = [];
+     ag.pageSize     = 6;
+     ag.currentPage  = 0;
+     ag.users = agendaServ.query();
+
+     ag.users.$promise.then(function(usrs) {
+        ag.numberOfUsers = usrs.length;
+
+        ag.numberOfPages= function () {
+         return Math.ceil( ag.numberOfUsers / ag.pageSize);
+       }
+
+     });
+
 
     // *********************************
     // Internal methods
@@ -42,29 +50,41 @@
      * @param menuId
      */
     function selectUser ( user ) {
-      self.selected = angular.isNumber(user) ? $scope.users[user] : user;
-      self.toggleList();
+      ag.selected = angular.isNumber(user) ? $scope.users[user] : user;
+      ag.toggleList();
     }
+
+  }
 
     /**
      * Show the bottom sheet
      */
     function share($event) {
-        var user = self.selected;
+        var user = ag.selected;
 
         $mdBottomSheet.show({
           parent: angular.element(document.getElementById('content')),
-          templateUrl: '/src/users/view/contactSheet.html',
+          template: '<md-bottom-sheet class="md-list md-has-header">'+
+                        '<md-subheader>Settings</md-subheader>'+
+                          '<md-list>'+
+                            '<md-item ng-repeat="item in bt.items">'+
+                              '<md-item-content md-ink-ripple flex class="inset">'+
+                                    '<a flex aria-label="{{item.name}}" ng-click="listItemClick($index)">'+
+                                     '<span class="md-inline-list-icon-label">{{ item.name }}</span> </a>'+
+                              '</md-item-content>'+
+                            '</md-item>'+
+                          '</md-list>'+
+                      '</md-bottom-sheet>',
           controller: [ '$mdBottomSheet', UserSheetController],
-          controllerAs: "vm",
+          controllerAs: "bt",
         }).then(function(clickedItem) {
           $log.debug( clickedItem.name + ' clicked!');
         });
-
+  }
         /**
          * Bottom Sheet controller for the Avatar Actions
          */
-        function UserSheetController( $mdBottomSheet ) {
+        function UserSheetController ( $mdBottomSheet ) {
           this.user = user;
           this.items = [
             { name: 'Phone'       , icon: 'phone'       , icon_url: 'assets/svg/phone.svg'},
@@ -75,13 +95,12 @@
           this.performAction = function(action) {
             $mdBottomSheet.hide(action);
           };
-        }
-    }
-
   }
 
+
+
+
       angular.module('App')
-             .controller('agendaCtrl',[
-          'agendaServ', '$mdSidenav', '$mdBottomSheet', '$log'
-       ,agendaCtrl]);
+             .controller('agendaCtrl',['agendaServ', '$mdSidenav', '$mdBottomSheet', '$log','$resource', agendaCtrl ])
+             .controller('$mdBottomSheet',['$mdBottomSheet',UserSheetController]);
 })();

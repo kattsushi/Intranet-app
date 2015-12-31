@@ -1,1 +1,1 @@
-insert into submenu values (2, 'Vision', 'mision',1)
+select ubicacion from directorio group by ubicacion

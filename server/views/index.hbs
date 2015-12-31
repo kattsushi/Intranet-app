@@ -5,13 +5,14 @@
     md-component-id="left"
     md-is-locked-open="$mdMedia('gt-md')">
 
-  <md-toolbar>
-  <header class="nav-header">
-     <a ng-href="/" class="docs-logo">
+  <md-toolbar md-tall>
+     <span flex></span>
+    <div layout="column" class="md-toolbar-tools-bottom inset">
+     <a ng-href="/" class="docs-logo ">
        <img src="img/logoblanco.gif" alt="" style="max-height:100px;padding:0px 10px 0px 10px" />
-       <h3 class="docs-logotype md-heading" style="color:white; text-align:center" center>Angular Material</h3>
+       <h3 class="docs-logotype md-heading" style="color:white; text-align:center" center flex>Angular Material</h3>
      </a>
-   </header>
+   </div>
  </md-toolbar>
     <md-content md-scroll-y flex role="navigation" >
         <md-list id="accordion" class="accordion">
