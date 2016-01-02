@@ -31,30 +31,36 @@ function appRun ($rootScope,
                  $cookieStore) {
  // Validacion de usuario en las rutas de la app
  $rootScope.$on('$routeChangeStart', function(event, next, current) {
+
+   var usuario = $cookieStore.get('usuario');
    if ($cookieStore.get('estaConectado') == false || $cookieStore.get('estaConectado') == null) {
-     if(next.templateUrl == 'administracion/administracion.html' || next.templateUrl == 'empleado/empleado.html' ) {
+     if(next.templateUrl == 'app/administracion/administracion.html' || next.templateUrl == 'app/empleado/empleado.html' ) {
        $location.path('/inicio');
      }
-     if (next.templateUrl == 'agenda/agenda.html') {
+     if (next.templateUrl == 'app/agenda/agenda.html') {
        $location.path('/agenda');
      }
-   }
+  }
    else {
-     var usuario = $cookieStore.get('usuario');
 
+     if (next.templateUrl == 'app/administracion/administracion.html'
+           && usuario.nivel === 100) {
+       $location.path('/agenda');
+       console.log('flag');
+     }
 
-     if (next.templateUrl == 'agenda/agenda.html') {
+     if (next.templateUrl == 'app/agenda/agenda.html') {
        $location.path('/agenda');
      }
-     if (next.templateUrl == 'administracion/administracion.html'
-           && usuario[0].nivel == 100) {
+     if (next.templateUrl == 'app/administracion/administracion.html'
+           && usuario.nivel === 100) {
        $location.path('/adminitracion');
        console.log('flag');
      }
-     if (next.templateUrl == 'empleado/empleado.html') {
+     if (next.templateUrl == 'app/empleado/empleado.html') {
        $location.path('/empleado');
      }
-     if(next.templateUrl == 'inicio/inicio.html') {
+     if(next.templateUrl == 'app/inicio/inicio.html') {
        $location.path('/');
      }
 

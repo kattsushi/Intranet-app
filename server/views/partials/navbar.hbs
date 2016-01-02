@@ -24,14 +24,14 @@
               aria-label="Agenda" hide show-gt-sm >
             Agenda
           </md-button>
-          <md-button class="md-raised md-primary" ng-href="/#!/"
+          <md-button class="md-raised md-primary" ng-href="/#!/empleado"
               aria-label="Empleado" hide show-gt-sm
               ng-show="usrConectado.estaConectado">
             Empleado
           </md-button>
-          <md-button class="md-raised md-primary" ng-href="/#!/"
+          <md-button class="md-raised md-primary" ng-href="/#!/administracion"
               aria-label="Administración" hide show-gt-sm
-              ng-hide="usrConectado.nivel <= 50 ">
+              ng-hide="usrConectado.nivel < 50 ">
             Administración
           </md-button>
           <md-button ng-href="/#!/inicio"
