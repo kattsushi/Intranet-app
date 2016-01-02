@@ -1,40 +1,44 @@
-<md-content layout="row" flex id="content" class="md-whiteframe-z2">
-  <md-item-content>
-  <md-list>
-    <md-item ng-repeat="item in ag.users | filter : item.nombre |filter : lugar | startFrom : ag.currentPage*ag.pageSize | limitTo:ag.pageSize"   >
-      <md-item-content layout="row" class="md-whiteframe-z1" layout-padding style="padding:0 3em 0 3em;margin-left:1em">
-        <div class="md-tile-left">
-            <img ng-src="https://avatars.io/twitter/default/medium" class="avatar" alt="{[{item.nombre}]}" style="max-width:70px;padding:0.2em">
-        </div>
-        <div class="md-tile-content">
-          <h3>{[{item.nombre}]}</h3>
-          <h4>{[{item.Directorio.extension}]}</h4>
-        </div>
-      </md-item-content>
-      <md-divider ></md-divider>
-    </md-item>
-  </md-list>
-</md-item-content>
-  <span flex></span>
-  <div class="">
-    <md-content>
-      <md-item-content>
-      <md-input-container class="md-block">
-        <input ng-model="item.nombre" placeholder="Buscar">
-       </md-input-container>
-     </md-item-content>
+<div  layout="row" >
+  <md-content flex="40" id="content" class="md-whiteframe-z2">
+    <md-item-content flex>
+    <md-list>
+      <md-item ng-repeat="item in ag.users  | startFrom : ag.currentPage*ag.pageSize | filter : item.nombre | limitTo:ag.pageSize"   >
+        <md-item-content value="{[{item.id}]}" layout="row" class="md-whiteframe-z1" layout-padding style="padding:0 3em 0 3em;margin-left:1em">
+          <div class="md-tile-left">
+              <img ng-src="https://avatars.io/twitter/default/medium" class="avatar" style="max-width:70px;padding:0.2em">
+          </div>
+          <div class="md-tile-content">
+            <h3>{[{item.nombre}]}</h3>
+            <h4>{[{item.Directorio.extension}]}</h4>
+          </div>
+        </md-item-content>
+      </md-item>
+    </md-list>
+  </md-item-content>
+    <span flex></span>
+  </md-content>
+<span flex ></span>
+  <div  layout-wrap>
+      <md-content class="md-whiteframe-z2" layout-padding>
+        <md-item-content>
+        <md-input-container class="md-block">
+          <input ng-model="item.nombre" placeholder="Buscar">
+         </md-input-container>
+       </md-item-content>
 
-     </md-content>
-  <md-button type="button"
-   class="md-raised md-primary"
-   ng-disabled="ag.currentPage == 0"
-   ng-click="ag.currentPage=ag.currentPage-1"
-   name="Atras">Atras</md-button>
-    {[{ag.currentPage+1}]} / {[{ag.numberOfPages()}]}
-  <md-button type="button"
-    class="md-raised md-primary"
-    ng-disabled="ag.currentPage >= ag.numberOfUsers/ag.pageSize - 1"
-    ng-click="ag.currentPage=ag.currentPage+1"
-   name="Siguiente">Siguiente</md-button>
+
+      <md-button type="button"
+       class="md-raised md-primary"
+       ng-disabled="ag.currentPage == 0"
+       ng-click="ag.currentPage=ag.currentPage-1"
+       name="Atras">Atras</md-button>
+        {[{ag.currentPage+1}]} / {[{ag.numberOfPages()}]}
+      <md-button type="button"
+        class="md-raised md-primary"
+        ng-disabled="ag.currentPage >= ag.numberOfUsers/ag.pageSize - 1"
+        ng-click="ag.currentPage=ag.currentPage+1"
+       name="Siguiente">Siguiente</md-button>
+        </md-content>
    </div>
-</md-content>
+
+ </div>

@@ -41,6 +41,7 @@ var   coreHelpers = {},
           '/app/agenda/agendaFilt.js',
           '/app/inicio/inicioCtrl.js',
           '/app/usuario/usuarioServ.js',
+          '/app/administracion/adminCtrl.js',
           '/app/ui.js'
         ]
       };

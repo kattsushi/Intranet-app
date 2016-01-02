@@ -74,8 +74,8 @@ var vendor = [
 var LibCss =  [
                'bower_components/font-awesome/css/font-awesome.min.css',
                'bower_components/font-awesome/css/font-awesome.css.map',
-               'bower_components/angular-material-sidenav/angular-material-sidenav.css',
-               'bower_components/angular-material-icons/angular-material-icons.css'
+               'bower_components/angular-material-icons/angular-material-icons.css',
+               'bower_components/angular-material/angular-material.css'
                 ];
 var fonts = ['bower_components/font-awesome/fonts/fontawesome-webfont.woff',
              'bower_components/font-awesome/fonts/fontawesome-webfont.woff2',

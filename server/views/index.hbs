@@ -6,12 +6,11 @@
     md-is-locked-open="$mdMedia('gt-md')">
 
   <md-toolbar md-tall>
-     <span flex></span>
     <div layout="column" class="md-toolbar-tools-bottom inset">
-     <a ng-href="/" class="docs-logo ">
+     <a ng-href="/#!/" class="docs-logo ">
        <img src="img/logoblanco.gif" alt="" style="max-height:100px;padding:0px 10px 0px 10px" />
-       <h3 class="docs-logotype md-heading" style="color:white; text-align:center" center flex>Angular Material</h3>
-     </a>
+    </a>
+    <h3 class="docs-logotype md-heading" style="color:white; text-align:center" center flex>Angular Material</h3>
    </div>
  </md-toolbar>
     <md-content md-scroll-y flex role="navigation" >
@@ -19,11 +18,10 @@
         <md-item ng-repeat="menu in vm.titulos ">
           <md-button class="link" style="min-width:250px" >
              {[{menu.titulo | uppercase }]}
-
           <i data-ng-show="menu.Submenu != 0" class="fa fa-chevron-down"></i>
           </md-button>
 
-          <md-list class="submenu" data-ng-show="menu.Submenu  != 0">
+          <md-list class="submenu" data-ng-show="menu.Submenu  != 0" layout="column" layout-align="center center">
             <md-item ng-repeat="submenu in menu.Submenu ">
               <md-button href="#/{[{submenu.ruta}]}">
                  {[{submenu.nombre}]}
@@ -41,7 +39,7 @@
 
     {{> navbar}}
 
-    <md-content ng-view md-scroll-y flex layout-padding>
+    <md-content ng-view md-scroll-y flex="70" layout-padding>
 
     </md-content>
 

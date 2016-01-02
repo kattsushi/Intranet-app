@@ -1,23 +1,58 @@
+<div layout="column" flex id="content" role="main" id="popupContainer" >
+			<md-content layout="vertical" flex id="content">
+				<div layout="row" layout-align="center center" layout-fill>
+					<md-whiteframe class="md-whiteframe-z3"
+          style="margin-bottom:2em;min-width:480px;padding-top:2em;padding-bottom:2em;"
+           layout="column" flex="30" layout-padding >
+						<md-content style="padding-left:4em" layout="row">
+							<div >
+                <md-input-container>
+  								<label>Usuario</label>
+  								<input ng-model="ini.usuario.nombreUsuario">
+  							</md-input-container>
+  							<md-input-container>
+  								<label>Contraseña</label>
+  								<input ng-model="ini.usuario.clave" type="password">
+  							</md-input-container>
+							</div>
+
+							<md-input-container layout-align="center center" style="text-align:center">
+                <img  src="img/logo.gif" alt="" />
+								<div layout="row" layout="column" layout-margin>
+									<md-button class="md-raised"
+
+                  ng-click="ini.iniciarSesion($event)" type="submit">Entrar</md-button>
+									<md-button class="md-raised md-primary" >Registrar</md-button>
+								</div>
+							</md-input-container>
+						</md-content>
+					</md-whiteframe>
+				</div>
+			</md-content>
+		</div>
+
+<!--
 <div >
-    <md-content >
+    <md-content  >
         <div layout="row" layout-align="center center" layout-fill layout-padding style="padding-top:10em" >
             <md-whiteframe class="md-whiteframe-z4" flex="50" layout-padding>
                 <md-content >
-                    <form class="form-signin" novalidate name="form">
-                        <md-input-container style="max-width: 350px;padding:2em 2.5em 0 2.5em" layout-align="center">
-                            <label class="md-primary">Usuario</label>
-                            <input ng-model="ini.usuario.nombreUsuario" required>
-                        </md-input-container>
-                        <md-input-container style="max-width: 350px;padding:0 2.5em 0 2.5em" layout-align="center">
-                            <label>Contraseña</label>
-                            <input ng-model="ini.usuario.clave" type="password" required>
-                        </md-input-container>
+                    <form class="form-signin" novalidate name="form" layout="column">
+                        <div layout="column">
+                          <md-input-container style="max-width: 350px;padding:2em 2.5em 0 2.5em" layout-align="center">
+                              <label class="md-primary">Usuario</label>
+                              <input ng-model="ini.usuario.nombreUsuario" required>
+                          </md-input-container>
+                          <md-input-container style="max-width: 350px;padding:0 2.5em 0 2.5em" layout-align="center">
+                              <label>Contraseña</label>
+                              <input ng-model="ini.usuario.clave" type="password" required>
+                          </md-input-container>
+                        </div>
                         <md-input-container layout-align="center" style="padding-left:5em">
-                            <div layout="row" layout-sm="column" layout-margin>
-                                <md-button class="md-raised" flex="30" flex-sm="100" type="submit"
-                                 ng-click="ini.iniciarSesion()" >Entrar</md-button>
-                                <md-button class="md-raised md-primary"
-                                 flex="30" flex-sm="100">Registrar</md-button>
+                            <div layout="row" layout-sm="column" layout-margin >
+                                <md-button class="md-raised md-primary" type="submit"
+                                 ng-click="ini.iniciarSesion($event)" >Entrar</md-button>
+                                <md-button class="md-raised md-primary">Registrar</md-button>
                             </div>
                         </md-input-container>
                     </form>
@@ -25,4 +60,4 @@
             </md-whiteframe>
         </div>
     </md-content>
-</div>
+</div> -->

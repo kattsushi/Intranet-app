@@ -1,8 +1,8 @@
-<md-toolbar md-scroll-shrink style="max-witdh:30!important" flex="10" class="md-whiteframe-z2">
+<md-toolbar md-scroll-shrink style="max-witdh:30!important" class="md-whiteframe-z2">
     <div class="md-toolbar-tools docs-toolbar-tools " tabIndex="-1" >
         <md-button class="md-icon-button"
             aria-label="Menu Button"
-            hide-gt-sm
+            hide-gt show-xs show-gt-xs
             ng-click="vm.onClickMenu();">
             <md-icon
                 md-svg-icon="svg/menu.svg"
@@ -10,31 +10,31 @@
             </md-icon>
         </md-button>
         <img src="img/logoblanco.gif" alt="logo"
-          hide show-sm
+          hide show-xs show-sm
          style="max-height:90px;padding:0px 10px 0px 10px" />
-        </h1 hide show-gt-sm flex>Intranet </h1>
+        <h1 hide show-xs show-gt-xs flex>Intranet </h1>
           <span flex></span>
         <section layout="row" layout-align="center rigth">
             <md-button  class="md-raised md-primary"
               aria-label="Inicio"
-              href="/#!/" hide show-gt-sm flex  >
+              ng-href="/#!/" hide show-gt-sm >
             Inicio
           </md-button>
-          <md-button class="md-raised md-primary" href="/#!/agenda"
-              aria-label="Agenda" hide show-gt-sm flex>
+          <md-button class="md-raised md-primary" ng-href="/#!/agenda"
+              aria-label="Agenda" hide show-gt-sm >
             Agenda
           </md-button>
-          <md-button class="md-raised md-primary" href="#"
-              aria-label="Empleado" hide show-gt-sm flex
+          <md-button class="md-raised md-primary" ng-href="/#!/"
+              aria-label="Empleado" hide show-gt-sm
               ng-show="usrConectado.estaConectado">
             Empleado
           </md-button>
-          <md-button class="md-raised md-primary" href="#"
+          <md-button class="md-raised md-primary" ng-href="/#!/"
               aria-label="Administración" hide show-gt-sm
               ng-hide="usrConectado.nivel <= 50 ">
             Administración
           </md-button>
-          <md-button href="/#!/inicio"
+          <md-button ng-href="/#!/inicio"
             class="md-raised md-primary"
             aria-label="Iniciar Sesion"
             ng-hide="usrConectado.estaConectado"  >
@@ -44,7 +44,7 @@
         <span flex="10"></span>
           <md-button class="md-raised md-warn"
             aria-label="Salir"
-            href=""
+            ng-href=""
             ng-show="usrConectado.estaConectado"
             ng-click="vm.salir()" >
             Salir

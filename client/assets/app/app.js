@@ -32,16 +32,32 @@ function appRun ($rootScope,
  // Validacion de usuario en las rutas de la app
  $rootScope.$on('$routeChangeStart', function(event, next, current) {
    if ($cookieStore.get('estaConectado') == false || $cookieStore.get('estaConectado') == null) {
-     if(next.templateUrl == 'views/tareas.html' || next.templateUrl == 'views/empleados.html' ) {
+     if(next.templateUrl == 'administracion/administracion.html' || next.templateUrl == 'empleado/empleado.html' ) {
        $location.path('/inicio');
+     }
+     if (next.templateUrl == 'agenda/agenda.html') {
+       $location.path('/agenda');
      }
    }
    else {
      var usuario = $cookieStore.get('usuario');
 
-     if(next.templateUrl == 'views/inicio.html' || usuario.puesto != 1) {
+
+     if (next.templateUrl == 'agenda/agenda.html') {
+       $location.path('/agenda');
+     }
+     if (next.templateUrl == 'administracion/administracion.html'
+           && usuario[0].nivel == 100) {
+       $location.path('/adminitracion');
+       console.log('flag');
+     }
+     if (next.templateUrl == 'empleado/empleado.html') {
+       $location.path('/empleado');
+     }
+     if(next.templateUrl == 'inicio/inicio.html') {
        $location.path('/');
      }
+
    }
  })
 }
@@ -66,9 +82,14 @@ function appConfig ($routeProvider,
       controllerAs: 'ag'
     })
     .when('/inicio',{
-      templateUrl: '/app/inicio/inicio.html',
+      templateUrl: 'app/inicio/inicio.html',
       controller : 'inicioCtrl',
       controllerAs: 'ini'
+    })
+    .when('/administracion',{
+      templateUrl: 'app/administracion/administracion.html',
+      controller: 'AdminCtrl',
+      controllerAs: 'adm'
     })
     .otherwise({
       redirectTo: '/'
