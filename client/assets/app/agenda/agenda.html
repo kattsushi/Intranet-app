@@ -1,5 +1,5 @@
 <div  layout="row" >
-  <md-content flex="40" id="content" class="md-whiteframe-z2">
+  <md-content flex="70" id="content">
     <md-item-content flex>
     <md-list>
       <md-item ng-repeat="item in ag.users  | startFrom : ag.currentPage*ag.pageSize | filter : item.nombre | limitTo:ag.pageSize"   >
@@ -15,11 +15,11 @@
       </md-item>
     </md-list>
   </md-item-content>
-    <span flex></span>
   </md-content>
-<span flex ></span>
-  <div  layout-wrap>
-      <md-content class="md-whiteframe-z2" layout-padding>
+
+  <div flex="50">
+      <span flex></span>
+      <md-content class="md-whiteframe-z2"  style="padding:2em;margin-left: 3em" >
         <md-item-content>
         <md-input-container class="md-block">
           <input ng-model="item.nombre" placeholder="Buscar">

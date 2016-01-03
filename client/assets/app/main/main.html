@@ -1,5 +1,5 @@
-<md-content flex id="content" class="md-whiteframe-z2">
-  <div class="sample" layout="column" ng-cloak >
+<md-content flex id="content" class="">
+  <div class="md-whiteframe-z2" layout="column" ng-cloak >
     <md-content class="md-padding" >
       <md-tabs md-selected="selectedIndex" md-border-bottom md-autoselect>
         <md-tab ng-repeat="tab in vm.tabs"
@@ -31,10 +31,47 @@
     </form>
   </div>
 </md-content>
-<md-content layout="row">
-  <md-content>
-
-
-  </md-content>
-  <span flex> hola mundo</span>
+<md-content flex="30" layout="column">
+      <md-item-content >
+        <md-card flex style="margin-bottom:1.8em">
+          <md-card-title style="padding:0.9em 0em 0em 3em;">
+            <span class="md-headline" >Calendario Bancario</span>
+          </md-card-title>
+          <md-card-content>
+            <div data-calendario style="padding-bottom:2em">xD</div>
+          </md-card-content>
+        </md-card>
+      <md-item-content>
+      <md-item-content class="md-whiteframe-z2" >
+        <md-card flex>
+        <img ng-src="https://avatars.io/twitter/default/medium" style="max-width:100px"class="md-card-image" alt="Washed Out">
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">Enlaces de Interes</span>
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+          <p>
+          Bancos
+          </p>
+          <p>
+          Noticas
+          </p>
+          <p>
+          Novedades legislativas
+          </p>
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button class="md-icon-button" aria-label="Favorite">
+            <md-icon md-svg-icon="svg/favorite.svg"></md-icon>
+          </md-button>
+          <md-button class="md-icon-button" aria-label="Settings">
+            <md-icon md-svg-icon="svg/menu.svg"></md-icon>
+          </md-button>
+          <md-button class="md-icon-button" aria-label="Share">
+            <md-icon md-svg-icon="svg/share-arrow.svg"></md-icon>
+          </md-button>
+        </md-card-actions>
+      </md-card>
+      <md-item-content>
 </md-content>
