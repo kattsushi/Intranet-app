@@ -68,7 +68,8 @@ var vendor = [
                 'bower_components/spin.js/spin.js',
                 'bower_components/angular-bootstrap/ui-bootstrap.js',
                 'bower_components/bootstrap/dist/js/bootstrap.js',
-                'bower_components/moment/moment.js'];
+                'bower_components/moment/moment.js',
+                'bower_components/retina.js-js/src/retina.js'];
 
 //Directorios de librerias css
 var LibCss =  [

@@ -10,12 +10,42 @@
      <a ng-href="/#!/" class="docs-logo ">
        <img src="img/logoblanco.gif" alt="" style="max-height:100px;padding:0px 10px 0px 10px" />
     </a>
-    <h3 class="docs-logotype md-heading" style="color:white; text-align:center" center flex>Angular Material</h3>
    </div>
  </md-toolbar>
+
     <md-content md-scroll-y flex role="navigation" >
-        <md-list id="accordion" class="accordion">
-        <md-item ng-repeat="menu in vm.titulos ">
+      <nav class="mainNav">
+    		<ul>
+    			<li ng-repeat="menu in vm.titulos"><a href="#">{[{menu.titulo | uppercase }]}</a>
+    				<ul data-ng-show="menu.Submenu != 0">
+    					<li ng-repeat="submenu in menu.Submenu"><a href="#">{[{submenu.nombre}]}</a></li>
+    				</ul>
+    			</li>
+    		</ul>
+    	</nav>
+
+
+      <!--
+      <ul class="mainmenu" >
+    		<li ng-repeat="menu in vm.titulos"><span>{[{menu.titulo | uppercase }]} <i data-ng-show="menu.Submenu != 0" class="fa fa-chevron-down"></i><span>
+    			<ul class="submenu" data-ng-show="menu.Submenu  != 0">
+    				<li ng-repeat="submenu in menu.Submenu"><span>{[{submenu.nombre}]}</span></li>
+    			</ul>
+          </li>
+    	</ul>
+
+
+      <ul class="mainmenu">
+    		<li ng-repeat="menu in vm.titulos"><span>{[{menu.titulo | uppercase }]}<span>
+          <i data-ng-show="menu.Submenu != 0" class="fa fa-chevron-down"></i>
+    			<ul class="submenu" data-ng-show="menu.Submenu  != 0">
+    				<li ng-repeat="submenu in menu.Submenu"><span>{[{submenu.nombre}]}</span></li>
+    			</ul>
+          </li>
+    	</ul>
+
+        <md-list >
+        <md-item ng-repeat="menu in vm.titulos " id="accordion" class="accordion">
           <md-button class="link" style="min-width:250px" >
              {[{menu.titulo | uppercase }]}
           <i data-ng-show="menu.Submenu != 0" class="fa fa-chevron-down"></i>
@@ -29,7 +59,7 @@
             </md-item>
           </md-list>
         </md-item>
-      </md-list>
+      </md-list> -->
 
     </md-content>
 </md-sidenav>

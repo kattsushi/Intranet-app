@@ -28,11 +28,14 @@ var   coreHelpers = {},
           '/js/angular-cookies.js',
           '/js/angular-material-icons.js',
           '/js/jquery.js',
+          '/js/navAccordion.js',
+          '/js/retina.js',
           '/js/bootstrap.js',
           '/js/ui-bootstrap.js',
           '/js/moment.js',
           '/js/spin.js',
           '/js/angular-spinner.js',
+          '/app/ui.js',
           '/app/app.js',
           '/app/main/mainCtrl.js',
           '/app/main/mainServ.js',
@@ -41,8 +44,7 @@ var   coreHelpers = {},
           '/app/agenda/agendaFilt.js',
           '/app/inicio/inicioCtrl.js',
           '/app/usuario/usuarioServ.js',
-          '/app/administracion/adminCtrl.js',
-          '/app/ui.js'
+          '/app/administracion/adminCtrl.js'
         ]
       };
 

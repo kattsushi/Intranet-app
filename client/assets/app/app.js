@@ -149,7 +149,7 @@ function appConfig ($routeProvider,
     //-------------
   $mdThemingProvider
     .theme('default')
-    .primaryPalette('blue',{'default':'900'})
+    .primaryPalette('indigo',{'default':'900'})
     .accentPalette('blue-grey')
     .warnPalette('red');
 
