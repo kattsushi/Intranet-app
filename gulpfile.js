@@ -62,7 +62,7 @@ var vendor = [
                 'bower_components/angular-route/angular-route.js',
                 'bower_components/angular-material/angular-material.js',
                 'bower_components/angular-material-icons/angular-material-icons.js',
-                'bower_components/angular-material-sidenav/angular-material-sidenav.js',
+                'bower_components/angular-sanitize/angular-sanitize.js',
                 'bower_components/jquery/dist/jquery.js',
                 'bower_components/angular-spinner/angular-spinner.js',
                 'bower_components/spin.js/spin.js',

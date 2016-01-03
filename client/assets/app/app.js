@@ -7,7 +7,8 @@ var app = angular
       'ngMaterial',
       'ngRoute',
       'ngCookies',
-      'angularSpinner'
+      'angularSpinner',
+      'ngSanitize'
   ])
   .config(['$routeProvider',
            '$locationProvider',

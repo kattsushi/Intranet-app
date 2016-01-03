@@ -1,14 +1,18 @@
 <md-content flex id="content" class="">
   <div class="md-whiteframe-z2" layout="column" ng-cloak >
-    <md-content class="md-padding" >
+    <md-content flex="60" class="md-padding" >
       <md-tabs md-selected="selectedIndex" md-border-bottom md-autoselect>
         <md-tab ng-repeat="tab in vm.tabs"
                 ng-disabled="tab.disabled"
                 label="{[{tab.title}]}">
+          <md-content flex class="md-padding" style="min-heigth:700px">
+          <h1 class="md-display-2">Tab One</h1>
+          <p ng-bind-html="tab.content"></p>
+          </md-content>
           <div class="demo-tab tab{[{$index%4}]}" style="padding: 25px; text-align: center;">
-            <div ng-bind="tab.content"></div>
+            <div></div>
             <br/>
-            <md-button class="md-primary md-raised" ng-click="vm.removeTab( vm.tab )" ng-disabled="vm.tabs.length <= 1">Remove Tab</md-button>
+            <md-button class="md-primary md-raised" ng-click="vm.removeTab( tab )" ng-disabled="vm.tabs.length <= 1">Remove Tab</md-button>
           </div>
         </md-tab>
       </md-tabs>
@@ -23,7 +27,7 @@
           <input type="text" id="label" ng-model="vm.tTitle">
         </md-input-container>
         <md-input-container>
-          <label for="content">Content</label>
+          <label type="text"for="content">Content</label>
           <input type="text" id="content" ng-model="vm.tContent">
         </md-input-container>
         <md-button class="add-tab md-primary md-raised" ng-disabled="!vm.tTitle || !vm.tContent" type="submit" style="margin-right: 0;">Add Tab</md-button>

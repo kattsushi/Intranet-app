@@ -158,8 +158,8 @@
     */
     //------------------------------------------------------------------------------------------------------
     var tabs = [
-         { title: 'One', content: "Tabs will become paginated if there isn't enough room for them."},
-         { title: 'Two', content: "You can swipe left and right on a mobile device to change tabs."},
+         { title: 'One', content: "<p>Tabs will become paginated if there isn't enough room for them.</p>"},
+         { title: 'Two', content: "<p>You can swipe left and right on a mobile device to change tabs.</p>"},
          { title: 'Three', content: "You can bind the selected tab via the selected attribute on the md-tabs element."},
          { title: 'Four', content: "If you set the selected tab binding to -1, it will leave no tab selected."},
          { title: 'Five', content: "If you remove a tab, it will try to select a new one."},
@@ -176,15 +176,16 @@
    $scope.$watch('selectedIndex', function(current, old){
      previous = selected;
      selected = tabs[current];
-     if ( old + 1 && (old != current)) $log.debug('Goodbye ' + previous.title + '!');
-     if ( current + 1 )                $log.debug('Hello ' + selected.title + '!');
+     //if ( old + 1 && (old != current)) $log.debug('Goodbye ' + previous.title + '!');
+    // if ( current + 1 )                $log.debug('Hello ' + selected.title + '!');
    });
    vm.addTab = function (title, view) {
      view = view || title + " Content View";
      tabs.push({ title: title, content: view, disabled: false});
    };
    vm.removeTab = function (tab) {
-     var index = tabs.indexOf(tab);
+     var index = vm.tabs.indexOf(tab);
+     console.log(index);
      tabs.splice(index, 1);
    };
 
