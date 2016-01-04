@@ -21,7 +21,7 @@
 
      ag.users        = [ ];
      ag.ubicacion = [];
-     ag.pageSize     = 7;
+     ag.pageSize     = 10;
      ag.currentPage  = 0;
      ag.users = agendaServ.query();
 

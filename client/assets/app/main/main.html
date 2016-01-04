@@ -23,18 +23,18 @@
           <h2 class="md-subhead" style="position: absolute; bottom: 0; left: 0; margin: 0; font-weight: 500; text-transform: uppercase; line-height: 35px; white-space: nowrap;">Add a new Tab:</h2>
         </div>
         <md-input-container>
-          <label for="label">Label</label>
+          <label for="label">Titulo</label>
           <input type="text" id="label" ng-model="vm.tTitle">
         </md-input-container>
         <md-input-container>
-          <label type="text"for="content">Content</label>
+          <label type="text"for="content">Contenido</label>
           <input type="text" id="content" ng-model="vm.tContent">
         </md-input-container>
         <md-button class="add-tab md-primary md-raised" ng-disabled="!vm.tTitle || !vm.tContent" type="submit" style="margin-right: 0;">Add Tab</md-button>
-      </div>
+        </div>
+          <md-button class="md-primary md-raised" ng-click="vm.showAdvanced($event)">Agregar Publicacion</md-button>
     </form>
-    <input type="text" ng-model="content"></input>
-    <wysiwyg-edit content="content" api="api"></wysiwyg-edit>
+  
   </div>
 </md-content>
 <md-content flex="30" layout="column">

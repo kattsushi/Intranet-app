@@ -6,6 +6,7 @@
                       $rootScope,
                       mainService,
                       $mdDialog,
+                      $mdMedia,
                       $cookieStore,
                       $location,
                       $http,
@@ -189,6 +190,74 @@
      tabs.splice(index, 1);
    };
 
+   vm.showAdvanced = function (ev) {
+     var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
+     $mdDialog.show({
+       controller: DialogController,
+       templateUrl: 'app/main/gestor.tmpl.html',
+       parent: angular.element(document.body),
+       targetEvent: ev,
+       clickOutsideToClose:true,
+       fullscreen: useFullScreen
+     })
+     .then(function(answer) {
+       $scope.status = 'You said the information was "' + answer + '".';
+     }, function() {
+       $scope.status = 'You cancelled the dialog.';
+     });
+     $scope.$watch(function() {
+       return $mdMedia('xs') || $mdMedia('sm');
+     }, function(wantsFullScreen) {
+       $scope.customFullscreen = (wantsFullScreen === true);
+     });
+   }
+
+   function DialogController($scope, $mdDialog, $q) {
+     $scope.hide = function() {
+       $mdDialog.hide();
+     };
+     $scope.cancel = function() {
+       $mdDialog.cancel();
+     };
+     $scope.answer = function(answer) {
+       $mdDialog.hide(answer);
+     };
+
+     $scope.content = '<p><strong>Hello World!</strong></p><img style="width: 30%;" src="images/logo.png">';
+         $scope.editorConfig = {
+       sanitize: false,
+       toolbar: [
+           { name: 'basicStyling', items: ['bold', 'italic', 'underline', 'strikethrough', 'subscript', 'superscript', '-', 'leftAlign', 'centerAlign', 'rightAlign', 'blockJustify', '-'] },
+           { name: 'paragraph', items: ['orderedList', 'unorderedList', 'outdent', 'indent', '-'] },
+           { name: 'doers', items: ['removeFormatting', 'undo', 'redo', '-'] },
+           { name: 'colors', items: ['fontColor', 'backgroundColor', '-'] },
+           { name: 'links', items: ['image', 'hr', 'symbols', 'link', 'unlink', '-'] },
+           { name: 'tools', items: ['print', '-'] },
+           { name: 'styling', items: ['font', 'size', 'format'] },
+       ]
+         };
+         //describe api
+         $scope.api = {
+       scope: $scope,
+       insertImage: function() {
+           var deferred = $q.defer();
+           $timeout(function() {
+         var val = prompt('Enter image url', 'https://upload.wikimedia.org/wikipedia/commons/c/ca/AngularJS_logo.svg');
+         if(val) {
+             deferred.resolve('<img src="' + val + '" style="width: 30%;">');
+         }
+         else {
+             deferred.reject(null);
+         }
+           }, 1000);
+           return deferred.promise;
+       }
+         };
+         $scope.$watch('content', function(newValue) {
+       $log.info(newValue);
+         });
+   }
+
     //------------------------------------------------------------------------------------------------------
     // Control y configuracion del Editor WYSIWYG
     //------------------------------------------------------------------------------------------------------
@@ -239,6 +308,7 @@
                                      '$rootScope',
                                      'mainService',
                                      '$mdDialog',
+                                     '$mdMedia',
                                      '$cookieStore',
                                      '$location',
                                      '$http',
