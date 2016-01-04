@@ -63,6 +63,7 @@ var vendor = [
                 'bower_components/angular-material/angular-material.js',
                 'bower_components/angular-material-icons/angular-material-icons.js',
                 'bower_components/angular-sanitize/angular-sanitize.js',
+                'bower_components/ngWYSIWYG/js/wysiwyg.js',
                 'bower_components/jquery/dist/jquery.js',
                 'bower_components/angular-spinner/angular-spinner.js',
                 'bower_components/spin.js/spin.js',
@@ -76,7 +77,8 @@ var LibCss =  [
                'bower_components/font-awesome/css/font-awesome.min.css',
                'bower_components/font-awesome/css/font-awesome.css.map',
                'bower_components/angular-material-icons/angular-material-icons.css',
-               'bower_components/angular-material/angular-material.css'
+               'bower_components/angular-material/angular-material.css',
+               'bower_components/ngWYSIWYG/css/editor.css'
                 ];
 var fonts = ['bower_components/font-awesome/fonts/fontawesome-webfont.woff',
              'bower_components/font-awesome/fonts/fontawesome-webfont.woff2',

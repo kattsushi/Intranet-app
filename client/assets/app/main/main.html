@@ -33,6 +33,8 @@
         <md-button class="add-tab md-primary md-raised" ng-disabled="!vm.tTitle || !vm.tContent" type="submit" style="margin-right: 0;">Add Tab</md-button>
       </div>
     </form>
+    <input type="text" ng-model="content"></input>
+    <wysiwyg-edit content="content" api="api"></wysiwyg-edit>
   </div>
 </md-content>
 <md-content flex="30" layout="column">

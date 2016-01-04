@@ -1,5 +1,10 @@
 /**
- * @license AngularJS v1.2.29
+ * Orignally textAngular-sanitaize
+ * https://github.com/fraywing/textAngular
+ */
+
+/**
+ * @license AngularJS v1.3.0-build.2711+sha.facd904
  * (c) 2010-2014 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -42,7 +47,7 @@ var $sanitizeMinErr = angular.$$minErr('$sanitize');
 /**
  * @ngdoc service
  * @name $sanitize
- * @kind function
+ * @function
  *
  * @description
  *   The input is sanitized by parsing the html into tokens. All safe tokens (from a whitelist) are
@@ -57,21 +62,20 @@ var $sanitizeMinErr = angular.$$minErr('$sanitize');
  * @returns {string} Sanitized html.
  *
  * @example
-   <example module="sanitizeExample" deps="angular-sanitize.js">
+   <example module="ngSanitize" deps="angular-sanitize.js">
    <file name="index.html">
      <script>
-         angular.module('sanitizeExample', ['ngSanitize'])
-           .controller('ExampleController', ['$scope', '$sce', function($scope, $sce) {
-             $scope.snippet =
-               '<p style="color:blue">an html\n' +
-               '<em onmouseover="this.textContent=\'PWN3D!\'">click here</em>\n' +
-               'snippet</p>';
-             $scope.deliberatelyTrustDangerousSnippet = function() {
-               return $sce.trustAsHtml($scope.snippet);
-             };
-           }]);
+       function Ctrl($scope, $sce) {
+         $scope.snippet =
+           '<p style="color:blue">an html\n' +
+           '<em onmouseover="this.textContent=\'PWN3D!\'">click here</em>\n' +
+           'snippet</p>';
+         $scope.deliberatelyTrustDangerousSnippet = function() {
+           return $sce.trustAsHtml($scope.snippet);
+         };
+       }
      </script>
-     <div ng-controller="ExampleController">
+     <div ng-controller="Ctrl">
         Snippet: <textarea ng-model="snippet" cols="60" rows="3"></textarea>
        <table>
          <tr>
@@ -159,11 +163,11 @@ function sanitizeText(chars) {
 
 // Regular Expressions for parsing tags and attributes
 var START_TAG_REGEXP =
-       /^<((?:[a-zA-Z])[\w:-]*)((?:\s+[\w:-]+(?:\s*=\s*(?:(?:"[^"]*")|(?:'[^']*')|[^>\s]+))?)*)\s*(\/?)\s*(>?)/,
-  END_TAG_REGEXP = /^<\/\s*([\w:-]+)[^>]*>/,
+       /^<\s*([\w:-]+)((?:\s+[\w:-]+(?:\s*=\s*(?:(?:"[^"]*")|(?:'[^']*')|[^>\s]+))?)*)\s*(\/?)\s*>/,
+  END_TAG_REGEXP = /^<\s*\/\s*([\w:-]+)[^>]*>/,
   ATTR_REGEXP = /([\w:-]+)(?:\s*=\s*(?:(?:"((?:[^"])*)")|(?:'((?:[^'])*)')|([^>\s]+)))?/g,
   BEGIN_TAG_REGEXP = /^</,
-  BEGING_END_TAGE_REGEXP = /^<\//,
+  BEGING_END_TAGE_REGEXP = /^<\s*\//,
   COMMENT_REGEXP = /<!--(.*?)-->/g,
   DOCTYPE_REGEXP = /<!DOCTYPE([^>]*?)>/i,
   CDATA_REGEXP = /<!\[CDATA\[(.*?)]]>/g,
@@ -237,18 +241,10 @@ function makeMap(str) {
  * @param {object} handler
  */
 function htmlParser( html, handler ) {
-  if (typeof html !== 'string') {
-    if (html === null || typeof html === 'undefined') {
-      html = '';
-    } else {
-      html = '' + html;
-    }
-  }
-  var index, chars, match, stack = [], last = html, text;
+  var index, chars, match, stack = [], last = html;
   stack.last = function() { return stack[ stack.length - 1 ]; };
 
   while ( html ) {
-    text = '';
     chars = true;
 
     // Make sure we're not in a script or style element
@@ -287,23 +283,16 @@ function htmlParser( html, handler ) {
         match = html.match( START_TAG_REGEXP );
 
         if ( match ) {
-          // We only have a valid start-tag if there is a '>'.
-          if ( match[4] ) {
-            html = html.substring( match[0].length );
-            match[0].replace( START_TAG_REGEXP, parseStartTag );
-          }
+          html = html.substring( match[0].length );
+          match[0].replace( START_TAG_REGEXP, parseStartTag );
           chars = false;
-        } else {
-          // no ending tag found --- this piece should be encoded as an entity.
-          text += '<';
-          html = html.substring(1);
         }
       }
 
       if ( chars ) {
         index = html.indexOf("<");
 
-        text += index < 0 ? html : html.substring( 0, index );
+        var text = index < 0 ? html : html.substring( 0, index );
         html = index < 0 ? "" : html.substring( index );
 
         if (handler.chars) handler.chars( decodeEntities(text) );
@@ -427,10 +416,91 @@ function encodeEntities(value) {
       return '&#' + (((hi - 0xD800) * 0x400) + (low - 0xDC00) + 0x10000) + ';';
     }).
     replace(NON_ALPHANUMERIC_REGEXP, function(value){
-      return '&#' + value.charCodeAt(0) + ';';
+      // unsafe chars are: \u0000-\u001f \u007f-\u009f \u00ad \u0600-\u0604 \u070f \u17b4 \u17b5 \u200c-\u200f \u2028-\u202f \u2060-\u206f \ufeff \ufff0-\uffff from jslint.com/lint.html
+      // decimal values are: 0-31, 127-159, 173, 1536-1540, 1807, 6068, 6069, 8204-8207, 8232-8239, 8288-8303, 65279, 65520-65535
+      var c = value.charCodeAt(0);
+      // if unsafe character encode
+      if(c <= 159 ||
+        c == 173 ||
+        (c >= 1536 && c <= 1540) ||
+        c == 1807 ||
+        c == 6068 ||
+        c == 6069 ||
+        (c >= 8204 && c <= 8207) ||
+        (c >= 8232 && c <= 8239) ||
+        (c >= 8288 && c <= 8303) ||
+        c == 65279 ||
+        (c >= 65520 && c <= 65535)) return '&#' + c + ';';
+      return value; // avoids multilingual issues
     }).
     replace(/</g, '&lt;').
     replace(/>/g, '&gt;');
+}
+
+var trim = (function() {
+  // native trim is way faster: http://jsperf.com/angular-trim-test
+  // but IE doesn't have it... :-(
+  // TODO: we should move this into IE/ES5 polyfill
+  if (!String.prototype.trim) {
+    return function(value) {
+      return angular.isString(value) ? value.replace(/^\s\s*/, '').replace(/\s\s*$/, '') : value;
+    };
+  }
+  return function(value) {
+    return angular.isString(value) ? value.trim() : value;
+  };
+})();
+
+// Custom logic for accepting certain style options only - textAngular
+// Currently allows only the color, background-color, text-align, float, width and height attributes
+// all other attributes should be easily done through classes.
+function validStyles(styleAttr){
+	var result = '';
+	var styleArray = styleAttr.split(';');
+	angular.forEach(styleArray, function(value){
+		var v = value.split(':');
+		if(v.length == 2){
+			var key = trim(angular.lowercase(v[0]));
+			var value = trim(angular.lowercase(v[1]));
+			if(
+				(key === 'color' || key === 'background-color') && (
+					value.match(/^rgb\([0-9%,\. ]*\)$/i)
+					|| value.match(/^rgba\([0-9%,\. ]*\)$/i)
+					|| value.match(/^hsl\([0-9%,\. ]*\)$/i)
+					|| value.match(/^hsla\([0-9%,\. ]*\)$/i)
+					|| value.match(/^#[0-9a-f]{3,6}$/i)
+					|| value.match(/^[a-z]*$/i)
+				)
+			||
+				key === 'text-align' && (
+					value === 'left'
+					|| value === 'right'
+					|| value === 'center'
+					|| value === 'justify'
+				)
+			||
+				key === 'float' && (
+					value === 'left'
+					|| value === 'right'
+					|| value === 'none'
+				)
+			||
+				(key === 'width' || key === 'height') && (
+					value.match(/[0-9\.]*(px|em|rem|%)/)
+				)
+			) result += key + ': ' + value + ';';
+		}
+	});
+	return result;
+}
+
+// this function is used to manually allow specific attributes on specific tags with certain prerequisites
+function validCustomTag(tag, attrs, lkey, value){
+	// catch the div placeholder for the iframe replacement
+    if (tag === 'img' && attrs['ta-insert-video']){
+        if(lkey === 'ta-insert-video' || lkey === 'allowfullscreen' || lkey === 'frameborder' || (lkey === 'contenteditble' && value === 'false')) return true;
+    }
+    return false;
 }
 
 /**
@@ -457,8 +527,8 @@ function htmlSanitizeWriter(buf, uriValidator){
         out(tag);
         angular.forEach(attrs, function(value, key){
           var lkey=angular.lowercase(key);
-          var isImage = (tag === 'img' && lkey === 'src') || (lkey === 'background');
-          if (validAttrs[lkey] === true &&
+          var isImage=(tag === 'img' && lkey === 'src') || (lkey === 'background');
+          if ((lkey === 'style' && (value = validStyles(value)) !== '') || validCustomTag(tag, attrs, lkey, value) || validAttrs[lkey] === true &&
             (uriAttrs[lkey] !== true || uriValidator(value, isImage))) {
             out(' ');
             out(key);
@@ -498,7 +568,7 @@ angular.module('ngSanitize', []).provider('$sanitize', $SanitizeProvider);
 /**
  * @ngdoc filter
  * @name linky
- * @kind function
+ * @function
  *
  * @description
  * Finds links in text input and turns them into html links. Supports http/https/ftp/mailto and
@@ -514,21 +584,20 @@ angular.module('ngSanitize', []).provider('$sanitize', $SanitizeProvider);
    <span ng-bind-html="linky_expression | linky"></span>
  *
  * @example
-   <example module="linkyExample" deps="angular-sanitize.js">
+   <example module="ngSanitize" deps="angular-sanitize.js">
      <file name="index.html">
        <script>
-         angular.module('linkyExample', ['ngSanitize'])
-           .controller('ExampleController', ['$scope', function($scope) {
-             $scope.snippet =
-               'Pretty text with some links:\n'+
-               'http://angularjs.org/,\n'+
-               'mailto:us@somewhere.org,\n'+
-               'another@somewhere.org,\n'+
-               'and one more: ftp://127.0.0.1/.';
-             $scope.snippetWithTarget = 'http://angularjs.org/';
-           }]);
+         function Ctrl($scope) {
+           $scope.snippet =
+             'Pretty text with some links:\n'+
+             'http://angularjs.org/,\n'+
+             'mailto:us@somewhere.org,\n'+
+             'another@somewhere.org,\n'+
+             'and one more: ftp://127.0.0.1/.';
+           $scope.snippetWithTarget = 'http://angularjs.org/';
+         }
        </script>
-       <div ng-controller="ExampleController">
+       <div ng-controller="Ctrl">
        Snippet: <textarea ng-model="snippet" cols="60" rows="3"></textarea>
        <table>
          <tr>
@@ -597,7 +666,7 @@ angular.module('ngSanitize', []).provider('$sanitize', $SanitizeProvider);
  */
 angular.module('ngSanitize').filter('linky', ['$sanitize', function($sanitize) {
   var LINKY_URL_REGEXP =
-        /((ftp|https?):\/\/|(mailto:)?[A-Za-z0-9._%+-]+@)\S*[^\s.;,(){}<>"]/,
+        /((ftp|https?):\/\/|(mailto:)?[A-Za-z0-9._%+-]+@)\S*[^\s.;,(){}<>]/,
       MAILTO_REGEXP = /^mailto:/;
 
   return function(text, target) {
@@ -634,9 +703,9 @@ angular.module('ngSanitize').filter('linky', ['$sanitize', function($sanitize) {
         html.push(target);
         html.push('" ');
       }
-      html.push('href="',
-                url.replace('"', '&quot;'),
-                '">');
+      html.push('href="');
+      html.push(url);
+      html.push('">');
       addText(text);
       html.push('</a>');
     }

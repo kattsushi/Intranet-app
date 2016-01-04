@@ -8,18 +8,13 @@
    * @constructor
    */
 
-    function AdminCtrl ($scope, $q, usuarioServ, $log, $cookieStore, $location, $resource,$mdDialog) {
+    function AdminCtrl ($scope, $q, $log, $timeout, $cookieStore) {
+
+  
 
 
-}
+    }
       angular.module('App')
-             .controller('AdminCtrl',['$scope',
-                                       '$q',
-                                       'usuarioServ',
-                                       '$log',
-                                       '$cookieStore',
-                                       '$location',
-                                       '$resource',
-                                       '$mdDialog',
+             .controller('AdminCtrl',['$scope', '$q', '$log', '$timeout', '$cookieStore',
                                         AdminCtrl]);
 })();

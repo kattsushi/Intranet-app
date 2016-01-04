@@ -8,7 +8,8 @@ var app = angular
       'ngRoute',
       'ngCookies',
       'angularSpinner',
-      'ngSanitize'
+      'ngSanitize',
+      'ngWYSIWYG'
   ])
   .config(['$routeProvider',
            '$locationProvider',
@@ -16,14 +17,13 @@ var app = angular
            'usSpinnerConfigProvider',
            '$mdThemingProvider',
            '$mdIconProvider'
-    ,appConfig])
-
+           ,appConfig])
     // Validacion de usuarios con cookies
-
   .run(['$rootScope',
         '$location',
         '$cookieStore'
-    ,appRun]);
+        ,appRun]);
+
 
 
 
