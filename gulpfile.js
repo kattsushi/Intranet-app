@@ -64,10 +64,11 @@ var vendor = [
                 'bower_components/angular-material-icons/angular-material-icons.js',
                 'bower_components/angular-sanitize/angular-sanitize.js',
                 'bower_components/ngWYSIWYG/js/wysiwyg.js',
-                'bower_components/jquery/dist/jquery.js',
                 'bower_components/angular-spinner/angular-spinner.js',
-                'bower_components/spin.js/spin.js',
                 'bower_components/angular-bootstrap/ui-bootstrap.js',
+                'bower_components/angular-material-data-table/dist/md-data-table.js',
+                'bower_components/jquery/dist/jquery.js',
+                'bower_components/spin.js/spin.js',
                 'bower_components/bootstrap/dist/js/bootstrap.js',
                 'bower_components/moment/moment.js',
                 'bower_components/retina.js-js/src/retina.js'];
@@ -78,7 +79,8 @@ var LibCss =  [
                'bower_components/font-awesome/css/font-awesome.css.map',
                'bower_components/angular-material-icons/angular-material-icons.css',
                'bower_components/angular-material/angular-material.css',
-               'bower_components/ngWYSIWYG/css/editor.css'
+               'bower_components/ngWYSIWYG/css/editor.css',
+               'bower_components/angular-material-data-table/dist/md-data-table.css'
                 ];
 var fonts = ['bower_components/font-awesome/fonts/fontawesome-webfont.woff',
              'bower_components/font-awesome/fonts/fontawesome-webfont.woff2',

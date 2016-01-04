@@ -11,7 +11,8 @@
 
      var ag = this;
 
-    ag.selected     = null;
+    ag.selected = [];
+    //ag.selected     = null;
     ag.selectUser   = selectUser;
     ag.toggleList   = toggleUsersList;
     ag.share        = share;
@@ -20,7 +21,7 @@
 
      ag.users        = [ ];
      ag.ubicacion = [];
-     ag.pageSize     = 6;
+     ag.pageSize     = 7;
      ag.currentPage  = 0;
      ag.users = agendaServ.query();
 

@@ -27,7 +27,7 @@
     "angular-bootstrap": "latest",
     "angular-ui-tree": "latest",
     "textAngular": "latest",
-    "ngWYSIWYG":"latest",
+    "ngWYSIWYG": "latest",
     "angular-wizard": "latest",
     "bootstrap": "latest",
     "bootstrap-file-input": "latest",
@@ -47,7 +47,8 @@
     "angular-spinner": "~0.8.0",
     "angular-material": "latest",
     "angular-material-icons": "~0.6.0",
-    "retina.js-js": "~1.0.2"
+    "retina.js-js": "~1.0.2",
+    "angular-material-data-table": "~0.9.4"
   },
   "ignore": [
     "**/.*",

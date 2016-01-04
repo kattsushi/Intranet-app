@@ -4,7 +4,7 @@
 
   var monthNames = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio',
    'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
-  var days = ['D', 'L', 'M', 'W', 'J', 'V', 'S'];
+  var days = ['D', 'L', 'M', 'M', 'J', 'V', 'S'];
 
   var isLeapYear = function (year) {
     return ((year % 4 === 0) && (year % 100 !== 0)) || (year % 400 === 0);
@@ -33,13 +33,13 @@
     if (!dates || !dates.length) dates = [currentDate.getDate()];
 
     var tpl = [
-      '<div class="cal">',
-      '<table class="cal">',
+      '<md-table-container class="cal">',
+      '<table  md-table class="cal" style="padding-bottom:2em">',
       '<tr><th colspan="7">' + heading + '</th></tr>',
       '<tr>'];
 
     days.forEach(function (day) {
-      tpl.push('<td class="cal-head">' + day.toUpperCase() + '</td>');
+      tpl.push('<td md-cell class="cal-head" style="padding:0px">' + day.toUpperCase() + '</td>');
     });
     tpl.push('</tr>');
 

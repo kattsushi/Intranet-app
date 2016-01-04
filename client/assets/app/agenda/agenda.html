@@ -1,44 +1,56 @@
-<div  layout="row" >
-  <md-content flex="70" id="content">
-    <md-item-content flex>
-    <md-list>
-      <md-item ng-repeat="item in ag.users  | startFrom : ag.currentPage*ag.pageSize | filter : item.nombre | limitTo:ag.pageSize"   >
-        <md-item-content value="{[{item.id}]}" layout="row" class="md-whiteframe-z1" layout-padding style="padding:0 3em 0 3em;margin-left:1em">
-          <div class="md-tile-left">
-              <img ng-src="https://avatars.io/twitter/default/medium" class="avatar" style="max-width:70px;padding:0.2em">
-          </div>
-          <div class="md-tile-content">
-            <h3>{[{item.nombre}]}</h3>
-            <h4>{[{item.Directorio.extension}]}</h4>
-          </div>
-        </md-item-content>
-      </md-item>
-    </md-list>
-  </md-item-content>
-  </md-content>
-
+<div  layout="column" >
   <div flex="50">
       <span flex></span>
-      <md-content class="md-whiteframe-z2"  style="padding:2em;margin-left: 3em" >
-        <md-item-content>
-        <md-input-container class="md-block">
-          <input ng-model="item.nombre" placeholder="Buscar">
+      <md-content class="md-whiteframe-z2" style="padding:0.6em;margin-left: 0.1em" >
+        <md-item-content style="margin:0;">
+        <md-input-container md-no-float md-icon-float class="md-block" style="padding-top:0.8em" layout="row" >
+          <input ng-model="buscar" flex  placeholder="Buscar">
+          <i class="fa fa-search" style="font-size:2.1em"></i>
          </md-input-container>
        </md-item-content>
-
-
+      <md-item-content layout-align="center center">
       <md-button type="button"
-       class="md-raised md-primary"
+       aria-label="atras"
+       class="md-icon-button"
        ng-disabled="ag.currentPage == 0"
        ng-click="ag.currentPage=ag.currentPage-1"
-       name="Atras">Atras</md-button>
+       name="Atras"><i style="font-size:1.5em" class="fa fa-chevron-left"></i></md-button>
         {[{ag.currentPage+1}]} / {[{ag.numberOfPages()}]}
       <md-button type="button"
-        class="md-raised md-primary"
+        aria-label="siguiente"
+        class="md-icon-button"
         ng-disabled="ag.currentPage >= ag.numberOfUsers/ag.pageSize - 1"
         ng-click="ag.currentPage=ag.currentPage+1"
-       name="Siguiente">Siguiente</md-button>
+       name="Siguiente"><i style="font-size:1.5em" class="fa fa-chevron-right"></i></md-button>
+       <md-item-content>
         </md-content>
    </div>
-
+  <md-content flex="70" id="content" layout="column" >
+    <md-item-content class="md-whiteframe-z2">
+      <md-table-container >
+        <table md-table md-row-select ng-model="ag.selected" md-progress="promise">
+          <thead md-head md-order="ag.users.nombre" >
+            <tr md-row>
+              <th md-column md-order-by="nameToLower"><span>Nombre</span></th>
+              <th md-column md-numeric md-order-by="calories.value"><span>Cargo</span></th>
+              <th md-column md-numeric>Departamento</th>
+              <th md-column md-numeric>Ubicacion</th>
+              <th md-column md-numeric>Extension</th>
+              <th md-column md-numeric>Correo</th>
+            </tr>
+          </thead>
+          <tbody md-body>
+            <tr md-row md-select="item.nombre" md-select-id="{[{item.nombre}]}" md-auto-select ng-repeat="item in ag.users  | startFrom : ag.currentPage*ag.pageSize | filter : buscar | limitTo:ag.pageSize">
+              <td md-cell>{[{item.nombre}]}</td>
+              <td md-cell>{[{item.Directorio.cargo}]}</td>
+              <td md-cell>{[{item.Directorio.departmento}]}</td>
+              <td md-cell>{[{item.Directorio.ubicacion}]}</td>
+              <td md-cell>{[{item.Directorio.extension}]}</td>
+              <td md-cell>{[{item.Directorio.correo}]}</td>
+            </tr>
+          </tbody>
+        </table>
+      </md-table-container>
+    </md-item-content>
+  </md-content>
  </div>

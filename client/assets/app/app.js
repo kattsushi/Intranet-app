@@ -9,7 +9,8 @@ var app = angular
       'ngCookies',
       'angularSpinner',
       'ngSanitize',
-      'ngWYSIWYG'
+      'ngWYSIWYG',
+      'md.data.table'
   ])
   .config(['$routeProvider',
            '$locationProvider',

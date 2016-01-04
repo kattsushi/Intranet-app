@@ -73,7 +73,7 @@ div.cal {
 				//border-top: 1px solid #444;
 			}
 			.mainNav ul li a {
-				color: #000043;
+				color: #1A237E;
 				display: block;
 				font-size: 1.1em;
 				line-height: normal;
@@ -90,7 +90,7 @@ div.cal {
 				}
 				.mainNav ul ul li {
 					border-top: 1px solid #222;
-					background: #000066;
+					background: #1A237E;
 				}
 				.mainNav ul ul li a {
 					color: #FFFFFF;
@@ -128,107 +128,3 @@ div.cal {
 		@media screen and (max-width: 700px) {
 			.mainNav {width: 100%;}
 		}
-
-
-
-/*
-  .accordion {
- 	width: 100%;
- 	max-width: 360px;
- 	margin: 30px auto 20px;
- 	background: #FFF;
- 	-webkit-border-radius: 4px;
- 	-moz-border-radius: 4px;
- 	border-radius: 4px;
- }
-
-.accordion .link {
-	cursor: pointer;
-	display: block;
-	padding: 15px 15px 15px 42px;
-	color: #4D4D4D;
-	font-size: 14px;
-	font-weight: 700;
-	border-bottom: 1px solid #CCC;
-	position: relative;
-	-webkit-transition: all 0.4s ease;
-	-o-transition: all 0.4s ease;
-	transition: all 0.4s ease;
-}
-
-.accordion li:last-child .link {
-	border-bottom: 0;
-}
-
-.accordion li i {
-	position: absolute;
-	top: 16px;
-	left: 12px;
-	font-size: 18px;
-	color: #595959;
-	-webkit-transition: all 0.4s ease;
-	-o-transition: all 0.4s ease;
-	transition: all 0.4s ease;
-}
-
-.accordion md-item i.fa-chevron-down {
-	right: 12px;
-	left: auto;
-	font-size: 16px;
-}
-
-.accordion md-item.open .link {
-	color: #0D47A1;
-}
-
-.accordion md-item.open i {
-	color: #0D47A1;
-}
-.accordion md-item.open i.fa-chevron-down {
-	-webkit-transform: rotate(180deg);
-	-ms-transform: rotate(180deg);
-	-o-transform: rotate(180deg);
-	transform: rotate(180deg);
-}
-
-/**
- * Submenu
- -----------------------------
- .submenu {
- 	display: none;
- 	background: #eee;
- 	font-size: 14px;
- }
-
- .submenu md-item {
- 	border-bottom: 1px solid #4b4a5e;
- }
-
- .submenu a {
- 	display: block;
- 	text-decoration: none;
- 	color: #0D47A1;
- 	padding: 12px;
- 	padding-left: 42px;
- 	-webkit-transition: all 0.25s ease;
- 	-o-transition: all 0.25s ease;
- 	transition: all 0.25s ease;
- }
-
- .submenu a:hover {
- 	background: #0D47A1;
- 	color: #black;
-  height: 100%;
- }
-
-.mensaje {
-	color: white;
-}
-
-
- prueba menu
-
-a.menus-t {
-    color: aliceblue;
-}
-*/
