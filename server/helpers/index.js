@@ -48,6 +48,8 @@ var   coreHelpers = {},
           '/app/inicio/inicioCtrl.js',
           '/app/usuario/usuarioServ.js',
           '/app/administracion/adminCtrl.js',
+          '/app/paginas/paginasCtrl.js',
+          '/app/paginas/paginasServ.js',
           '/app/calendario/calendarioDir.js'
         ]
       };

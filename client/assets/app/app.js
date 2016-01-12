@@ -35,34 +35,42 @@ function appRun ($rootScope,
  $rootScope.$on('$routeChangeStart', function(event, next, current) {
 
    var usuario = $cookieStore.get('usuario');
+
    if ($cookieStore.get('estaConectado') == false || $cookieStore.get('estaConectado') == null) {
-     if(next.templateUrl == 'app/administracion/administracion.html' || next.templateUrl == 'app/empleado/empleado.html' ) {
+     if(next.templateUrl == 'app/administracion/administracion.html' || next.templateUrl == 'app/empleado/empleado.html'
+             || next.templateUrl == 'app/paginas/paginas.html'  ) {
+
        $location.path('/inicio');
      }
      if (next.templateUrl == 'app/agenda/agenda.html') {
        $location.path('/agenda');
      }
+
+
   }
    else {
 
      if (next.templateUrl == 'app/administracion/administracion.html'
            && usuario.nivel === 100) {
-       $location.path('/agenda');
+       $location.path('/administracion');
+       console.log('flag');
+     }
+
+     if (next.templateUrl == 'app/paginas/paginas.html'
+           && usuario.nivel === 100) {
+       $location.path('/paginas');
        console.log('flag');
      }
 
      if (next.templateUrl == 'app/agenda/agenda.html') {
        $location.path('/agenda');
      }
-     if (next.templateUrl == 'app/administracion/administracion.html'
-           && usuario.nivel === 100) {
-       $location.path('/adminitracion');
-       console.log('flag');
-     }
+
+
      if (next.templateUrl == 'app/empleado/empleado.html') {
        $location.path('/empleado');
      }
-     if(next.templateUrl == 'app/inicio/inicio.html') {
+     if (next.templateUrl == 'app/inicio/inicio.html') {
        $location.path('/');
      }
 
@@ -98,6 +106,11 @@ function appConfig ($routeProvider,
       templateUrl: 'app/administracion/administracion.html',
       controller: 'AdminCtrl',
       controllerAs: 'adm'
+    })
+    .when('/paginas',{
+      templateUrl: 'app/paginas/paginas.html',
+      controller: 'paginaCtrl',
+      controllerAs: 'pag'
     })
     .otherwise({
       redirectTo: '/'

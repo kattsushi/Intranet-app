@@ -1,0 +1,28 @@
+<md-content flex class="md-padding md-whiteframe-z2">
+  <form class="" >
+    <md-content flex class="md-padding md-whiteframe-z2">
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Titulo</label>
+          <input ng-model="pag.titulo">
+        </md-input-container>
+<div class="" id="divID">
+
+</div>
+        <md-input-container>
+          <p ng-bind="pag.categoria">
+
+          </p>
+        <label>Categoria</label>
+        <md-select ng-model="pag.categoria">
+          <md-option ng-repeat="categoria in pag.categorias" value="{[{categoria.id}]}" >
+            {[{categoria.titulo}]}
+          </md-option>
+        </md-select>
+      </md-input-container>
+
+       <wysiwyg-edit content="pag.tContent" api="api"></wysiwyg-edit>
+
+       <md-button type="button" name="button" ng-click="pag.Guardar(pag.tContent)" class="md-primary md-raised">Guardar</md-button>
+      </md-content>
+  </form>
+</md-content>

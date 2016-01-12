@@ -1,80 +1,59 @@
-<md-content flex id="content" class="">
+<div class="main" layout="row">
   <div class="md-whiteframe-z2" layout="column" ng-cloak >
-    <md-content flex="60" class="md-padding" >
-      <md-tabs md-selected="selectedIndex" md-border-bottom md-autoselect>
-        <md-tab ng-repeat="tab in vm.tabs"
-                ng-disabled="tab.disabled"
-                label="{[{tab.title}]}">
-          <md-content flex class="md-padding" style="min-heigth:700px">
-          <h1 class="md-display-2">Tab One</h1>
-          <p ng-bind-html="tab.content"></p>
-          </md-content>
-          <div class="demo-tab tab{[{$index%4}]}" style="padding: 25px; text-align: center;">
-            <div></div>
-            <br/>
-            <md-button class="md-primary md-raised" ng-click="vm.removeTab( tab )" ng-disabled="vm.tabs.length <= 1">Remove Tab</md-button>
-          </div>
-        </md-tab>
-      </md-tabs>
+    <md-content  layout="column" class="md-whiteframe-z2" style="min-width:1000px; max-width:1000px" layout-padding>
+      <h1 class=".md-display-3"> Titlulo</h1>
+      <md-divider ></md-divider>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+         sed do eiusmod tempor incididunt ut labore et dolore
+          magna aliqua. Ut enim ad minim veniam, quis nostrud
+           exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+           Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+           dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+           sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
     </md-content>
-    <form ng-submit="vm.addTab(vm.tTitle,vm.tContent)" layout="column" class="md-padding" style="padding-top: 0;">
-      <div layout="row" layout-sm="column">
-        <div flex style="position: relative;">
-          <h2 class="md-subhead" style="position: absolute; bottom: 0; left: 0; margin: 0; font-weight: 500; text-transform: uppercase; line-height: 35px; white-space: nowrap;">Add a new Tab:</h2>
-        </div>
-        <md-input-container>
-          <label for="label">Titulo</label>
-          <input type="text" id="label" ng-model="vm.tTitle">
-        </md-input-container>
-        <md-input-container>
-          <label type="text"for="content">Contenido</label>
-          <input type="text" id="content" ng-model="vm.tContent">
-        </md-input-container>
-        <md-button class="add-tab md-primary md-raised" ng-disabled="!vm.tTitle || !vm.tContent" type="submit" style="margin-right: 0;">Add Tab</md-button>
-        </div>
-          <md-button class="md-primary md-raised" ng-click="vm.showAdvanced($event)">Agregar Publicacion</md-button>
-    </form>
-  
-  </div>
-</md-content>
-<md-content flex="30" layout="column">
-      <md-item-content >
-        <md-card flex style="margin-bottom:1.8em">
-           <md-card-content>
-            <div data-calendario style="padding-bottom:2em">xD</div>
-          </md-card-content>
-        </md-card>
-      <md-item-content>
+    <md-button type="button" name="button" ng-href="/#!/paginas" class="md-primary md-raised"> Crear pagina</md-button>
+
+    </div>
+    <md-content flex layout="column">
+        <md-item-content >
+          <md-card flex style="margin-bottom:1.8em">
+             <md-card-content>
+              <div data-calendario style="padding-bottom:2em">xD</div>
+            </md-card-content>
+          </md-card>
       <md-item-content class="md-whiteframe-z2" >
-        <md-card flex>
-        <img ng-src="https://avatars.io/twitter/default/medium" style="max-width:100px"class="md-card-image" alt="Washed Out">
-        <md-card-title>
-          <md-card-title-text>
-            <span class="md-headline">Enlaces de Interes</span>
-          </md-card-title-text>
-        </md-card-title>
-        <md-card-content>
-          <p>
-          Bancos
-          </p>
-          <p>
-          Noticas
-          </p>
-          <p>
-          Novedades legislativas
-          </p>
-        </md-card-content>
-        <md-card-actions layout="row" layout-align="end center">
-          <md-button class="md-icon-button" aria-label="Favorite">
-            <md-icon md-svg-icon="svg/favorite.svg"></md-icon>
-          </md-button>
-          <md-button class="md-icon-button" aria-label="Settings">
-            <md-icon md-svg-icon="svg/menu.svg"></md-icon>
-          </md-button>
-          <md-button class="md-icon-button" aria-label="Share">
-            <md-icon md-svg-icon="svg/share-arrow.svg"></md-icon>
-          </md-button>
-        </md-card-actions>
-      </md-card>
-      <md-item-content>
-</md-content>
+          <md-card flex>
+          <img ng-src="https://avatars.io/twitter/default/medium" style="max-width:100px"class="md-card-image" alt="Washed Out">
+          <md-card-title>
+            <md-card-title-text>
+              <span class="md-headline">Enlaces de Interes</span>
+            </md-card-title-text>
+          </md-card-title>
+          <md-card-content>
+            <p>
+            Bancos
+            </p>
+            <p>
+            Noticas
+            </p>
+            <p>
+            Novedades legislativas
+            </p>
+          </md-card-content>
+          <md-card-actions layout="row" layout-align="end center">
+            <md-button class="md-icon-button" aria-label="Favorite">
+              <md-icon md-svg-icon="svg/favorite.svg"></md-icon>
+            </md-button>
+            <md-button class="md-icon-button" aria-label="Settings">
+              <md-icon md-svg-icon="svg/menu.svg"></md-icon>
+            </md-button>
+            <md-button class="md-icon-button" aria-label="Share">
+              <md-icon md-svg-icon="svg/share-arrow.svg"></md-icon>
+            </md-button>
+          </md-card-actions>
+        </md-card>
+      </md-item-content>
+    </md-content>
+</div>
