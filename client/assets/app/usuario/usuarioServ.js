@@ -3,7 +3,7 @@
   function usuarioServ ($resource) {
 
     var factory = {
-        iniciar : $resource('http://localhost:3000/inicio'	, {} , {
+        iniciar : $resource('https://intranet-app.herokuapp.com/inicio'	, {} , {
           sesion:{method:'GET', isArray : true, params: {nombreUsuario: '@nombreUsuario', clave: '@clave'}}
           })
         }

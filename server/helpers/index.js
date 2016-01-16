@@ -46,9 +46,9 @@ var   coreHelpers = {},
           '/app/administracion/adminCtrl.js',
           '/app/paginas/paginasCtrl.js',
           '/app/paginas/paginasServ.js',
-          '/app/calendario/calendarioDir.js',
-          '/js/vendor.min.js',
-          '/js/app.min.js'
+          '/app/calendario/calendarioDir.js'
+          //, '/js/vendor.min.js',
+          //'/js/app.min.js'
         ],
         development: [
           '/js/angular.js',
