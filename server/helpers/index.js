@@ -139,7 +139,6 @@ coreHelpers.encode = function(context, str) {
   return new hbs.handlebars.SafeString(encodeURIComponent(uri));
 };
 
-console.log(isProduction);
 
 
 // ### Asset helper

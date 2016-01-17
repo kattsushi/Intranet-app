@@ -1,9 +1,9 @@
 (function(){
   'use strict'
-  function usuarioServ ($resource) {
-
+  function usuarioServ ($resource, $location) {
+    var uri = $location.protocol() +'://'+location.host+'/inicio';
     var factory = {
-        iniciar : $resource('https://intranet-app.herokuapp.com/inicio'	, {} , {
+        iniciar : $resource( uri, {} , {
           sesion:{method:'GET', isArray : true, params: {nombreUsuario: '@nombreUsuario', clave: '@clave'}}
           })
         }
@@ -11,6 +11,6 @@
       }
 
   angular.module('App')
-         .factory('usuarioServ',usuarioServ);
+         .factory('usuarioServ',['$resource','$location',usuarioServ]);
 
 })();
