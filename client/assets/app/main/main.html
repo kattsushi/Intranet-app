@@ -1,6 +1,6 @@
-<div class="main" layout="row">
+<div class="main" layout="row" >
   <div class="md-whiteframe-z2" layout="column" ng-cloak >
-    <md-content  layout="column" class="md-whiteframe-z2" style="min-width:1000px; max-width:1000px" layout-padding>
+    <md-content  layout="column" class="md-whiteframe-z2"  layout-padding flex="75" flex-gt-sm="100">
       <h1 class=".md-display-3"> Titlulo</h1>
       <md-divider ></md-divider>
       <p>
@@ -14,10 +14,10 @@
       </p>
     </md-content>
     <md-button type="button" name="button" ng-href="/#!/paginas" class="md-primary md-raised"> Crear pagina</md-button>
-
-    </div>
-    <md-content flex layout="column">
-        <md-item-content >
+  </div>
+  <div hide show-gt-sm layout="column">
+    <md-content >
+      <md-item-content >
           <md-card flex style="margin-bottom:1.8em">
              <md-card-content>
               <div data-calendario style="padding-bottom:2em">xD</div>
@@ -56,4 +56,5 @@
         </md-card>
       </md-item-content>
     </md-content>
+  </div>
 </div>
