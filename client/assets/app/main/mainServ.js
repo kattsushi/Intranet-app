@@ -1,8 +1,9 @@
 (function(){
   'use strict'
-  function mainService ($resource) {
+  function mainService ($resource, $location) {
+      var uri = $location.protocol() +'://'+location.host+'/menu/:id'
       var factory = {
-         dinamico : $resource('http://localhost:3000/menu/:id', {},
+         dinamico : $resource( uri, {},
          {get :{method:'GET',transformResponse:
               function (data, headers) {return JSON.parse(data).list; }},
               isArray: true //since your list property is an array
@@ -113,6 +114,6 @@
 
 
   angular.module('App')
-         .factory('mainService',mainService);
+         .factory('mainService', ['$resource','$location',mainService]);
 
 })();
