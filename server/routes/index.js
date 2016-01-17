@@ -6,17 +6,14 @@ var    moment = require('moment');
 var    logger = require('../logger');
 var    modelo = require('../models/index');
 // var    controllers = require('../controllers');
-
+var  isProduction = process.env.NODE_ENV === 'production';
 
 router.get('/', function(req, res, next) {
     res.render('index', {
-        title: "Intranet"
-    });
-    modelo.usuario.findById(69).then(function(users) {
-        console.log( users.nombre);
-        return null;
-    });
-});
+        title: "Intranet",
+        env : isProduction
+        });
+  });
 
 router.get('/menu/:id', function(req, res, next) {
     var pag = {};

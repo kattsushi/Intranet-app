@@ -1,12 +1,13 @@
 (function(){
   'use strict'
-  function agendaServ ($q, $resource) {
+  function agendaServ ($q, $resource, $location) {
 
     // Promise-based API
-    return $resource('https://intranet-app.herokuapp.com/agenda');
+    return $resource( 'http://'+location.host+'/agenda');
+    //return $resource('http://localhost:3000/agenda');
   };
 
   angular.module('App')
-         .service('agendaServ',['$q','$resource', agendaServ]);
+         .service('agendaServ',['$q','$resource', '$location', agendaServ]);
 
 })();

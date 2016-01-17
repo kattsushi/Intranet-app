@@ -1,3 +1,4 @@
+// Definir Dependencias
 var  string    = require('string');
 var  hbs       = require('express-hbs');
 var  moment    = require('moment');
@@ -6,11 +7,11 @@ var  polyglot  = require('node-polyglot').instance;
 var  _         = require('lodash');
 var  config    = require('../config');
 
-  //definir los templates para los scripts y assets
+//Definir los templates para los scripts y assets
 var  assetTemplate = _.template('<%= source %>?v=<%= version %>');
 var  scriptTemplate = _.template('<script type="text/javascript" src="<%= source %>?v=<%= version %>"></script>');
 var  isProduction = process.env.NODE_ENV === 'production';
-// definir rutas de los archivos
+// Definir rutas de los archivos
 var   coreHelpers = {},
       registerHelpers,
       scriptFiles = {
@@ -138,6 +139,7 @@ coreHelpers.encode = function(context, str) {
   return new hbs.handlebars.SafeString(encodeURIComponent(uri));
 };
 
+console.log(isProduction);
 
 
 // ### Asset helper

@@ -25,6 +25,8 @@
      ag.currentPage  = 0;
      ag.users = agendaServ.query();
 
+     console.log(ag.env);
+
      ag.users.$promise.then(function(usrs) {
         ag.numberOfUsers = usrs.length;
 
