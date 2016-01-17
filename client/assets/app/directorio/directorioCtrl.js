@@ -7,7 +7,7 @@
    * @param avatarsService
    * @constructor
    */
-    function agendaCtrl(agendaServ,$mdSidenav, $mdBottomSheet, $log, $resource ) {
+    function directorioCtrl(directorioServ,$mdSidenav, $mdBottomSheet, $log, $resource ) {
 
      var ag = this;
 
@@ -23,7 +23,7 @@
      ag.ubicacion = [];
      ag.pageSize     = 10;
      ag.currentPage  = 0;
-     ag.users = agendaServ.query();
+     ag.users = directorioServ.query();
 
      console.log(ag.env);
 
@@ -104,6 +104,6 @@
 
 
       angular.module('App')
-             .controller('agendaCtrl',['agendaServ', '$mdSidenav', '$mdBottomSheet', '$log','$resource', agendaCtrl ])
+             .controller('directorioCtrl',['directorioServ', '$mdSidenav', '$mdBottomSheet', '$log','$resource', directorioCtrl ])
              .controller('$mdBottomSheet',['$mdBottomSheet',UserSheetController]);
 })();

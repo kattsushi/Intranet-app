@@ -42,8 +42,8 @@ function appRun ($rootScope,
 
        $location.path('/inicio');
      }
-     if (next.templateUrl == 'app/agenda/agenda.html') {
-       $location.path('/agenda');
+     if (next.templateUrl == 'app/directorio/directorio.html') {
+       $location.path('/directorio');
      }
 
 
@@ -62,8 +62,8 @@ function appRun ($rootScope,
        console.log('flag');
      }
 
-     if (next.templateUrl == 'app/agenda/agenda.html') {
-       $location.path('/agenda');
+     if (next.templateUrl == 'app/directorio/directorio.html') {
+       $location.path('/directorio');
      }
 
 
@@ -92,9 +92,9 @@ function appConfig ($routeProvider,
       controller : 'mainCtrl',
       constrollerAs: 'vm'
     })
-    .when('/agenda', {
-      templateUrl: 'app/agenda/agenda.html',
-      controller : 'agendaCtrl',
+    .when('/directorio', {
+      templateUrl: 'app/directorio/directorio.html',
+      controller : 'directorioCtrl',
       controllerAs: 'ag'
     })
     .when('/inicio',{

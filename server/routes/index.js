@@ -54,7 +54,7 @@ router.get('/inicio',function(req,res,next) {
     })
 });
 
-router.get('/agenda',function(req,res,next) {
+router.get('/directorio',function(req,res,next) {
 
     modelo.usuario.findAll({include : [{
                                   model: modelo.directorio,

@@ -98,13 +98,12 @@ var passport = require('passport');
 //TODO: realizar el api restful
 
 
-/*/// manejar errores 404
+/// manejar errores 404
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
     next(err);
 });
-
 
 // manejador de error en entorno de desarrolllo
 if (app.get('env') === 'development') {
@@ -119,6 +118,8 @@ if (app.get('env') === 'development') {
         });
     });
 }
+/*
+
 //----------------------------------------------------------------
 // manejador de errores en entorno de produccion
 //----------------------------------------------------------------

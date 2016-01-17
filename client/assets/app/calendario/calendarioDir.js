@@ -20,6 +20,18 @@
   };
 
   var currentDate = new Date();
+  var currentMonth = currentDate.getMonth();
+      currentDate.setMonth( currentMonth + 1);
+
+  var calendarioCtrl = function () {
+    var cal = this;
+    cal.nextMonth = function (ev) {
+      angular.element.
+      currentDate.setMonth( currentDate.getMonth() + 1);
+      console.log('hola esto funciona?');
+    }
+    console.log('hola esto funciona?');
+}
 
   function getTemplate(month, year, dates) {
 
@@ -35,7 +47,8 @@
     var tpl = [
       '<md-table-container class="cal">',
       '<table  md-table class="cal" style="padding-bottom:2em">',
-      '<tr><th colspan="7">' + heading + '</th></tr>',
+      '<tr><th colspan="1"><i class="fa fa-chevron-left"></i></th><th colspan="5">' + heading +
+       '</th><th colspan="1"><button ng-click="cal.nextMonth($event)"><i class="fa fa-chevron-right"></i></button></th></tr>',
       '<tr>'];
 
     days.forEach(function (day) {
@@ -69,6 +82,10 @@
   return {
     restrict: 'A',
     replace: true,
+    controller: calendarioCtrl,
+    controllerAs: 'cal',
+    bindToController: true,
+    scope: { value: '=' , nextMonth : '&'},
     link: function ($scope, $element, attrs) {
       $element.html(getTemplate(parseInt(attrs.month), parseInt(attrs.year), []));
       $compile($element.contents());
