@@ -12,7 +12,7 @@
   							</md-input-container>
   							<md-input-container>
   								<label>Contraseña</label>
-  								<input ng-model="ini.usuario.clave" type="password">
+  								<input ng-model="ini.usuario.clave" ng-keyup="$event.keyCode == 13 && ini.iniciarSesion($event)" type="password">
   							</md-input-container>
 							</div>
 
