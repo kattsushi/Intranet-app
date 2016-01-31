@@ -5,7 +5,7 @@
           style="margin-bottom:2em;min-width:480px;padding-top:2em;padding-bottom:2em;"
            layout="column" flex="30" layout-padding >
 					 	<md-content>
-					    <md-tabs md-dynamic-height md-border-bottom>
+					    <md-tabs md-dynamic-height md-stretch-tabs="always" layout-aling="center end" md-border-bottom>
 					      <md-tab label="Iniciar Sesion">
 									<md-content style="padding-left:4em" layout="row">
 										<div >
@@ -29,44 +29,67 @@
 					      </md-tab>
 								<md-tab label="Registro">
 					        <md-content class="md-padding">
-										<md-input-container>
-											<label>Usuario</label>
-											<input required name="nombre" ng-model="ini.usuario.nombreUsuario">
-											<div ng-messages="ini.usuario.nombreUsuario.$error">
-							          <div ng-message="required">Nombre requerido</div>
-							        </div>
-										</md-input-container>
-										<md-input-container>
-											<label>Nombre</label>
-											<input ng-model="ini.usuario.nombre">
-										</md-input-container>
-										<md-input-container>
-											<label>Apellido</label>
-											<input ng-model="ini.usuario.apellido">
-										</md-input-container>
-										<md-input-container>
-											<label>Correo</label>
-											<input ng-model="ini.usuario.correo">
-										</md-input-container>
-										<md-input-container>
-											<label>Telefono/Extencion</label>
-											<input ng-model="ini.usuario.tlf">
-										</md-input-container>
-										<md-input-container>
-											<label>Ubicacion</label>
-											<input ng-model="ini.usuario.ubicacion">
-										</md-input-container>
-										<md-input-container>
-											<label>Contraseña</label>
-											<input >
-										</md-input-container>
-										<md-input-container>
-											<label>Confirmar Contraseña</label>
-											<input>
-										</md-input-container>
-										<md-button class="md-raised md-primary"
-										ng-click="" type="submit">Registrar</md-button>
-									</md-content>
+										<form name="registro">
+											<md-input-container>
+												<label>Usuario</label>
+												<input required name="usuario" ng-model="ini.nombreUsuario">
+												<div ng-messages="registro.usuario.$error">
+								          <div ng-message="required">Usuario requerido</div>
+								        </div>
+											</md-input-container>
+											<md-input-container>
+												<label>Nombre</label>
+												<input required name="nombre" ng-model="ini.nombre">
+												<div ng-messages="registro.nombre.$error">
+								          <div ng-message="required">Nombre requerido</div>
+								        </div>
+											</md-input-container>
+											<md-input-container>
+												<label>Apellido</label>
+												<input required name="apellido" ng-model="ini.apellido">
+												<div ng-messages="registro.apellido.$error">
+								          <div ng-message="required">Apellido requerido</div>
+								        </div>
+											</md-input-container>
+											<md-input-container>
+												<label>Correo</label>
+												<input required type="email" name="correo" ng-model="ini.correo">
+												<div ng-messages="registro.correo.$error">
+								          <div ng-message="required">Correo requerido</div>
+													<div ng-message="email">Ingrese un Correo Valido</div>
+								        </div>
+											</md-input-container>
+											<md-input-container>
+												<label>Telefono/Extencion</label>
+												<input ng-model="ini.telefono">
+											</md-input-container>
+											<md-input-container>
+												<label>Ubicacion</label>
+												<md-select ng-model="ini.ubicacion">
+						              <md-option ng-repeat="opt in ini.ubicaciones" value="{[{opt.Ubicacion}]}">
+						                {[{opt.Ubicacion}]}
+						              </md-option>
+						            </md-select>
+											</md-input-container>
+											<md-input-container>
+												<label>Contraseña</label>
+												<input type="password" name="password" ng-model="registerData.password" required />
+									      <div class="form-errors" ng-messages="registro.password.$error" ng-if='registro.password.$touched'>
+									        <span class="form-error" ng-message="required">Contraseña requerida</span>
+									      </div>
+											</md-input-container>
+											<md-input-container>
+												<label>Confirmar Contraseña</label>
+												<input type="password" name="password_confirmation" ng-model="registerData.password_confirmation" required="" confirm-pwd="registerData.password" />
+									      <div class="form-errors" ng-messages="registro.password_confirmation.$error" ng-if='registro.password_confirmation.$touched'>
+									        <span class="form-error" ng-message="required">Contraseña requerida</span>
+									        <span class="form-error" ng-message="password">Contraseña es diferente</span>
+									      </div>
+											</md-input-container>
+											<md-button class="md-raised md-primary"
+											ng-click="ini.registrar($event)" type="submit">Registrar</md-button>
+										</md-content>
+										</form>
 					      </md-tab>
 					</md-whiteframe>
 				</div>
