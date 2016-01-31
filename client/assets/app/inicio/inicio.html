@@ -4,28 +4,70 @@
 					<md-whiteframe class="md-whiteframe-z3"
           style="margin-bottom:2em;min-width:480px;padding-top:2em;padding-bottom:2em;"
            layout="column" flex="30" layout-padding >
-						<md-content style="padding-left:4em" layout="row">
-							<div >
-                <md-input-container>
-  								<label>Usuario</label>
-  								<input ng-model="ini.usuario.nombreUsuario">
-  							</md-input-container>
-  							<md-input-container>
-  								<label>Contraseña</label>
-  								<input ng-model="ini.usuario.clave" ng-keyup="$event.keyCode == 13 && ini.iniciarSesion($event)" type="password">
-  							</md-input-container>
-							</div>
-
-							<md-input-container layout-align="center center" style="text-align:center">
-                <img  src="img/logo.gif" alt="" />
-								<div layout="row" layout="column" layout-margin>
-									<md-button class="md-raised"
-
-                  ng-click="ini.iniciarSesion($event)" type="submit">Entrar</md-button>
-									<md-button class="md-raised md-primary" >Registrar</md-button>
-								</div>
-							</md-input-container>
-						</md-content>
+					 	<md-content>
+					    <md-tabs md-dynamic-height md-border-bottom>
+					      <md-tab label="Iniciar Sesion">
+									<md-content style="padding-left:4em" layout="row">
+										<div >
+			                <md-input-container>
+			  								<label>Usuario</label>
+			  								<input ng-model="ini.usuario.nombreUsuario">
+			  							</md-input-container>
+			  							<md-input-container>
+			  								<label>Contraseña</label>
+			  								<input ng-model="ini.usuario.clave" ng-keyup="$event.keyCode == 13 && ini.iniciarSesion($event)" type="password">
+			  							</md-input-container>
+										</div>
+										<md-input-container layout-align="center center" style="text-align:center">
+			                <img  src="img/logo.gif" alt="" />
+											<div layout="row" layout="column" layout-margin>
+												<md-button class="md-raised"
+			                  ng-click="ini.iniciarSesion($event)" type="submit">Entrar</md-button>
+											</div>
+										</md-input-container>
+									</md-content>
+					      </md-tab>
+								<md-tab label="Registro">
+					        <md-content class="md-padding">
+										<md-input-container>
+											<label>Usuario</label>
+											<input required name="nombre" ng-model="ini.usuario.nombreUsuario">
+											<div ng-messages="ini.usuario.nombreUsuario.$error">
+							          <div ng-message="required">Nombre requerido</div>
+							        </div>
+										</md-input-container>
+										<md-input-container>
+											<label>Nombre</label>
+											<input ng-model="ini.usuario.nombre">
+										</md-input-container>
+										<md-input-container>
+											<label>Apellido</label>
+											<input ng-model="ini.usuario.apellido">
+										</md-input-container>
+										<md-input-container>
+											<label>Correo</label>
+											<input ng-model="ini.usuario.correo">
+										</md-input-container>
+										<md-input-container>
+											<label>Telefono/Extencion</label>
+											<input ng-model="ini.usuario.tlf">
+										</md-input-container>
+										<md-input-container>
+											<label>Ubicacion</label>
+											<input ng-model="ini.usuario.ubicacion">
+										</md-input-container>
+										<md-input-container>
+											<label>Contraseña</label>
+											<input >
+										</md-input-container>
+										<md-input-container>
+											<label>Confirmar Contraseña</label>
+											<input>
+										</md-input-container>
+										<md-button class="md-raised md-primary"
+										ng-click="" type="submit">Registrar</md-button>
+									</md-content>
+					      </md-tab>
 					</md-whiteframe>
 				</div>
 			</md-content>

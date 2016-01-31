@@ -5,6 +5,7 @@ var app = angular
       'ngAria',
       'ngResource',
       'ngMaterial',
+      'ngMessages',
       'ngRoute',
       'ngCookies',
       'angularSpinner',

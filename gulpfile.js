@@ -63,6 +63,7 @@ var vendor = [
                 'bower_components/angular-material/angular-material.js',
                 'bower_components/angular-material-icons/angular-material-icons.js',
                 'bower_components/angular-sanitize/angular-sanitize.js',
+                'bower_components/angular-messages/angular-messages.js',
                 'bower_components/ngWYSIWYG/js/wysiwyg.js',
                 'bower_components/angular-spinner/angular-spinner.js',
                 'bower_components/angular-bootstrap/ui-bootstrap.js',

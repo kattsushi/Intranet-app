@@ -48,7 +48,7 @@
       '<md-table-container class="cal">',
       '<table  md-table class="cal" style="padding-bottom:2em">',
       '<tr><th colspan="1"><i class="fa fa-chevron-left"></i></th><th colspan="5">' + heading +
-       '</th><th colspan="1"><button ng-click="cal.nextMonth($event)"><i class="fa fa-chevron-right"></i></button></th></tr>',
+       '</th><th colspan="1"><i ng-click="cal.nextMonth($event)"><i class="fa fa-chevron-right"></i></i</th></tr>',
       '<tr>'];
 
     days.forEach(function (day) {
