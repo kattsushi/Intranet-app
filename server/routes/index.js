@@ -89,10 +89,11 @@ router.get('/directorio',function(req,res,next) {
 });
 
 
-router.get('/api', function (req, res, next) {
+router.post('/api', function (req, res, next) {
   
-     res.send("hola mundo");
-  })
+      res.send("hola mundo");
+     
+  });
 
 
 
