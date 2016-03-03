@@ -89,6 +89,14 @@ router.get('/directorio',function(req,res,next) {
 });
 
 
+router.get('/api', function (req, res, next) {
+  
+     res.send("hola mundo");
+  })
+
+
+
+
 router.get('/ubicacion', function (req, res, next) {
    modelo.directorio.findAll({
      attributes : ['Ubicacion'],
