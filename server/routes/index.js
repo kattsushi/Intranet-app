@@ -8,6 +8,14 @@ var    modelo = require('../models/index');
 // var    controllers = require('../controllers');
 var  isProduction = process.env.NODE_ENV === 'production';
 
+
+router.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
+
 router.get('/', function(req, res, next) {
     res.render('index', {
         title: "Intranet",
@@ -89,15 +97,6 @@ router.get('/directorio',function(req,res,next) {
 });
 
 
-router.post('/api', function (req, res, next) {
-  
-      res.send("hola mundo");
-     
-  });
-
-
-
-
 router.get('/ubicacion', function (req, res, next) {
    modelo.directorio.findAll({
      attributes : ['Ubicacion'],
@@ -118,6 +117,39 @@ router.get('/error/500', function(req, res, next) {
     });
 });
 
+
+var nodemailer = require('nodemailer');
+
+var smtpTransport = nodemailer.createTransport("SMTP",{
+   service: "Gmail",
+   auth: {
+       user: "ndresdavidj@gmail.com",
+       pass: ".kakashi1"
+   }
+});
+
+router.post('/api', function (req, res, next) {
+  
+  var data = req.body;
+  
+    
+  var mailOptions = {
+      from: '"Andres Jimenez 👥" <ndresdavidj@gmail.com>', 
+      to: data.email, // list of receivers
+      subject: 'Hello ✔', // Subject line
+      text:  data.comentario + ' y el resulado es ' + data.area }
+
+  smtpTransport.sendMail(mailOptions, function(error, info){
+      if(error){
+          return console.log(error);
+      }
+      console.log('Mensaje enviado: ' + info.response);
+  });
+      
+      
+    
+  });
+  
 
 
 module.exports = router;
